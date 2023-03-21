@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.SCHEMA:dogmate.public</OriginalElement>
+  <nodes>
+    <node x="922.8269607843138" y="238.45674740484435">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.breeds</node>
+    <node x="922.8269607843138" y="64.25">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.login_attempts</node>
+    <node x="-138.859429065744" y="613.5467128027682">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.tags</node>
+    <node x="-138.859429065744" y="334.128892733564">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcement_types</node>
+    <node x="1259.0737889273353" y="509.95674740484435">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons</node>
+    <node x="1263.0737889273353" y="358.45674740484435">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.training_levels</node>
+    <node x="551.1205017301037" y="64.25">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users</node>
+    <node x="136.35971741637832" y="479.5542099192619">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements</node>
+    <node x="70.00496683967694" y="64.25">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.cities</node>
+    <node x="977.8759515570932" y="733.4567474048444">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons_animals</node>
+    <node x="1015.8269607843138" y="413.95674740484435">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animals</node>
+    <node x="-138.859429065744" y="482.89835640138404">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.time_unit</node>
+    <node x="1153.778517877739" y="238.45674740484435">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animal_types</node>
+    <node x="-138.859429065744" y="770.4290657439446">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements_tags</node>
+    <node x="277.3993512110726" y="64.25">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.user_types</node>
+    <node x="239.8993512110726" y="229.3085351787775">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.reviews</node>
+    <node x="443.93359284890414" y="721.4290657439446">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.conversations</node>
+    <node x="690.1205017301036" y="503.5542099192619">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.messages</node>
+    <node x="1219.0737889273353" y="709.4567474048444">9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lesson_steps</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animals" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animal_types" relationship="REFERENCES">
+      <point x="87.19434832756588" y="-125.5" />
+      <point x="1205.5213091118796" y="379.70674740484435" />
+      <point x="1206.3373702422145" y="379.70674740484435" />
+      <point x="-47.94114763552443" y="56.12629757785459" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons_animals" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animals" relationship="REFERENCES">
+      <point x="-15.000160322952524" y="-65.5" />
+      <point x="-64.45116955017306" y="125.5" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.messages" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" relationship="REFERENCES">
+      <point x="-55.452681660899316" y="-85.88465974625154" />
+      <point x="779.6678200692043" y="507.16955017301035" />
+      <point x="69.54731833910057" y="187.34573241061128" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" relationship="REFERENCES">
+      <point x="100.03878316032302" y="-112.3990772779701" />
+      <point x="382.89850057670134" y="402.1303344867359" />
+      <point x="586.4913494809689" y="402.1303344867359" />
+      <point x="-123.62915224913479" y="157.9904844290657" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.training_levels" relationship="REFERENCES">
+      <point x="0.0" y="-77.5" />
+      <point x="0.0" y="53.5" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.conversations" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" relationship="REFERENCES">
+      <point x="68.63964821222623" y="-64.80334486735876" />
+      <point x="638.5732410611304" y="722.1257208765859" />
+      <point x="-71.54726066897331" y="181.66407151095729" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.reviews" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" relationship="REFERENCES">
+      <point x="-70.95572952710495" y="77.5" />
+      <point x="294.94362168396765" y="431.93137254901967" />
+      <point x="294.8327566320646" y="431.93137254901967" />
+      <point x="11.973039215686299" y="-110.5051903114188" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.cities" relationship="REFERENCES">
+      <point x="-156.772174163783" y="-47.496251441753174" />
+      <point x="232.33448673587088" y="202.25374855824683" />
+      <point x="76.82951989619394" y="49.46683967704729" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcement_types" relationship="REFERENCES">
+      <point x="-135.75014417531713" y="-108.61130334486745" />
+      <point x="71.35409457900812" y="484.44290657439444" />
+      <point x="63.713523644752115" y="34.005478662053065" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements_tags" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" relationship="REFERENCES">
+      <point x="126.13624567474056" y="-23.964244521337946" />
+      <point x="126.27681660899657" y="749.4163783160323" />
+      <point x="168.88927335640142" y="749.4163783160323" />
+      <point x="-113.9704440599769" y="108.23875432525938" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.login_attempts" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" relationship="REFERENCES">
+      <point x="-144.99996078431377" y="0.0" />
+      <point x="866.7866205305652" y="141.75" />
+      <point x="156.6661188004615" y="-110.94146482122261" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.time_unit" relationship="REFERENCES">
+      <point x="-146.5" y="-68.65585351787786" />
+      <point x="87.5" y="0.0" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lesson_steps" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons" relationship="REFERENCES">
+      <point x="52.99310841983902" y="-68.61880046136116" />
+      <point x="1393.832179930796" y="718.3379469434832" />
+      <point x="1393.832179930796" y="688.0" />
+      <point x="28.2583910034607" y="76.90542099192612" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animals" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" relationship="REFERENCES">
+      <point x="-92.8557958477511" y="-117.5121107266437" />
+      <point x="929.9249215686274" y="421.94463667820065" />
+      <point x="929.9249215686274" y="407.7404844290657" />
+      <point x="159.50694925028859" y="157.9904844290657" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.animals" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.breeds" relationship="REFERENCES">
+      <point x="-95.0" y="-125.5" />
+      <point x="1023.3269607843138" y="379.70674740484435" />
+      <point x="1021.6833910034601" y="379.70674740484435" />
+      <point x="-1.6435697808536816" y="50.444636678200595" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements_tags" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.tags" relationship="REFERENCES">
+      <point x="-47.5" y="-41.0" />
+      <point x="0.0" y="29.0" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.reviews" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" relationship="REFERENCES">
+      <point x="126.0" y="-57.058535178777504" />
+      <point x="-159.0" y="0.0" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.messages" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.conversations" relationship="REFERENCES">
+      <point x="0.0" y="89.5" />
+      <point x="835.1205017301036" y="786.9290657439446" />
+      <point x="126.0" y="0.0" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.conversations" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" relationship="REFERENCES">
+      <point x="-125.99959284890411" y="-6.574394467406819E-5" />
+      <point x="300.5144175317186" y="786.929" />
+      <point x="17.65470011534029" y="116.7612456747404" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.users" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.user_types" relationship="REFERENCES">
+      <point x="-159.0" y="-144.0" />
+      <point x="88.5" y="0.0" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.care_announcements" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.cities" relationship="REFERENCES">
+      <point x="-95.03157439446363" y="-107.66435986159178" />
+      <point x="186.881199538639" y="485.3898500576701" />
+      <point x="186.881199538639" y="458.0" />
+      <point x="31.37623269896207" y="55.14850057670128" />
+    </edge>
+    <edge source="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons_animals" target="9349283c-3bd4-4c52-bbcc-ee5dd0ab3c63.TABLE:dogmate.public.lessons" relationship="REFERENCES">
+      <point x="37.02427912341432" y="-65.46770472895048" />
+      <point x="1105.9002306805075" y="692.7347174163783" />
+      <point x="1299.0767012687427" y="692.7347174163783" />
+      <point x="-66.49708765859259" y="78.79930795847747" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0560292326431182" showDependencies="false" x="668.0" y="474.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
