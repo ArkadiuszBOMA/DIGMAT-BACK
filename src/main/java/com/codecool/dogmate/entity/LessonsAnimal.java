@@ -25,9 +25,6 @@ public class LessonsAnimal {
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 
-    @Column(name = "progress")
-    private Integer progress;
-
     @Column(name = "finished")
     private Boolean finished;
 
