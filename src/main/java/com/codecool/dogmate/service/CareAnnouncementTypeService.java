@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.dto.careannouncmenttype.CareAnnouncementTypeDto;
 import com.codecool.dogmate.dto.careannouncmenttype.NewCareAnnouncementTypeDto;
+import com.codecool.dogmate.entity.CareAnnouncementType;
 import com.codecool.dogmate.mapper.CareAnnouncementTypeMapper;
 import com.codecool.dogmate.repository.CareAnnouncementTypeRepository;
 import org.springframework.data.domain.Pageable;
