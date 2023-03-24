@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.city.NewCityDto;
+import com.codecool.dogmate.entity.CareAnnouncementType;
 import com.codecool.dogmate.entity.City;
 import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.mapper.CityMapper;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -33,11 +35,13 @@ public class CitiesService {
 
     public List<CityDto> getCities() {
         return cityRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(City::getName))
                 .map(cityMapper::mapEntityToCityDto)
                 .toList();
     }
     public List<CityDto> getCities(Pageable pageable) {
         return cityRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(City::getName))
                 .map(cityMapper::mapEntityToCityDto)
                 .toList();
     }

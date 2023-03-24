@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.dto.province.NewProvinceDto;
 import com.codecool.dogmate.dto.province.ProvinceDto;
+import com.codecool.dogmate.entity.LessonStep;
 import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.ProvinceMapper;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -29,12 +31,14 @@ public class ProvincesService {
 
     public List<ProvinceDto> getProvinces() {
         return provinceRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(Province::getName))
                 .map(provinceMapper::mapEntityToProvinceDto)
                 .toList();
     }
 
     public List<ProvinceDto> getProvinces(Pageable pageable) {
         return provinceRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(Province::getName))
                 .map(provinceMapper::mapEntityToProvinceDto)
                 .toList();
     }

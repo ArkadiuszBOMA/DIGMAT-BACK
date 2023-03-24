@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.dto.traininglevel.NewTrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.TrainingLevelDto;
+import com.codecool.dogmate.entity.TimeUnit;
 import com.codecool.dogmate.entity.TrainingLevel;
 import com.codecool.dogmate.mapper.TrainingLevelMapper;
 import com.codecool.dogmate.repository.TrainingLevelRepository;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -26,12 +28,14 @@ public class TrainingLevelsService {
 
     public List<TrainingLevelDto> getTrainingLevels() {
         return trainingLevelRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(TrainingLevel::getId))
                 .map(trainingLevelMapper::mapEntityToTrainingLevelDto)
                 .toList();
     }
 
     public List<TrainingLevelDto> getTrainingLevels(Pageable pageable) {
         return trainingLevelRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(TrainingLevel::getId))
                 .map(trainingLevelMapper::mapEntityToTrainingLevelDto)
                 .toList();
     }

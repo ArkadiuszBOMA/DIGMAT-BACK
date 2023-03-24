@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -32,11 +33,13 @@ public class LessonsAnimalsService {
 
     public List<LessonAnimalDto> getLessonsAnimal() {
         return lessonAnimalRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(LessonsAnimal::getDate_create))
                 .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
                 .toList();
     }
     public List<LessonAnimalDto> getLessonsAnimal(Pageable pageable) {
         return lessonAnimalRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(LessonsAnimal::getDate_create))
                 .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
                 .toList();
     }

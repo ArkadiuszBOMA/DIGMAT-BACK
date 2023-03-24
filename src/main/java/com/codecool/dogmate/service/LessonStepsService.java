@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -29,11 +30,13 @@ public class LessonStepsService {
 
     public List<LessonStepDto> getLessonSteps() {
         return lessonStepRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(LessonStep::getStepNumber))
                 .map(lessonStepMapper::mapEntityToLessonStepDto)
                 .toList();
     }
     public List<LessonStepDto> getLessonSteps(Pageable pageable) {
         return lessonStepRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(LessonStep::getStepNumber))
                 .map(lessonStepMapper::mapEntityToLessonStepDto)
                 .toList();
     }

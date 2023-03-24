@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.dto.timeunit.NewTimeUnitDto;
 import com.codecool.dogmate.dto.timeunit.TimeUnitDto;
+import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.entity.TimeUnit;
 import com.codecool.dogmate.mapper.TimeUnitMapper;
 import com.codecool.dogmate.repository.TimeUnitRepository;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -26,12 +28,14 @@ public class TimeUnitService {
 
     public List<TimeUnitDto> getTimeUnits() {
         return timeUnitRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(TimeUnit::getName))
                 .map(timeUnitMapper::mapEntityToTimeUnitDto)
                 .toList();
     }
 
     public List<TimeUnitDto> getTimeUnits(Pageable pageable) {
         return timeUnitRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(TimeUnit::getName))
                 .map(timeUnitMapper::mapEntityToTimeUnitDto)
                 .toList();
     }

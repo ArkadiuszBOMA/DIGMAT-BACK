@@ -3,6 +3,7 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.dto.breed.NewBreedDto;
 import com.codecool.dogmate.entity.AnimalType;
+import com.codecool.dogmate.entity.AppUser;
 import com.codecool.dogmate.entity.Breed;
 import com.codecool.dogmate.mapper.AnimalTypeMapper;
 import com.codecool.dogmate.mapper.BreedMapper;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -32,11 +34,13 @@ public class BreedsService {
 
     public List<BreedDto> getBreeds() {
         return breedRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(Breed::getName))
                 .map(breedMapper::mapEntityToBreedDto)
                 .toList();
     }
     public List<BreedDto> getBreeds(Pageable pageable) {
         return breedRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(Breed::getName))
                 .map(breedMapper::mapEntityToBreedDto)
                 .toList();
     }

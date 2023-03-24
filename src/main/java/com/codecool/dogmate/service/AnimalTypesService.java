@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.dto.animaltype.AnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.NewAnimalTypeDto;
+import com.codecool.dogmate.entity.Animal;
 import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.mapper.AnimalTypeMapper;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 @Service
 public class AnimalTypesService {
@@ -25,12 +27,14 @@ public class AnimalTypesService {
 
     public List<AnimalTypeDto> getAnimalType() {
         return animalTypeRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(AnimalType::getDate_create))
                 .map(animalTypeMapper::mapEntityToAnimalTypeDto)
                 .toList();
     }
 
     public List<AnimalTypeDto> getAnimalType(Pageable pageable) {
         return animalTypeRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(AnimalType::getDate_create))
                 .map(animalTypeMapper::mapEntityToAnimalTypeDto)
                 .toList();
     }

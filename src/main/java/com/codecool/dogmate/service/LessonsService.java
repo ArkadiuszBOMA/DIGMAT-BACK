@@ -3,6 +3,7 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.dto.lessons.LessonDto;
 import com.codecool.dogmate.dto.lessons.NewLessonDto;
 import com.codecool.dogmate.entity.Lesson;
+import com.codecool.dogmate.entity.LessonsAnimal;
 import com.codecool.dogmate.entity.TrainingLevel;
 import com.codecool.dogmate.mapper.LessonMapper;
 import com.codecool.dogmate.repository.LessonRepository;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -28,11 +30,13 @@ public class LessonsService {
 
     public List<LessonDto> getLessons() {
         return lessonRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(Lesson::getName))
                 .map(lessonMapper::mapEntityToLessonDto)
                 .toList();
     }
     public List<LessonDto> getLessons(Pageable pageable) {
         return lessonRepository.findAllBy(pageable).stream()
+                .sorted(Comparator.comparing(Lesson::getName))
                 .map(lessonMapper::mapEntityToLessonDto)
                 .toList();
     }

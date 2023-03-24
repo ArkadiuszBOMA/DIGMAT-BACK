@@ -23,7 +23,11 @@ public class LessonAnimalMapper {
                 entity.getId(),
                 entity.getFinished(),
                 entity.getAnimal().getId(),
-                entity.getLesson().getId()
+                entity.getLesson().getId(),
+                entity.getDate_archive(),
+                entity.getDate_modify(),
+                entity.getDate_create(),
+                entity.getArchive()
         );
     }
 

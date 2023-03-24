@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,7 @@ public class AppUserService {
 
     public List<AppUserDto> getAppUsers() {
         return appUserRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(AppUser::getDate_create))
                 .map(appUserMapper::mapEntityToAppUserDto)
                 .toList();
     }
