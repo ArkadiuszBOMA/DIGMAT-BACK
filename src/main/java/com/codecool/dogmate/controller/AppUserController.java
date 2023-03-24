@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/appuser")
+@RequestMapping("/api/app-user")
 public class AppUserController {
 
     private final AppUserService appUserService;
@@ -38,13 +38,13 @@ public class AppUserController {
         return appUserService.getAppUsers(pageable);
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     public AppUserDto getAppUserByUserId(@PathVariable Integer id) {
         return appUserService.getAppUserById(id);
     }
 
-    @GetMapping("/name/{name}")
-    public List<AppUserDto> getAppUserByName(@PathVariable String name) {
+    @GetMapping(params= {"name"})
+    public List<AppUserDto> getAppUserByName(@RequestParam String name) {
         return appUserService.getAppUserByName(name);
     }
 

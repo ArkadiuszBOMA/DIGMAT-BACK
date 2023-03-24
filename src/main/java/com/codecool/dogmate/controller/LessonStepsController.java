@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/lessonstep")
+@RequestMapping("/api/lesson-steps")
 public class LessonStepsController {
     private final LessonStepsService lessonStepService;
     public LessonStepsController(LessonStepsService lessonStepService) {

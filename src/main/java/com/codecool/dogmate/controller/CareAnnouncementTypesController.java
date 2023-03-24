@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/careannouncementtype")
+@RequestMapping("/api/care-announcement-types")
 public class CareAnnouncementTypesController {
 
     private final CareAnnouncementTypeService careAnnouncementTypeService;

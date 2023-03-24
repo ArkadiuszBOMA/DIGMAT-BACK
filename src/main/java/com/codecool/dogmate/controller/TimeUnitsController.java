@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/timeunit")
+@RequestMapping("/api/time-units")
 public class TimeUnitsController {
 
     private final TimeUnitService timeUnitService;
