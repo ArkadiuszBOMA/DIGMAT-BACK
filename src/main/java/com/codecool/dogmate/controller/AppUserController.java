@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/app-user")
+@RequestMapping("/api/app-users")
 public class AppUserController {
 
     private final AppUserService appUserService;
