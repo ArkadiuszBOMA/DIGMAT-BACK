@@ -8,9 +8,9 @@ public record LessonAnimalDto(
     Boolean finished,
     Integer animalId,
     Integer lessonId,
-    LocalDateTime date_create,
-    LocalDateTime date_modify,
     LocalDateTime date_archive,
+    LocalDateTime date_modify,
+    LocalDateTime date_create,
     Boolean archive
 
 ){
