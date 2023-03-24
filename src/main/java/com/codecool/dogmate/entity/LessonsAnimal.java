@@ -43,4 +43,8 @@ public class LessonsAnimal {
     @Column(name = "date_archive")
     private LocalDateTime date_archive ;
 
+    public LessonsAnimal(Animal animal, Lesson lesson) {
+        this.animal = animal;
+        this.lesson = lesson;
+    }
 }
