@@ -11,6 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnimalMapper {
 
+    private final LessonAnimalMapper lessonAnimalMapper;
+
+    public AnimalMapper(LessonAnimalMapper lessonAnimalMapper) {
+        this.lessonAnimalMapper = lessonAnimalMapper;
+    }
+
 
     public Animal mapNewAniamlDtoToEntity(NewAnimalDto dto, AnimalType animalType, Breed breed, AppUser appUser) {
         return new Animal(
@@ -39,7 +45,10 @@ public class AnimalMapper {
                 entity.getDate_create(),
                 entity.getDate_modify(),
                 entity.getDate_archive(),
-                entity.getArchive()
+                entity.getArchive(),
+                entity.getLessonsAnimals().stream()
+                        .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
+                        .toList()
         );
     }
 }
