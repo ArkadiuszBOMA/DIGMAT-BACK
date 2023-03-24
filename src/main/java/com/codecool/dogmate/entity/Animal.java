@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "animals")
@@ -62,6 +64,9 @@ public class Animal {
 
     @Column(name = "date_archive")
     private LocalDateTime date_archive ;
+
+    @OneToMany(mappedBy = "animal")
+    private Set<LessonsAnimal> lessonsAnimals = new LinkedHashSet<>();
 
     public Animal(String name, AnimalType animalType, Breed breed, AppUser appUser, Integer birthYear, String pictureLocation, String description, Gender gender) {
         this.name = name;

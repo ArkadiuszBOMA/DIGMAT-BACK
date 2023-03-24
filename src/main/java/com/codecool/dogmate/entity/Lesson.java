@@ -54,6 +54,9 @@ public class Lesson {
     @OneToMany(mappedBy = "lesson")
     private Set<LessonStep> lessonSteps = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "lesson")
+    private Set<LessonsAnimal> lessonsAnimals = new LinkedHashSet<>();
+
     public Lesson(String name, TrainingLevel trainingLevel, String description, String imageLocation) {
         this.name = name;
         this.trainingLevel = trainingLevel;
