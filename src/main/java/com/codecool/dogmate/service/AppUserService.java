@@ -68,6 +68,7 @@ public class AppUserService {
     }
 
     public void createAppUser(NewAppUserDto appuser) {
+//  metody walidacyjne "backlendu"
         AppUser entity = appUserMapper.mapNewAppUserDtoToEntity(appuser);
         UserType userType = userTypeRepository.findOneById(appuser.userType())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
