@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user-types")
+@RequestMapping("/api/v1/user-types")
 public class UserTypesController {
 
     private final UserTypesService userTypesService;
@@ -23,7 +23,7 @@ public class UserTypesController {
     }
 
 
-    @GetMapping
+    @GetMapping("/")
     public List<UserTypeDto> getAllUserTypes() {return userTypesService.getUserTypes();}
 
 

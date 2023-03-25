@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/app-users")
+@RequestMapping("/api/v1/app-users")
 public class AppUserController {
 
     private final AppUserService appUserService;
@@ -30,7 +30,7 @@ public class AppUserController {
     }
 
 
-    @GetMapping
+    @GetMapping("/")
     public List<AppUserDto> getAllAppUsers() {return appUserService.getAppUsers();}
 
     @GetMapping(params = {"page", "size", "sort"})

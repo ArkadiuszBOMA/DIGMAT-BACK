@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/provinces")
+@RequestMapping("/api/v1/provinces")
 public class ProvincesController {
     private final ProvincesService provincesService;
 
@@ -17,7 +17,7 @@ public class ProvincesController {
         this.provincesService = provincesService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<ProvinceDto> getAllProvinces() {
         return provincesService.getProvinces();
     }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/time-units")
+@RequestMapping("/api/v1/time-units")
 public class TimeUnitsController {
 
     private final TimeUnitService timeUnitService;
@@ -19,7 +19,7 @@ public class TimeUnitsController {
     }
 
 
-    @GetMapping
+    @GetMapping("/")
     public List<TimeUnitDto> getAllTimeUnits() {return timeUnitService.getTimeUnits();}
 
     @GetMapping(params = {"page", "size", "sort"})

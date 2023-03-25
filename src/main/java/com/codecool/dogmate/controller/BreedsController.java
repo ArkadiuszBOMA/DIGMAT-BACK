@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/breeds")
+@RequestMapping("/api/v1/breeds")
 public class BreedsController {
     private final BreedsService breedsService;
 
@@ -19,7 +19,7 @@ public class BreedsController {
     }
 
 
-    @GetMapping
+    @GetMapping("/")
     public List<BreedDto> getAllBreeds() {return breedsService.getBreeds();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<BreedDto> getAllBreedsWithPageable(Pageable pageable) {

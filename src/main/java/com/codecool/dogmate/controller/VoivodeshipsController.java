@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/voivodeships")
+@RequestMapping("/api/v1/voivodeships")
 public class VoivodeshipsController {
 
     private final VoivodeshipsService voivodeshipsService;
@@ -18,7 +18,7 @@ public class VoivodeshipsController {
         this.voivodeshipsService = voivodeshipsService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<VoivodeshipDto> getAllVoivodeship() {
         return voivodeshipsService.getVoivodeships();
     }

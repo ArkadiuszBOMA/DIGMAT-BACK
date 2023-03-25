@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/cities")
+@RequestMapping("/api/v1/cities")
 public class CitiesController {
     private final CitiesService citiesService;
     public CitiesController(CitiesService citiesService) {
         this.citiesService = citiesService;
     }
-    @GetMapping
+    @GetMapping("/")
     public List<CityDto> getAllCities() {return citiesService.getCities();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<CityDto> getAllCitiesWithPageable(Pageable pageable) {

@@ -16,7 +16,7 @@ public class AnimalTypesController {
     public AnimalTypesController(AnimalTypesService animalTypesService) {
         this.animalTypesService = animalTypesService;
     }
-    @GetMapping
+    @GetMapping("/")
     public List<AnimalTypeDto> getAllAnimalTypes() {return animalTypesService.getAnimalType();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<AnimalTypeDto> getAllAnimalTypesWithPageable(Pageable pageable) {
