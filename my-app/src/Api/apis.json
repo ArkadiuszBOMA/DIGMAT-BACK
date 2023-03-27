@@ -1,0 +1,19 @@
+{
+  "hostCredential": "http://localhost:9090",
+  "getAllAppUsers": "/api/v1/app-users/",
+  "newAppUsers": "/api/v1/app-users/register",
+  "loginAppUsers": "/api/v1/app-users/login",
+  "getAllAnimals": "/api/v1/animals/",
+  "getAllAnimalTypes": "/api/animal-types/",
+  "getAllBreeds": "/api/v1/breeds/",
+  "getAllCareAnnouncementTypes": "/api/v1/care-announcement-types/",
+  "getAllCities": "/api/v1/cities/",
+  "getAllLessonsAnimals": "/api/v1/lessons-animals/",
+  "getAllLessons": "/api/v1/lessons/",
+  "getAllLessonSteps": "/api/v1/lesson-steps/",
+  "getAllProvinces": "/api/v1/provinces/",
+  "getAllTimeUnits": "/api/v1/time-units/",
+  "getAllTrainingLevel": "/api/v1/training-levels/",
+  "getAllUserTypes": "/api/v1/user-types/",
+  "getAllVoivodeship": "/api/v1/voivodeships/"
+}
