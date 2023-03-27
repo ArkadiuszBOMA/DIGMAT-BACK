@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/cities")
+@RequestMapping("/api/v1/cities/")
 public class CitiesController {
     private final CitiesService citiesService;
     public CitiesController(CitiesService citiesService) {
         this.citiesService = citiesService;
     }
-    @GetMapping("/")
+    @GetMapping()
     public List<CityDto> getAllCities() {return citiesService.getCities();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<CityDto> getAllCitiesWithPageable(Pageable pageable) {
         return citiesService.getCities(pageable);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public CityDto getCityByCityId(@PathVariable Integer id) {
         return citiesService.getCityById(id);
     }

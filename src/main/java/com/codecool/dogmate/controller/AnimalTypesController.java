@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/animal-types")
+@RequestMapping("/api/animal-types/")
 public class AnimalTypesController {
     private final AnimalTypesService animalTypesService;
 
     public AnimalTypesController(AnimalTypesService animalTypesService) {
         this.animalTypesService = animalTypesService;
     }
-    @GetMapping("/")
+    @GetMapping()
     public List<AnimalTypeDto> getAllAnimalTypes() {return animalTypesService.getAnimalType();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<AnimalTypeDto> getAllAnimalTypesWithPageable(Pageable pageable) {
         return animalTypesService.getAnimalType(pageable);
     }
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public AnimalTypeDto getAnimalTypeByAnimalTypeId(@PathVariable Integer id) {
         return animalTypesService.getAnimalTypeById(id);
     }

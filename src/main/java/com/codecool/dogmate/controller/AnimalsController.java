@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/animals")
+@RequestMapping("/api/v1/animals/")
 public class AnimalsController {
 
     private final AnimalsService animalsService;
@@ -19,14 +19,14 @@ public class AnimalsController {
         this.animalsService = animalsService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<AnimalDto> getAllAnimals() {return animalsService.getAnimals();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<AnimalDto> getAllAnimalsWithPageable(Pageable pageable) {
         return animalsService.getAnimals(pageable);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public AnimalDto getAnimalByAniamalId(@PathVariable Integer id) {
         return animalsService.getAnimalById(id);
     }

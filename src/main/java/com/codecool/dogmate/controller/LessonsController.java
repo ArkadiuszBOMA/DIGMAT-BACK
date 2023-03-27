@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/lessons")
+@RequestMapping("/api/v1/lessons/")
 public class LessonsController {
     private final LessonsService lessonsService;
     public LessonsController(LessonsService lessonsService) {
         this.lessonsService = lessonsService;
     }
-    @GetMapping("/")
+    @GetMapping()
     public List<LessonDto> getAllLessons() {return lessonsService.getLessons();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<LessonDto> getAllLessonsWithPageable(Pageable pageable) {
         return lessonsService.getLessons(pageable);
     }
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public LessonDto getLessonByLessonId(@PathVariable Integer id) {
         return lessonsService.getLessonById(id);
     }

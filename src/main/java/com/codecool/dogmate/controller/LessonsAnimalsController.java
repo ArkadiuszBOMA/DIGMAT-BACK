@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/lessons-animals")
+@RequestMapping("/api/v1/lessons-animals/")
 public class LessonsAnimalsController {
     private final LessonsAnimalsService lessonsAnimalsService;
     public LessonsAnimalsController(LessonsAnimalsService lessonsAnimalsService) {
         this.lessonsAnimalsService = lessonsAnimalsService;
     }
-    @GetMapping("/")
+    @GetMapping()
     public List<LessonAnimalDto> getAllLessonsAnimals() {return lessonsAnimalsService.getLessonsAnimal();}
     @GetMapping(params = {"page", "size", "sort"})
     public List<LessonAnimalDto> getAllLessonsAnimalsWithPageable(Pageable pageable) {
         {return lessonsAnimalsService.getLessonsAnimal();}
     }
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public LessonAnimalDto getLessonAnimalByLessonId(@PathVariable Integer id) {
         return lessonsAnimalsService.getLessonAnimalById(id);
     }

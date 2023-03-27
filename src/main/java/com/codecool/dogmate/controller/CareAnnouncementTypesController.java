@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/care-announcement-types")
+@RequestMapping("/api/v1/care-announcement-types/")
 public class CareAnnouncementTypesController {
 
     private final CareAnnouncementTypeService careAnnouncementTypeService;
@@ -19,7 +19,7 @@ public class CareAnnouncementTypesController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping()
     public List<CareAnnouncementTypeDto> getAllCareAnnouncementTypes() {return careAnnouncementTypeService.getCareAnnouncementTypes();}
 
     @GetMapping(params = {"page", "size", "sort"})
@@ -27,7 +27,7 @@ public class CareAnnouncementTypesController {
         return careAnnouncementTypeService.getCareAnnouncementTypes(pageable);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public CareAnnouncementTypeDto getCareAnnouncementTypeByCareAnnouncementTypeId(@PathVariable Integer id) {
         return careAnnouncementTypeService.getCareAnnouncementTypeById(id);
     }

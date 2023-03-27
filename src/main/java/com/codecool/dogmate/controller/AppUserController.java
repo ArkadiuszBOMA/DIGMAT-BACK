@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/app-users")
+@RequestMapping("/api/v1/app-users/")
 public class AppUserController {
 
     private final AppUserService appUserService;
@@ -30,7 +30,7 @@ public class AppUserController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping()
     public List<AppUserDto> getAllAppUsers() {return appUserService.getAppUsers();}
 
     @GetMapping(params = {"page", "size", "sort"})
@@ -38,7 +38,7 @@ public class AppUserController {
         return appUserService.getAppUsers(pageable);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public AppUserDto getAppUserByUserId(@PathVariable Integer id) {
         return appUserService.getAppUserById(id);
     }
@@ -48,7 +48,7 @@ public class AppUserController {
         return appUserService.getAppUserByName(name);
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public AppUserDto newAppUser(@RequestBody NewAppUserDto newAppUserDto) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(newAppUserDto.password());
@@ -57,7 +57,7 @@ public class AppUserController {
         return appUserService.login(newAppUserDto.email(), newAppUserDto.password());
     }
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public AppUserDto loginUser(@RequestBody AppUserLoginDto appUserLoginDto) {
         Optional<AppUser> appUser = appUserRepository.findOneByEmail(appUserLoginDto.email());
         if(appUser.isEmpty() || !passwordEncoder.matches(appUserLoginDto.password(),appUser.get().getPassword())){

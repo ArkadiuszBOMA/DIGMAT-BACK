@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/training-levels")
+@RequestMapping("/api/v1/training-levels/")
 public class TrainingLevelsController {
 
     private final TrainingLevelsService trainingLevelsService;
@@ -18,7 +18,7 @@ public class TrainingLevelsController {
         this.trainingLevelsService = trainingLevelsService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<TrainingLevelDto> getAllTrainingLevel() {return trainingLevelsService.getTrainingLevels();}
 
     @GetMapping(params = {"page", "size", "sort"})
@@ -26,7 +26,7 @@ public class TrainingLevelsController {
         return trainingLevelsService.getTrainingLevels(pageable);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public TrainingLevelDto getTrainingLevelByTrainingLevelId(@PathVariable Integer id) {
         return trainingLevelsService.getTrainingLevelById(id);
     }
