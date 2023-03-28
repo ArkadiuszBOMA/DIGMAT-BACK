@@ -11,9 +11,9 @@ public record AnimalDto (
 
     Integer id,
     String name,
-    Integer animalTypesId,
-    Integer breedId,
-    Integer userId,
+    String animalTypesId,
+    String breedId,
+    String userFullName,
     Integer birthYear,
     String pictureLocation,
     String description,

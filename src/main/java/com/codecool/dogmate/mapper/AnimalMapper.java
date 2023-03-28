@@ -35,9 +35,9 @@ public class AnimalMapper {
         return new AnimalDto(
                 entity.getId(),
                 entity.getName(),
-                entity.getAnimalType().getId(),
-                entity.getBreed().getId(),
-                entity.getAppUser().getId(),
+                entity.getAnimalType().getName(),
+                entity.getBreed().getName(),
+                entity.getAppUser().getLast_name(),
                 entity.getBirthYear(),
                 entity.getPictureLocation(),
                 entity.getDescription(),
