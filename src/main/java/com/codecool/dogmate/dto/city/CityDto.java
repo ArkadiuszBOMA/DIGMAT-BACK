@@ -9,6 +9,7 @@ public record CityDto(
         LocalDateTime date_modify,
         LocalDateTime date_archive,
         Boolean archive,
-        Integer province
+        String province
+
 ) {
 }

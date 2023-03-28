@@ -6,7 +6,7 @@ public record BreedDto(
 
         Integer id,
         String name,
-        Integer animalType,
+        String animalType,
         LocalDateTime date_create,
         LocalDateTime date_modify,
         LocalDateTime date_archive,

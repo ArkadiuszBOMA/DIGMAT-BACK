@@ -2,7 +2,6 @@ package com.codecool.dogmate.dto.appuser;
 
 
 import com.codecool.dogmate.dto.animal.AnimalDto;
-import com.codecool.dogmate.entity.Animal;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -15,8 +14,8 @@ public record AppUserDto(
         String email,
         String profilePictureLocation,
         String avatarSmallLocation,
-        Integer userType,
-        Integer city,
+        String userType,
+        String city,
         String description,
         Boolean isLocked,
         Boolean isBanned,

@@ -21,7 +21,7 @@ public class CityMapper {
                 entity.getDate_modify(),
                 entity.getDate_archive(),
                 entity.getArchive(),
-                entity.getProvince().getId()
+                entity.getProvince().getName()
         );
     }
 

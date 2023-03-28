@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.codecool</groupId>
-    <artifactId>dogmat</artifactId>
+    <artifactId>dogmat-back</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>dogmate</name>
     <description>dogmate</description>
