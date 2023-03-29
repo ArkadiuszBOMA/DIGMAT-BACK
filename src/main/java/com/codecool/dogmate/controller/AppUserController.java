@@ -7,7 +7,6 @@ import com.codecool.dogmate.entity.AppUser;
 import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.service.AppUserService;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/v1/app-users/")
 public class AppUserController {
