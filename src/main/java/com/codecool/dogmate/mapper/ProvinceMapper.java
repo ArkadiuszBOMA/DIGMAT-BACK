@@ -25,6 +25,7 @@ public class ProvinceMapper {
                 entity.getDate_modify(),
                 entity.getDate_archive(),
                 entity.getArchive(),
+                entity.getVoivodeship().getName(),
                 entity.getCities().stream()
                         .map(cityMapper::mapEntityToCityDto)
                         .toList()

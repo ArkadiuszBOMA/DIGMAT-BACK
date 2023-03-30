@@ -14,6 +14,7 @@ public record ProvinceDto(
         LocalDateTime date_modify,
         LocalDateTime date_archive,
         Boolean archive,
+        String voivodeship,
         List<CityDto> cities
 
 ){

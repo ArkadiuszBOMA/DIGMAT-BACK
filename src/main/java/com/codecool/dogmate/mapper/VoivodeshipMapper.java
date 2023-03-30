@@ -17,8 +17,8 @@ public class VoivodeshipMapper {
     public VoivodeshipDto mapEntityToVoivodeshipDto(Voivodeship entity) {
         return new VoivodeshipDto(
                 entity.getId(),
-                entity.getName(),
                 entity.getTerytId(),
+                entity.getName(),
                 entity.getDate_create(),
                 entity.getDate_modify(),
                 entity.getDate_archive(),
