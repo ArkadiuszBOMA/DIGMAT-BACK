@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -22,18 +24,22 @@ public class Animal {
     private Integer id;
 
     @Column(name = "name")
+    @Size(min = 5, max = 50)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animal_types_id")
+    @NotNull
     private AnimalType animalType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "breed_id")
+    @NotNull
     private Breed breed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "appuser_id")
+    @NotNull
     private AppUser appUser;
 
     @Column(name = "birth_year")

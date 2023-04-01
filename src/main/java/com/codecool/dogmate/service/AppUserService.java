@@ -1,5 +1,8 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
 import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.appuser.AppUserLoginDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
@@ -52,7 +55,7 @@ public class AppUserService {
     public AppUserDto getAppUserById(Integer id) {
         return appUserRepository.findOneById(id)
                 .map(appUserMapper::mapEntityToAppUserDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppUserNotFoundException(id));
     }
 
     public AppUserDto login(String email, String password) {
@@ -71,11 +74,11 @@ public class AppUserService {
 //  metody walidacyjne "backlendu"
         AppUser entity = appUserMapper.mapNewAppUserDtoToEntity(appuser);
         UserType userType = userTypeRepository.findOneById(appuser.userType())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new UserTypeNotFoundException(appuser.userType()));
         entity.setUserType(userType);
         userType.getAppUsers().add(entity);
         City city = cityRepository.findOneById(appuser.cityId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new CityNotFoundException(appuser.cityId()));
         entity.setCity(city);
         city.getAppUsers().add(entity);
         entity.setPassword(passwordEncoder.encode(appuser.password()));

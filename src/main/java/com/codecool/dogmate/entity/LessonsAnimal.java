@@ -3,6 +3,8 @@ package com.codecool.dogmate.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,10 +21,13 @@ public class LessonsAnimal {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animal_id")
+    @NotNull
     private Animal animal;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id")
+    @NotNull
+    @Size(min = 5, max = 50)
     private Lesson lesson;
 
     @Column(name = "finished")

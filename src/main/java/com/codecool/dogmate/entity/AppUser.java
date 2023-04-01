@@ -4,6 +4,9 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
@@ -23,14 +26,19 @@ public class AppUser {
     private Integer id;
 
     @Column(name = "first_name")
+    @NotNull
+    @Size(min = 5, max = 50)
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
 
     @Column(name = "email")
+    @NotNull
+    @Email
     private String email;
 
     @Column(name = "password")
+    @NotNull
     @Type(type = "org.hibernate.type.TextType")
     private String password;
 

@@ -1,7 +1,6 @@
-package com.codecool.dogmate.controller.advice;
+package com.codecool.dogmate.advice;
 
-import com.codecool.dogmate.controller.advice.Exceptions.ProvincesNotFoundException;
-import com.codecool.dogmate.controller.advice.Exceptions.VoivodeshipsNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,12 +12,24 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class ErrorControllerAdvice {
 
-    @ExceptionHandler(value ={VoivodeshipsNotFoundException.class, ProvincesNotFoundException.class})
+    @ExceptionHandler(value ={
+            AnimalNotFoundException.class,
+            AnimalTypeNotFoundException.class,
+            AppUserNotFoundException.class,
+            BreadNotFoundException.class,
+            CityNotFoundException.class,
+            CareTypeAnnouncementNotFoundException.class,
+            LessonNotFoundException.class,
+            LessonStepNotFoundException.class,
+            TimeUnitNotFoundException.class,
+            TrainingLevelNotFoundException.class,
+            ProvinceNotFoundException.class,
+            VoivodeshipNotFoundException.class,
+    })
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    protected ErrorResponse handleNoDeveloper(RuntimeException exception) {
+    protected ErrorResponse handleNoItem(RuntimeException exception) {
         return  new ErrorResponse(exception.getMessage());
     }
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     protected ErrorResponse handleBadRequest(MethodArgumentNotValidException ex) {

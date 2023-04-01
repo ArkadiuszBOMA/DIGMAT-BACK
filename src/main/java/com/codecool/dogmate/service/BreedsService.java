@@ -1,5 +1,7 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
 import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.dto.breed.NewBreedDto;
 import com.codecool.dogmate.entity.AnimalType;
@@ -48,13 +50,13 @@ public class BreedsService {
     public BreedDto getBreedById(Integer id) {
         return breedRepository.findOneById(id)
                 .map(breedMapper::mapEntityToBreedDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new BreadNotFoundException(id));
     }
 
     public BreedDto createBreed(NewBreedDto breed) {
         Breed entity = breedMapper.mapNewBreedDtoToEntity(breed);
         AnimalType animaltype = animalTypeRepository.findOneById(breed.animalType())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AnimalTypeNotFoundException(breed.animalType()));
         entity.setAnimalTypes(animaltype);
         animaltype.getBreeds().add(entity);
         Breed savedEntity = breedRepository.save(entity);

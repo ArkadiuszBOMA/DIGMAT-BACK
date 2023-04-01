@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
 import com.codecool.dogmate.dto.animal.AnimalDto;
 import com.codecool.dogmate.dto.animal.NewAnimalDto;
 import com.codecool.dogmate.entity.*;
@@ -52,16 +53,16 @@ public class AnimalsService {
     public AnimalDto getAnimalById(Integer id) {
         return animalRepository.findOneById(id)
                 .map(animalMapper::mapEntityToAnimalDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AnimalNotFoundException(id));
     }
 
     public AnimalDto createAnimal(NewAnimalDto animal) {
         AnimalType animalType = animalTypeRepository.findOneById(animal.animalTypesId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
         Breed breed = breedRepository.findOneById(animal.breedId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
         AppUser appUser = appUserRepository.findById(animal.userId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
         Animal entity = animalMapper.mapNewAniamlDtoToEntity(
                 animal,animalType,breed, appUser
                 );

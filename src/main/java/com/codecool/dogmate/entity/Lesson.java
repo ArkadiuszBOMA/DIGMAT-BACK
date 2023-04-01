@@ -4,6 +4,8 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -23,10 +25,13 @@ public class Lesson {
 
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
+    @NotNull
+    @Size(min = 5, max = 50)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "training_level_id")
+    @NotNull
     private TrainingLevel trainingLevel;
 
     @Column(name = "description")

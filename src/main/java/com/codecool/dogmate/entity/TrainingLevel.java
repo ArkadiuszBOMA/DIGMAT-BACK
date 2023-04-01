@@ -3,6 +3,8 @@ package com.codecool.dogmate.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -22,6 +24,8 @@ public class TrainingLevel {
 
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
+    @NotNull
+    @Size(min = 5, max = 50)
     private String name;
 
     @Column(name = "description")

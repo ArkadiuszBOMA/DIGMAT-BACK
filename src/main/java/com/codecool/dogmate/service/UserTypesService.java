@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
 import com.codecool.dogmate.dto.usertype.NewUserTypeDto;
 import com.codecool.dogmate.dto.usertype.UserTypeDto;
 import com.codecool.dogmate.entity.UserType;
@@ -38,7 +39,7 @@ public class UserTypesService {
     public UserTypeDto getUserTypeById(Integer id) {
         return userTypeRepository.findOneById(id)
                 .map(userTypeMapper::mapEntityToUserTypeDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new UserTypeNotFoundException(id));
     }
 
     public UserTypeDto createUserType(NewUserTypeDto usertype) {

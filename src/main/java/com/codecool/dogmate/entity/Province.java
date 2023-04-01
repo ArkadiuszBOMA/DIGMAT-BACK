@@ -3,6 +3,8 @@ package com.codecool.dogmate.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,10 +29,13 @@ public class Province {
     private String terytId;
 
     @Column(name = "name")
+    @NotNull
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "voivodeship_id")
+    @NotNull
+    @Size(min = 5, max = 50)
     private Voivodeship voivodeship;
 
     @Column(name = "archive")

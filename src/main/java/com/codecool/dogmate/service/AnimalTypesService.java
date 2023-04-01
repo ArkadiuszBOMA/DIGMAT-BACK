@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.dto.animaltype.AnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.NewAnimalTypeDto;
 import com.codecool.dogmate.entity.Animal;
@@ -42,7 +43,7 @@ public class AnimalTypesService {
     public AnimalTypeDto getAnimalTypeById(Integer id) {
         return animalTypeRepository.findOneById(id)
                 .map(animalTypeMapper::mapEntityToAnimalTypeDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AnimalTypeNotFoundException(id));
     }
 
     public AnimalTypeDto createAnimalType(NewAnimalTypeDto animalType) {

@@ -3,6 +3,8 @@ package com.codecool.dogmate.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,6 +22,7 @@ public class Breed {
 
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
+    @Size(min = 5, max = 55)
     private String name;
 
     @Column(name = "archive")
@@ -39,6 +42,7 @@ public class Breed {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animal_types_id")
+    @NotNull
     private AnimalType animalTypes;
 
     public Breed(String name) {
