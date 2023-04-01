@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.controller.advice.Exceptions.ProvincesNotFoundException;
 import com.codecool.dogmate.dto.province.NewProvinceDto;
 import com.codecool.dogmate.dto.province.ProvinceDto;
 import com.codecool.dogmate.entity.LessonStep;
@@ -46,7 +47,7 @@ public class ProvincesService {
     public ProvinceDto getProvinceById(Integer id) {
         return provinceRepository.findOneById(id)
                 .map(provinceMapper::mapEntityToProvinceDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ProvincesNotFoundException(id));
     }
 
     public ProvinceDto createProvince(NewProvinceDto province) {

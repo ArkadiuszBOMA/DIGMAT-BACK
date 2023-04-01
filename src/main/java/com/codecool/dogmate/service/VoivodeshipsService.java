@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.controller.advice.Exceptions.VoivodeshipsNotFoundException;
 import com.codecool.dogmate.dto.voivodeship.NewVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.VoivodeshipDto;
 import com.codecool.dogmate.entity.TrainingLevel;
@@ -42,7 +43,7 @@ public class VoivodeshipsService {
     public VoivodeshipDto getVoivodeshipByVoivodeshipId(Integer id) {
         return voivodeshipRepository.findOneById(id)
                 .map(voivodeshipMapper::mapEntityToVoivodeshipDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new VoivodeshipsNotFoundException(id));
     }
 
     public VoivodeshipDto createVoivodeship(NewVoivodeshipDto voivodeship) {
