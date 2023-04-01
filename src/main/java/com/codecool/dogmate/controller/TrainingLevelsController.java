@@ -6,6 +6,7 @@ import com.codecool.dogmate.service.TrainingLevelsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -32,7 +33,7 @@ public class TrainingLevelsController {
     }
 
     @PostMapping
-    public TrainingLevelDto newTrainingLevel(@RequestBody NewTrainingLevelDto traininglevel) {
+    public TrainingLevelDto newTrainingLevel(@RequestBody @Valid NewTrainingLevelDto traininglevel) {
         return trainingLevelsService.createTrainingLevel(traininglevel);
     }
 }

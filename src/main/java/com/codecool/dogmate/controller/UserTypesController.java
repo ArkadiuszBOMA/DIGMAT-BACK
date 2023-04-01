@@ -10,6 +10,7 @@ import com.codecool.dogmate.service.UserTypesService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -38,7 +39,7 @@ public class UserTypesController {
     }
 
     @PostMapping
-    public UserTypeDto newUserType(@RequestBody NewUserTypeDto userTypeDto) {
+    public UserTypeDto newUserType(@RequestBody @Valid NewUserTypeDto userTypeDto) {
         return userTypesService.createUserType(userTypeDto);
     }
 

@@ -6,6 +6,7 @@ import com.codecool.dogmate.service.ProvincesService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin("http://localhost:3000")
@@ -34,7 +35,7 @@ public class ProvincesController {
     }
 
     @PostMapping
-    public ProvinceDto newProvince(@RequestBody NewProvinceDto province) {
+    public ProvinceDto newProvince(@RequestBody @Valid NewProvinceDto province) {
         return provincesService.createProvince(province);
     }
 }

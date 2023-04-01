@@ -6,6 +6,7 @@ import com.codecool.dogmate.service.CareAnnouncementTypeService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -33,7 +34,7 @@ public class CareAnnouncementTypesController {
     }
 
     @PostMapping
-    public CareAnnouncementTypeDto newCareAnnouncementType(@RequestBody NewCareAnnouncementTypeDto careannouncementtype) {
+    public CareAnnouncementTypeDto newCareAnnouncementType(@RequestBody @Valid NewCareAnnouncementTypeDto careannouncementtype) {
         return careAnnouncementTypeService.createCareAnnouncementType(careannouncementtype);
     }
 }

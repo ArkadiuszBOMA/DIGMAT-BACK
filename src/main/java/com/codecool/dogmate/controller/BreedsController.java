@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -32,7 +33,7 @@ public class BreedsController {
     }
 
     @PostMapping
-    public BreedDto newBreed(@RequestBody NewBreedDto breed) {
+    public BreedDto newBreed(@RequestBody @Valid NewBreedDto breed) {
         return breedsService.createBreed(breed);
     }
 }

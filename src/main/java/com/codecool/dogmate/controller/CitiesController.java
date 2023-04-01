@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -29,7 +30,7 @@ public class CitiesController {
     }
 
     @PostMapping
-    public CityDto newCity(@RequestBody NewCityDto city) {
+    public CityDto newCity(@RequestBody @Valid NewCityDto city) {
         return citiesService.createCity(city);
     }
 }

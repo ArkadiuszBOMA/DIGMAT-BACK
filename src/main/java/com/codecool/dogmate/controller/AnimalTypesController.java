@@ -6,6 +6,7 @@ import com.codecool.dogmate.service.AnimalTypesService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -27,7 +28,7 @@ public class AnimalTypesController {
         return animalTypesService.getAnimalTypeById(id);
     }
     @PostMapping
-    public AnimalTypeDto newAnimalType(@RequestBody NewAnimalTypeDto animalType) {
+    public AnimalTypeDto newAnimalType(@RequestBody @Valid NewAnimalTypeDto animalType) {
         return animalTypesService.createAnimalType(animalType);
     }
 }

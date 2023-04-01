@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +50,7 @@ public class AppUserController {
     }
 
     @PostMapping("register")
-    public AppUserDto newAppUser(@RequestBody NewAppUserDto newAppUserDto) {
+    public AppUserDto newAppUser(@RequestBody @Valid NewAppUserDto newAppUserDto) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(newAppUserDto.password());
         newAppUserDto.setPassword(encodedPassword);

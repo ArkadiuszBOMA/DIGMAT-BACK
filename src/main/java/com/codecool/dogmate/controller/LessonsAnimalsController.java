@@ -9,6 +9,7 @@ import com.codecool.dogmate.service.LessonsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -29,7 +30,7 @@ public class LessonsAnimalsController {
         return lessonsAnimalsService.getLessonAnimalById(id);
     }
     @PostMapping
-    public LessonAnimalDto newLessonsAnimals(@RequestBody NewLessonAnimalDto lessonanimal) {
+    public LessonAnimalDto newLessonsAnimals(@RequestBody @Valid NewLessonAnimalDto lessonanimal) {
         return lessonsAnimalsService.createLessonAnimal(lessonanimal);
     }
 }

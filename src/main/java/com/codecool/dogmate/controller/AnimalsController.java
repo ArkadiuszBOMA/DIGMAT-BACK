@@ -7,6 +7,7 @@ import com.codecool.dogmate.service.AnimalsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -32,7 +33,7 @@ public class AnimalsController {
     }
 
     @PostMapping
-    public AnimalDto newAnimal(@RequestBody NewAnimalDto animal) {
+    public AnimalDto newAnimal(@RequestBody @Valid NewAnimalDto animal) {
         return animalsService.createAnimal(animal);
     }
 }

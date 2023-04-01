@@ -6,6 +6,7 @@ import com.codecool.dogmate.service.LessonsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -26,7 +27,7 @@ public class LessonsController {
         return lessonsService.getLessonById(id);
     }
     @PostMapping
-    public LessonDto newLessons(@RequestBody NewLessonDto lesson) {
+    public LessonDto newLessons(@RequestBody @Valid NewLessonDto lesson) {
         return lessonsService.createLesson(lesson);
     }
 }
