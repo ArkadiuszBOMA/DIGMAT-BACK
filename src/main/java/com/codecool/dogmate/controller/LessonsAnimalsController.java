@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/lessons-animals/")
+@RequestMapping("/api/v1/lessons-animals")
 public class LessonsAnimalsController {
     private final LessonsAnimalsService lessonsAnimalsService;
     public LessonsAnimalsController(LessonsAnimalsService lessonsAnimalsService) {
@@ -25,7 +25,7 @@ public class LessonsAnimalsController {
     public List<LessonAnimalDto> getAllLessonsAnimalsWithPageable(Pageable pageable) {
         {return lessonsAnimalsService.getLessonsAnimal();}
     }
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public LessonAnimalDto getLessonAnimalByLessonId(@PathVariable Integer id) {
         return lessonsAnimalsService.getLessonAnimalById(id);
     }

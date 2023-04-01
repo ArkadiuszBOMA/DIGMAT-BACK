@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/user-types/")
+@RequestMapping("/api/v1/user-types")
 public class UserTypesController {
 
     private final UserTypesService userTypesService;
@@ -33,7 +33,7 @@ public class UserTypesController {
         return userTypesService.getUserTypes(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public UserTypeDto getAppUserTypeByUserTypeId(@PathVariable Integer id) {
         return userTypesService.getUserTypeById(id);
     }

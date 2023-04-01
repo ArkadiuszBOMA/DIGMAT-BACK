@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/cities/")
+@RequestMapping("/api/v1/cities")
 public class CitiesController {
     private final CitiesService citiesService;
     public CitiesController(CitiesService citiesService) {
@@ -24,7 +24,7 @@ public class CitiesController {
         return citiesService.getCities(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public CityDto getCityByCityId(@PathVariable Integer id) {
         return citiesService.getCityById(id);
     }

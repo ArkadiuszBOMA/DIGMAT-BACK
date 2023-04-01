@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/voivodeships/")
+@RequestMapping("/api/v1/voivodeships")
 public class VoivodeshipsController {
 
     private final VoivodeshipsService voivodeshipsService;
@@ -30,7 +30,7 @@ public class VoivodeshipsController {
         return voivodeshipsService.getVoivodeships(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public VoivodeshipDto getVoivodeshipById(@PathVariable Integer id) {
         return voivodeshipsService.getVoivodeshipByVoivodeshipId(id);
     }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/animals/")
+@RequestMapping("/api/v1/animals")
 public class AnimalsController {
 
     private final AnimalsService animalsService;
@@ -26,7 +26,7 @@ public class AnimalsController {
         return animalsService.getAnimals(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public AnimalDto getAnimalByAnimalId(@PathVariable Integer id) {
         return animalsService.getAnimalById(id);
     }

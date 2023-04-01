@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/breeds/")
+@RequestMapping("/api/v1/breeds")
 public class BreedsController {
     private final BreedsService breedsService;
 
@@ -27,7 +27,7 @@ public class BreedsController {
         return breedsService.getBreeds(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public BreedDto getBreedByBreedId(@PathVariable Integer id) {
         return breedsService.getBreedById(id);
     }

@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/lessons/")
+@RequestMapping("/api/v1/lessons")
 public class LessonsController {
     private final LessonsService lessonsService;
     public LessonsController(LessonsService lessonsService) {
@@ -22,7 +22,7 @@ public class LessonsController {
     public List<LessonDto> getAllLessonsWithPageable(Pageable pageable) {
         return lessonsService.getLessons(pageable);
     }
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public LessonDto getLessonByLessonId(@PathVariable Integer id) {
         return lessonsService.getLessonById(id);
     }

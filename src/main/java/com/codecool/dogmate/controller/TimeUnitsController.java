@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/time-units/")
+@RequestMapping("/api/v1/time-units")
 public class TimeUnitsController {
 
     private final TimeUnitService timeUnitService;
@@ -28,7 +28,7 @@ public class TimeUnitsController {
         return timeUnitService.getTimeUnits(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public TimeUnitDto getTimeUnitByTrainingLevelId(@PathVariable Integer id) {
         return timeUnitService.getTimeUnitById(id);
     }

@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/app-users/")
+@RequestMapping("/api/v1/app-users")
 public class AppUserController {
 
     private final AppUserService appUserService;
@@ -39,7 +39,7 @@ public class AppUserController {
         return appUserService.getAppUsers(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public AppUserDto getAppUserByUserId(@PathVariable Integer id) {
         return appUserService.getAppUserById(id);
     }

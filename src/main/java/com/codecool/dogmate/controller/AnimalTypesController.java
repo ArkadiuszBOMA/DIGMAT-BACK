@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/animal-types/")
+@RequestMapping("/api/animal-types")
 public class AnimalTypesController {
     private final AnimalTypesService animalTypesService;
 
@@ -23,7 +23,7 @@ public class AnimalTypesController {
     public List<AnimalTypeDto> getAllAnimalTypesWithPageable(Pageable pageable) {
         return animalTypesService.getAnimalType(pageable);
     }
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public AnimalTypeDto getAnimalTypeByAnimalTypeId(@PathVariable Integer id) {
         return animalTypesService.getAnimalTypeById(id);
     }

@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/training-levels/")
+@RequestMapping("/api/v1/training-levels")
 public class TrainingLevelsController {
 
     private final TrainingLevelsService trainingLevelsService;
@@ -27,7 +27,7 @@ public class TrainingLevelsController {
         return trainingLevelsService.getTrainingLevels(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public TrainingLevelDto getTrainingLevelByTrainingLevelId(@PathVariable Integer id) {
         return trainingLevelsService.getTrainingLevelById(id);
     }

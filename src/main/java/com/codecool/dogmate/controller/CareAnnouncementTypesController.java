@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/care-announcement-types/")
+@RequestMapping("/api/v1/care-announcement-types")
 public class CareAnnouncementTypesController {
 
     private final CareAnnouncementTypeService careAnnouncementTypeService;
@@ -28,7 +28,7 @@ public class CareAnnouncementTypesController {
         return careAnnouncementTypeService.getCareAnnouncementTypes(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public CareAnnouncementTypeDto getCareAnnouncementTypeByCareAnnouncementTypeId(@PathVariable Integer id) {
         return careAnnouncementTypeService.getCareAnnouncementTypeById(id);
     }

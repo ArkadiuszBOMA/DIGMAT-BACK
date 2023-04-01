@@ -11,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/provinces/")
+@RequestMapping("/api/v1/provinces")
 public class ProvincesController {
     private final ProvincesService provincesService;
 
@@ -29,7 +29,7 @@ public class ProvincesController {
         return provincesService.getProvinces(pageable);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ProvinceDto getProvinceByProvinceId(@PathVariable Integer id) {
         return provincesService.getProvinceById(id);
     }
