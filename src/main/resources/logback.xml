@@ -2,7 +2,8 @@
 <configuration>
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-    <property name="LOGS" value="${user.home}/logs/dogmate" />
+
+    <property name="LOGS" value="${user.home}/Documents/NAUKA/CODECOOL/DOGMAT-BACK/src/main/logs/dogmate" />
     <property name="FILENAME" value="C:\Users\bojar\Documents\NAUKA\CODECOOL\DOGMAT-BACK\src\main\resources\logback.xml" />
 
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
