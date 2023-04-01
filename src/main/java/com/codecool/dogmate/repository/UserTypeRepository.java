@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface UserTypeRepository extends JpaRepository<UserType, Integer> {
 
-    @Query("SELECT a FROM UserType a")
+    @Query("SELECT DISTINCT a FROM UserType a")
     List<UserType> findAllBy();
-    @Query("SELECT a FROM UserType a")
+    @Query("SELECT DISTINCT a FROM UserType a")
     List<UserType> findAllBy(Pageable pageable);
-    @Query("SELECT a FROM UserType a " +
+    @Query("SELECT DISTINCT a FROM UserType a " +
             "LEFT JOIN AppUser b on a.id = b.userType.id "+
             "WHERE a.id = :id")
     Optional<UserType> findOneById(Integer id);

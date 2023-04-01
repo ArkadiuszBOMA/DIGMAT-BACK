@@ -12,10 +12,10 @@ import java.util.Optional;
 @Repository
 public interface AnimalTypeRepository extends JpaRepository<AnimalType, Integer> {
 
-    @Query("SELECT a FROM AnimalType a")
+    @Query("SELECT DISTINCT a FROM AnimalType a")
     List<AnimalType> findAllBy();
-    @Query("SELECT a FROM AnimalType a")
+    @Query("SELECT DISTINCT a FROM AnimalType a")
     List<AnimalType> findAllBy(Pageable pageable);
-    @Query("SELECT a FROM AnimalType a WHERE a.id = :id")
+    @Query("SELECT DISTINCT a FROM AnimalType a WHERE a.id = :id")
     Optional<AnimalType> findOneById(Integer id);
 }

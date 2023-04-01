@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface CareAnnouncementTypeRepository extends JpaRepository<CareAnnouncementType, Integer> {
 
-    @Query("SELECT a FROM CareAnnouncementType a")
+    @Query("SELECT DISTINCT a FROM CareAnnouncementType a")
     List<CareAnnouncementType> findAllBy();
-    @Query("SELECT a FROM CareAnnouncementType a")
+    @Query("SELECT DISTINCT a FROM CareAnnouncementType a")
     List<CareAnnouncementType> findAllBy(Pageable pageable);
-    @Query("SELECT a FROM CareAnnouncementType a WHERE a.id = :id")
+    @Query("SELECT DISTINCT a FROM CareAnnouncementType a WHERE a.id = :id")
     Optional<CareAnnouncementType> findOneById(Integer id);
 
 }

@@ -12,10 +12,10 @@ import java.util.Optional;
 
 @Repository
 public interface VoivodeshipRepository extends JpaRepository<Voivodeship, Integer> {
-    @Query("SELECT v FROM Voivodeship v")
+    @Query("SELECT DISTINCT v FROM Voivodeship v")
     List<Voivodeship> findAllBy();
-    @Query("SELECT v FROM Voivodeship v")
+    @Query("SELECT DISTINCT v FROM Voivodeship v")
     List<Voivodeship> findAllBy(Pageable pageable);
-    @Query("SELECT v FROM Voivodeship v WHERE v.id = :id")
+    @Query("SELECT DISTINCT v FROM Voivodeship v WHERE v.id = :id")
     Optional<Voivodeship> findOneById(Integer id);
 }

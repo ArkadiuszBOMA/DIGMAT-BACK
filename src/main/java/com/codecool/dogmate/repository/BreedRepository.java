@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface BreedRepository extends JpaRepository<Breed, Integer> {
-    @Query("SELECT b FROM Breed b")
+    @Query("SELECT DISTINCT b FROM Breed b")
     List<Breed> findAllBy();
-    @Query("SELECT b FROM Breed b")
+    @Query("SELECT DISTINCT b FROM Breed b")
     List<Breed> findAllBy(Pageable pageable);
-    @Query("SELECT b FROM Breed b WHERE b.id = :id")
+    @Query("SELECT DISTINCT b FROM Breed b WHERE b.id = :id")
     Optional<Breed> findOneById(Integer id);
 }

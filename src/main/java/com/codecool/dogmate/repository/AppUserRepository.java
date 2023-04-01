@@ -11,18 +11,18 @@ import java.util.Optional;
 
 @Repository
 public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
-    @Query("SELECT a FROM AppUser a")
+    @Query("SELECT DISTINCT a FROM AppUser a")
     List<AppUser> findAllBy();
 
-    @Query("SELECT a FROM AppUser a")
+    @Query("SELECT DISTINCT a FROM AppUser a")
     List<AppUser> findAllBy(Pageable pageable);
 
-    @Query("SELECT a FROM AppUser a WHERE a.id = :id")
+    @Query("SELECT DISTINCT a FROM AppUser a WHERE a.id = :id")
     Optional<AppUser> findOneById(Integer id);
 
-    @Query("SELECT a FROM AppUser a WHERE LOWER(a.email)=LOWER(:email)")
+    @Query("SELECT DISTINCT a FROM AppUser a WHERE LOWER(a.email)=LOWER(:email)")
     Optional<AppUser> findOneByEmail(String email);
 
-    @Query("SELECT a FROM AppUser a WHERE LOWER(a.first_name)=LOWER(:name)")
+    @Query("SELECT DISTINCT a FROM AppUser a WHERE LOWER(a.first_name)=LOWER(:name)")
     List<AppUser> findAllByName(String name);
 }

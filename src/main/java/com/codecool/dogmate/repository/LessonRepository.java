@@ -11,11 +11,11 @@ import java.util.Optional;
 
 @Repository
 public interface LessonRepository extends JpaRepository<Lesson, Integer> {
-    @Query("SELECT a FROM Lesson a")
+    @Query("SELECT DISTINCT a FROM Lesson a")
     List<Lesson> findAllBy();
-    @Query("SELECT a FROM Lesson a")
+    @Query("SELECT DISTINCT a FROM Lesson a")
     List<Lesson> findAllBy(Pageable pageable);
-    @Query("SELECT a FROM Lesson a " +
+    @Query("SELECT DISTINCT a FROM Lesson a " +
             "LEFT JOIN LessonsAnimal l on l.lesson.id = a.id "+
             "WHERE a.id = :id")
     Optional<Lesson> findOneById(Integer id);

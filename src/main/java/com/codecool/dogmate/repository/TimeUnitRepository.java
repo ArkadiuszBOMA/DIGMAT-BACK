@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface TimeUnitRepository extends JpaRepository<TimeUnit, Integer> {
 
-    @Query("SELECT a FROM TimeUnit a")
+    @Query("SELECT DISTINCT a FROM TimeUnit a")
     List<TimeUnit> findAllBy();
-    @Query("SELECT a FROM TimeUnit a")
+    @Query("SELECT DISTINCT a FROM TimeUnit a")
     List<TimeUnit> findAllBy(Pageable pageable);
-    @Query("SELECT a FROM TimeUnit a WHERE a.id = :id")
+    @Query("SELECT DISTINCT a FROM TimeUnit a WHERE a.id = :id")
     Optional<TimeUnit> findOneById(Integer id);
 
 }

@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface ProvinceRepository extends JpaRepository<Province, Integer> {
 
-    @Query("SELECT p FROM Province p")
+    @Query("SELECT DISTINCT p FROM Province p")
     List<Province> findAllBy();
-    @Query("SELECT p FROM Province p")
+    @Query("SELECT DISTINCT p FROM Province p")
     List<Province> findAllBy(Pageable pageable);
-    @Query("SELECT p FROM Province p WHERE p.id = :id")
+    @Query("SELECT DISTINCT p FROM Province p WHERE p.id = :id")
     Optional<Province> findOneById(Integer id);
 
 }
