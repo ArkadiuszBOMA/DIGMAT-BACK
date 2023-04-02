@@ -17,7 +17,11 @@ public class UserTypeMapper {
     public UserTypeDto mapEntityToUserTypeDto(UserType entity) {
         return new UserTypeDto(
                 entity.getId(),
-                entity.getName()
+                entity.getName(),
+                entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
+                entity.getArchive()
         );
     }
 }

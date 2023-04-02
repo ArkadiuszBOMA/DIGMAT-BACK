@@ -17,7 +17,11 @@ public class TrainingLevelMapper {
         return new TrainingLevelDto(
                 entity.getId(),
                 entity.getName(),
-                entity.getDescription()
+                entity.getDescription(),
+                entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
+                entity.getArchive()
         );
     }
 }

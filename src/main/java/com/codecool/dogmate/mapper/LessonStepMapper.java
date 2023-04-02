@@ -24,7 +24,11 @@ public class LessonStepMapper {
                 entity.getName(),
                 entity.getLesson().getId(),
                 entity.getDescription(),
-                entity.getStepNumber()
+                entity.getStepNumber(),
+                entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
+                entity.getArchive()
         );
     }
 
