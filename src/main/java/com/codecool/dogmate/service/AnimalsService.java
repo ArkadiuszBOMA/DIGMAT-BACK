@@ -9,6 +9,7 @@ import com.codecool.dogmate.repository.AnimalRepository;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
 import com.codecool.dogmate.repository.BreedRepository;
 import com.codecool.dogmate.repository.AppUserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Comparator;
 import java.util.List;
 
+@Slf4j
 @Service
 public class AnimalsService {
 
@@ -37,6 +39,7 @@ public class AnimalsService {
 
 
     public List<AnimalDto> getAnimals(Pageable pageable) {
+        log.info("Wyświetlona lista zwierzaków");
         return animalRepository.findAllBy().stream()
                 .sorted(Comparator.comparing(Animal::getDate_create))
                 .map(animalMapper::mapEntityToAnimalDto)
@@ -51,6 +54,7 @@ public class AnimalsService {
     }
 
     public AnimalDto getAnimalById(Integer id) {
+
         return animalRepository.findOneById(id)
                 .map(animalMapper::mapEntityToAnimalDto)
                 .orElseThrow(() -> new AnimalNotFoundException(id));
@@ -63,7 +67,7 @@ public class AnimalsService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
         AppUser appUser = appUserRepository.findById(animal.userId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
-        Animal entity = animalMapper.mapNewAniamlDtoToEntity(
+        Animal entity = animalMapper.mapNewAnimalDtoToEntity(
                 animal,animalType,breed, appUser
                 );
         Animal savedEntity = animalRepository.save(entity);

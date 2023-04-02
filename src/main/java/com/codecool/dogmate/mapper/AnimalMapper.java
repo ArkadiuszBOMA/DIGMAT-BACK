@@ -18,7 +18,7 @@ public class AnimalMapper {
     }
 
 
-    public Animal mapNewAniamlDtoToEntity(NewAnimalDto dto, AnimalType animalType, Breed breed, AppUser appUser) {
+    public Animal mapNewAnimalDtoToEntity(NewAnimalDto dto, AnimalType animalType, Breed breed, AppUser appUser) {
         return new Animal(
                 dto.name(),
                 animalType,

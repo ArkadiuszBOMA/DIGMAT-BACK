@@ -81,6 +81,13 @@
             <artifactId>spring-security-core</artifactId>
             <version>5.7.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.dvgaba</groupId>
+            <artifactId>easy-random-core</artifactId>
+            <version>6.1.5</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
