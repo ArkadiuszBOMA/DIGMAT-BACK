@@ -15,7 +15,11 @@ public class TimeUnitMapper {
     public TimeUnitDto mapEntityToTimeUnitDto(TimeUnit entity) {
         return new TimeUnitDto(
                 entity.getId(),
-                entity.getName()
+                entity.getName(),
+                entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
+                entity.getArchive()
         );
     }
 }

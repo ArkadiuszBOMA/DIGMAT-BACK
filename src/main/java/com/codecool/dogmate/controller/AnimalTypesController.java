@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/animal-types")
+@RequestMapping("/api/v1/animal-types")
 public class AnimalTypesController {
     private final AnimalTypesService animalTypesService;
 
