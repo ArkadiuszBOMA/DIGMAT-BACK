@@ -15,7 +15,7 @@ public record LessonDto(
 
     Integer id,
     String name,
-    Integer trainingLevel,
+    String trainingLevel,
     String description,
     String imageLocation,
     LocalDateTime date_create,

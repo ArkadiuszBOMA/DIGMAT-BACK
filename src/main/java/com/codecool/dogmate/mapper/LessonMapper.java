@@ -29,7 +29,7 @@ public class LessonMapper {
         return new LessonDto(
                 entity.getId(),
                 entity.getName(),
-                entity.getTrainingLevel().getId(),
+                entity.getTrainingLevel().getName(),
                 entity.getDescription(),
                 entity.getImageLocation(),
                 entity.getDate_create(),
