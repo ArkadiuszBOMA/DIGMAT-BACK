@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PostUpdate;
 import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
@@ -22,18 +23,20 @@ public class BreedsController {
 
     @GetMapping()
     public List<BreedDto> getAllBreeds() {return breedsService.getBreeds();}
-    @GetMapping(params = {"page", "size", "sort"})
-    public List<BreedDto> getAllBreedsWithPageable(Pageable pageable) {
-        return breedsService.getBreeds(pageable);
-    }
-
     @GetMapping("/{id}")
     public BreedDto getBreedByBreedId(@PathVariable Integer id) {
         return breedsService.getBreedById(id);
     }
-
     @PostMapping
     public BreedDto newBreed(@RequestBody @Valid NewBreedDto breed) {
         return breedsService.createBreed(breed);
+    }
+    @PutMapping("/update/{id}")
+    public BreedDto updateBreed(@PathVariable @Valid NewBreedDto id) {
+        return breedsService.createBreed(id);
+    }
+    @PutMapping("/archive/{id}")
+    public BreedDto archiveBreed(@PathVariable @Valid NewBreedDto id) {
+        return breedsService.createBreed(id);
     }
 }

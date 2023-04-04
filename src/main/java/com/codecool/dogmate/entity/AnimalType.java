@@ -25,7 +25,7 @@ public class AnimalType {
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
     @NotNull
-    @Size(min = 5, max = 50)
+    @Size(min = 3, max = 50)
     private String name;
 
     @Column(name = "description")
@@ -53,5 +53,9 @@ public class AnimalType {
     public AnimalType(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public AnimalType(Integer id) {
+        this.id = id;
     }
 }

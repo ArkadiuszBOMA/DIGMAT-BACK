@@ -48,4 +48,13 @@ public class Breed {
     public Breed(String name) {
         this.name = name;
     }
+
+    public Breed(Integer id, String name, AnimalType animalTypes) {
+        this.id = id;
+        this.name = name;
+        this.animalTypes = animalTypes;
+    }
+    public Breed(Integer id) {
+        this.id = id;
+    }
 }

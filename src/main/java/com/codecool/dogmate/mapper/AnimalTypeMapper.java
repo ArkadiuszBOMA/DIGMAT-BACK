@@ -2,8 +2,13 @@ package com.codecool.dogmate.mapper;
 
 import com.codecool.dogmate.dto.animaltype.AnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.NewAnimalTypeDto;
+import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
 import com.codecool.dogmate.entity.AnimalType;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+
+
 @Component
 public class AnimalTypeMapper {
 
@@ -32,4 +37,5 @@ public class AnimalTypeMapper {
 
         );
     }
+
 }

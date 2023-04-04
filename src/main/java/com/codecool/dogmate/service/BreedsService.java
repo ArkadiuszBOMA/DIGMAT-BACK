@@ -4,6 +4,7 @@ import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
 import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.dto.breed.NewBreedDto;
+import com.codecool.dogmate.dto.breed.UpdateBreedDto;
 import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.entity.AppUser;
 import com.codecool.dogmate.entity.Breed;
