@@ -55,6 +55,8 @@ public class AnimalTypesService {
 
     public AnimalTypeDto createAnimalType(NewAnimalTypeDto animalType) {
         AnimalType entity = animalTypeMapper.mapNewAnimalTypeDtoToEntity(animalType);
+        entity.setName(animalType.name().trim().toUpperCase().replaceAll("( )+", " "));
+        entity.setDescription(animalType.description().trim().replaceAll("( )+", " "));
         AnimalType savedEntity = animalTypeRepository.save(entity);
         return animalTypeMapper.mapEntityToAnimalTypeDto(savedEntity);
     }
@@ -63,18 +65,23 @@ public class AnimalTypesService {
         log.info("Zaktualizowałem dane dla id {}", animalType.id());
         AnimalType updatedAnimalType = animalTypeRepository.findById(animalType.id())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(animalType.id()));
-        updatedAnimalType.setName(animalType.name());
-        updatedAnimalType.setDescription(animalType.description());
+        updatedAnimalType.setName(animalType.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedAnimalType.setDescription(animalType.description().trim().replaceAll("( )+", " "));
         updatedAnimalType.setDate_modify(LocalDateTime.now());
         animalTypeRepository.save(updatedAnimalType);
     }
 
     public void archiveAnimalTypeData(Integer id) {
-        log.info("Zarchiwizowane dane dla id {}", id);
         AnimalType archivedAnimalType = animalTypeRepository.findById(id)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
-        archivedAnimalType.setDate_archive(LocalDateTime.now());
-        archivedAnimalType.setArchive(true);
+
+        if(!archivedAnimalType.getArchive()) {
+            archivedAnimalType.setDate_archive(LocalDateTime.now());
+            archivedAnimalType.setArchive(true);
+            log.info("Zarchiwizowane dane dla id {}", id);
+        } else {
+            log.info("Dane już były archiwizowane;");
+        }
         animalTypeRepository.save(archivedAnimalType);
     }
 }

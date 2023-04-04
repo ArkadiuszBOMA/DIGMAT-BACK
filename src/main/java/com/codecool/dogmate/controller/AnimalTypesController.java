@@ -38,7 +38,6 @@ public class AnimalTypesController {
 
     @PutMapping("/update/{id}")
     public void updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {
-        log.info(String.valueOf(animalType));
         animalTypesService.updateAnimalTypeData(animalType);
     }
 

@@ -33,7 +33,6 @@ public class AnimalsController {
 
     @PostMapping
     public AnimalDto newAnimal(@RequestBody @Valid NewAnimalDto animal) {
-
         return animalsService.createAnimal(animal);
     }
 }
