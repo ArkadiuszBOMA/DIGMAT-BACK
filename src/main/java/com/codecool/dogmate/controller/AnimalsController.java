@@ -21,6 +21,7 @@ public class AnimalsController {
 
     @GetMapping()
     public List<AnimalDto> getAllAnimals() {return animalsService.getAnimals();}
+
     @GetMapping(params = {"page", "size", "sort"})
     public List<AnimalDto> getAllAnimalsWithPageable(Pageable pageable) {
         return animalsService.getAnimals(pageable);

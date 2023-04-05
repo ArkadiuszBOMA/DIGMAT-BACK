@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.CareTypeAnnouncementNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.careannouncmenttype.CareAnnouncementTypeDto;
 import com.codecool.dogmate.dto.careannouncmenttype.NewCareAnnouncementTypeDto;
@@ -63,11 +64,11 @@ public class CareAnnouncementTypeService {
 
     public void updateCareAnnouncementTypeData(CareAnnouncementTypeDto careAnnouncementType) {
         log.info("Zaktualizowałem dane dla id {}", careAnnouncementType.id());
-        CareAnnouncementType archivedCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(careAnnouncementType.id())
-                .orElseThrow(() -> new VoivodeshipNotFoundException(careAnnouncementType.id()));
-        archivedCareAnnouncementTypeData.setName(careAnnouncementType.name().trim().toUpperCase().replaceAll("( )+", " "));
-        archivedCareAnnouncementTypeData.setDate_modify(LocalDateTime.now());
-        careAnnouncementTypeRepository.save(archivedCareAnnouncementTypeData);
+        CareAnnouncementType updateCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(careAnnouncementType.id())
+                .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(careAnnouncementType.id()));
+        updateCareAnnouncementTypeData.setName(careAnnouncementType.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateCareAnnouncementTypeData.setDate_modify(LocalDateTime.now());
+        careAnnouncementTypeRepository.save(updateCareAnnouncementTypeData);
     }
 
     public void archiveCareAnnouncementTypeData(Integer id) {

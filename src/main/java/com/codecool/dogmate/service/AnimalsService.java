@@ -1,17 +1,18 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.dto.animal.AnimalDto;
 import com.codecool.dogmate.dto.animal.NewAnimalDto;
 import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
-import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
-import com.codecool.dogmate.entity.*;
+import com.codecool.dogmate.entity.Animal;
+import com.codecool.dogmate.entity.AnimalType;
+import com.codecool.dogmate.entity.AppUser;
+import com.codecool.dogmate.entity.Breed;
 import com.codecool.dogmate.mapper.AnimalMapper;
 import com.codecool.dogmate.repository.AnimalRepository;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
-import com.codecool.dogmate.repository.BreedRepository;
 import com.codecool.dogmate.repository.AppUserRepository;
+import com.codecool.dogmate.repository.BreedRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -88,7 +89,7 @@ public class AnimalsService {
 
         log.info("Zaktualizowałem dane dla id {}", animal.id());
         Animal updatedAnimal = animalRepository.findById(animal.id())
-                .orElseThrow(() -> new AnimalTypeNotFoundException(animal.id()));
+                .orElseThrow(() -> new AnimalNotFoundException(animal.id()));
         updatedAnimal.setName(animal.name().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAnimal.setAnimalType(animalType);
         updatedAnimal.setBreed(breed);
