@@ -1,19 +1,15 @@
 package com.codecool.dogmate.service;
 
-import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
-import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
 import com.codecool.dogmate.dto.voivodeship.NewVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.VoivodeshipDto;
-import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.VoivodeshipMapper;
 import com.codecool.dogmate.repository.VoivodeshipRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;

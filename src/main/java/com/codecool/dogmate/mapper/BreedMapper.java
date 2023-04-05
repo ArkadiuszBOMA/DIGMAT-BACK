@@ -1,13 +1,9 @@
 package com.codecool.dogmate.mapper;
 
-import com.codecool.dogmate.dto.breed.ArchiveBreedDto;
 import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.dto.breed.NewBreedDto;
-import com.codecool.dogmate.dto.breed.UpdateBreedDto;
 import com.codecool.dogmate.entity.Breed;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class BreedMapper {
@@ -25,12 +21,6 @@ public class BreedMapper {
                 entity.getDate_archive(),
                 entity.getDate_modify(),
                 entity.getArchive()
-        );
-    }
-
-    public Breed mapArchiveBreedDtoToEntity(ArchiveBreedDto dto){
-        return new Breed(
-                dto.id()
         );
     }
 }

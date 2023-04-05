@@ -1,18 +1,22 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.usertype.NewUserTypeDto;
 import com.codecool.dogmate.dto.usertype.UserTypeDto;
+import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.entity.UserType;
+import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.UserTypeMapper;
 import com.codecool.dogmate.repository.*;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class UserTypesService {
 
@@ -42,7 +46,14 @@ public class UserTypesService {
                 .orElseThrow(() -> new UserTypeNotFoundException(id));
     }
 
+    public UserTypeDto getUserTypeByName(String name) {
+        return userTypeRepository.findOneByName(name)
+                .map(userTypeMapper::mapEntityToUserTypeDto)
+                .orElseThrow(() -> new UserTypeNotFoundException(name));
+    }
+
     public UserTypeDto createUserType(NewUserTypeDto usertype) {
+        log.info("Rejestracja {}", usertype);
         UserType entity = userTypeMapper.mapNewUserTypeDtoToEntity(usertype);
         UserType savedEntity = userTypeRepository.save(entity);
         return userTypeMapper.mapEntityToUserTypeDto(savedEntity);
