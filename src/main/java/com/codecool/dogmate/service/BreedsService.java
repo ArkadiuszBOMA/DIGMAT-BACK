@@ -71,7 +71,7 @@ public class BreedsService {
 
     public void updateBreedData(UpdateBreedDto breed) {
         log.info("Zaktualizowałem dane dla id {}", breed.id());
-        AnimalType animaltype = animalTypeRepository.findOneByName(breed.animalType())
+        AnimalType animaltype = animalTypeRepository.findOneById(breed.animalType())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(breed.animalType()));
         Breed updatedBread = breedRepository.findById(breed.id())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(breed.id()));

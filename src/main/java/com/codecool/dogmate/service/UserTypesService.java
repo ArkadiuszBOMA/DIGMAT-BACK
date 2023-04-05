@@ -1,20 +1,16 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.usertype.NewUserTypeDto;
 import com.codecool.dogmate.dto.usertype.UserTypeDto;
-import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.entity.UserType;
-import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.UserTypeMapper;
-import com.codecool.dogmate.repository.*;
+import com.codecool.dogmate.repository.UserTypeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

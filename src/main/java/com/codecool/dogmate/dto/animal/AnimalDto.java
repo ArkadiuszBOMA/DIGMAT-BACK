@@ -1,7 +1,6 @@
 package com.codecool.dogmate.dto.animal;
 
 import com.codecool.dogmate.dto.lessonanimal.LessonAnimalDto;
-import com.codecool.dogmate.entity.LessonsAnimal;
 import com.codecool.dogmate.mapper.Gender;
 
 import java.time.LocalDateTime;
