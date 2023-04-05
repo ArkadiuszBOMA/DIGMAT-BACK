@@ -1,7 +1,6 @@
 package com.codecool.dogmate.repository;
 
 import com.codecool.dogmate.entity.CareAnnouncementType;
-import com.codecool.dogmate.entity.City;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +19,6 @@ public interface CareAnnouncementTypeRepository extends JpaRepository<CareAnnoun
     @Query("SELECT DISTINCT a FROM CareAnnouncementType a WHERE a.id = :id")
     Optional<CareAnnouncementType> findOneById(Integer id);
     @Query("SELECT DISTINCT a FROM CareAnnouncementType a WHERE a.name = :name")
-    Optional<CareAnnouncementType> findOneByCareAnnouncementTypeName(String name);
+    Optional<CareAnnouncementType> findOneByName(String name);
 
 }

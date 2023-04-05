@@ -1,19 +1,22 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.careannouncmenttype.CareAnnouncementTypeDto;
 import com.codecool.dogmate.dto.careannouncmenttype.NewCareAnnouncementTypeDto;
-import com.codecool.dogmate.entity.Breed;
 import com.codecool.dogmate.entity.CareAnnouncementType;
 import com.codecool.dogmate.mapper.CareAnnouncementTypeMapper;
 import com.codecool.dogmate.repository.CareAnnouncementTypeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
+@Slf4j
 @Service
 public class CareAnnouncementTypeService {
 
@@ -46,9 +49,37 @@ public class CareAnnouncementTypeService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    public CareAnnouncementTypeDto getCareAnnouncementTypeByName(String name) {
+        return careAnnouncementTypeRepository.findOneByName(name)
+                .map(careAnnouncementTypeMapper::mapEntityToCareAnnouncementTypeDto)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     public CareAnnouncementTypeDto createCareAnnouncementType(NewCareAnnouncementTypeDto careannouncementtype) {
         CareAnnouncementType entity = careAnnouncementTypeMapper.mapCareAnnouncementTypeDtoToEntity(careannouncementtype);
         CareAnnouncementType savedEntity = careAnnouncementTypeRepository.save(entity);
         return careAnnouncementTypeMapper.mapEntityToCareAnnouncementTypeDto(savedEntity);
+    }
+
+    public void updateCareAnnouncementTypeData(CareAnnouncementTypeDto careAnnouncementType) {
+        log.info("Zaktualizowałem dane dla id {}", careAnnouncementType.id());
+        CareAnnouncementType archivedCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(careAnnouncementType.id())
+                .orElseThrow(() -> new VoivodeshipNotFoundException(careAnnouncementType.id()));
+        archivedCareAnnouncementTypeData.setName(careAnnouncementType.name().trim().toUpperCase().replaceAll("( )+", " "));
+        archivedCareAnnouncementTypeData.setDate_modify(LocalDateTime.now());
+        careAnnouncementTypeRepository.save(archivedCareAnnouncementTypeData);
+    }
+
+    public void archiveCareAnnouncementTypeData(Integer id) {
+        CareAnnouncementType archivedCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(id)
+                .orElseThrow(() -> new VoivodeshipNotFoundException(id));
+        if(!archivedCareAnnouncementTypeData.getArchive()) {
+            archivedCareAnnouncementTypeData.setDate_archive(LocalDateTime.now());
+            archivedCareAnnouncementTypeData.setArchive(true);
+            log.info("Zarchiwizowane dane dla id {}", id);
+        } else {
+            log.info("Dane już były archiwizowane;");
+        }
+        careAnnouncementTypeRepository.save(archivedCareAnnouncementTypeData);
     }
 }
