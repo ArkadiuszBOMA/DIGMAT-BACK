@@ -1,16 +1,17 @@
 package com.codecool.dogmate.service;
 
-import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.*;
+import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
 import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.appuser.AppUserLoginDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
+import com.codecool.dogmate.dto.appuser.UpdateAppUserDto;
 import com.codecool.dogmate.entity.*;
 import com.codecool.dogmate.mapper.AppUserMapper;
 import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.repository.UserTypeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,10 +20,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class AppUserService {
 
@@ -84,5 +87,42 @@ public class AppUserService {
         entity.setPassword(passwordEncoder.encode(appuser.password()));
         AppUser savedEntity = appUserRepository.save(entity);
         appUserMapper.mapEntityToAppUserDto(savedEntity);
+    }
+
+    public void updateAppUserData(UpdateAppUserDto user) {
+        UserType userType = userTypeRepository.findOneByName(user.userType())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+        City city = cityRepository.findOneByName(user.city())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+        log.info("Zaktualizowałem dane dla id {}", user.id());
+        AppUser updatedAppUser = appUserRepository.findById(user.id())
+                .orElseThrow(() -> new AnimalTypeNotFoundException(user.id()));
+        updatedAppUser.setFirst_name(user.firstName().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedAppUser.setLast_name(user.lastName().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedAppUser.setPassword(passwordEncoder.encode(user.password()));
+        updatedAppUser.setProfilePictureLocation(user.profilePictureLocation());
+        updatedAppUser.setAvatarSmallLocation(user.avatarSmallLocation());
+        updatedAppUser.setUserType(userType);
+        updatedAppUser.setCity(city);
+        updatedAppUser.setIsLocked(user.isLocked());
+        updatedAppUser.setIsBanned(user.isBanned());
+        updatedAppUser.setBanExpiration(user.banExpiration());
+        updatedAppUser.setIsActive(user.isActive());
+        updatedAppUser.setDate_modify(LocalDateTime.now());
+        appUserRepository.save(updatedAppUser);
+    }
+
+    public void archiveAppUser(Integer id) {
+        AppUser archivedAppUser = appUserRepository.findById(id)
+                .orElseThrow(() -> new AnimalNotFoundException(id));
+
+        if(!archivedAppUser.getArchive()) {
+            archivedAppUser.setDate_archive(LocalDateTime.now());
+            archivedAppUser.setArchive(true);
+            log.info("Zarchiwizowane dane dla id {}", id);
+        } else {
+            log.info("Dane już były archiwizowane;");
+        }
+        appUserRepository.save(archivedAppUser);
     }
 }
