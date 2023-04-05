@@ -16,11 +16,23 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
     List<Animal> findAllBy();
     @Query("SELECT DISTINCT a FROM Animal a")
     List<Animal> findAllBy(Pageable pageable);
-    @Query("SELECT DISTINCT a FROM Animal a " +
-            "LEFT JOIN LessonsAnimal l on l.animal.id = a.id " +
-            "LEFT JOIN AnimalType at on at.id = a.animalType.id " +
-            "LEFT JOIN Breed b on b.animalTypes.id = at.id "+
-            "WHERE a.id = :id")
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.id = :id")
     Optional<Animal> findOneById(Integer id);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.name = :name")
+    Optional<Animal> findOneByName(String name);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.breed.id = :id")
+    Optional<Animal> findOneByBreedId(Integer id);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.breed.name = :name")
+    Optional<Animal> findOneByBreedName(String name);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.appUser.id = :id")
+    Optional<Animal> findOneByAppUserId(Integer id);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.appUser.first_name = :name")
+    Optional<Animal> findOneByAppUserFirst_name(String name);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.appUser.last_name = :name")
+    Optional<Animal> findOneByAppUserLast_name(String name);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.birthYear = :id")
+    Optional<Animal> findOneByBirthYear(Integer id);
+    @Query("SELECT DISTINCT a FROM Animal a WHERE a.gender = :name")
+    Optional<Animal> findOneByGender(String name);
 
 }

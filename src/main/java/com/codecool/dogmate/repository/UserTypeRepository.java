@@ -16,9 +16,9 @@ public interface UserTypeRepository extends JpaRepository<UserType, Integer> {
     List<UserType> findAllBy();
     @Query("SELECT DISTINCT a FROM UserType a")
     List<UserType> findAllBy(Pageable pageable);
-    @Query("SELECT DISTINCT a FROM UserType a " +
-            "LEFT JOIN AppUser b on a.id = b.userType.id "+
-            "WHERE a.id = :id")
+    @Query("SELECT DISTINCT a FROM UserType a WHERE a.id = :id")
     Optional<UserType> findOneById(Integer id);
+    @Query("SELECT DISTINCT a FROM UserType a WHERE a.name = :name")
+    Optional<UserType> findOneByName(String name);
 
 }

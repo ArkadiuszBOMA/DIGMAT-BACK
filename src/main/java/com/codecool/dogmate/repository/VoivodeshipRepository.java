@@ -1,5 +1,6 @@
 package com.codecool.dogmate.repository;
 
+import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.entity.Voivodeship;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,6 @@ public interface VoivodeshipRepository extends JpaRepository<Voivodeship, Intege
     List<Voivodeship> findAllBy(Pageable pageable);
     @Query("SELECT DISTINCT v FROM Voivodeship v WHERE v.id = :id")
     Optional<Voivodeship> findOneById(Integer id);
+    @Query("SELECT DISTINCT v FROM Voivodeship v WHERE v.name = :name")
+    Optional<Voivodeship> findOneByName(String name);
 }

@@ -1,5 +1,6 @@
 package com.codecool.dogmate.repository;
 
+import com.codecool.dogmate.entity.Lesson;
 import com.codecool.dogmate.entity.LessonStep;
 import com.codecool.dogmate.entity.LessonsAnimal;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,13 @@ public interface LessonAnimalRepository extends JpaRepository<LessonsAnimal, Int
     List<LessonsAnimal> findAllBy(Pageable pageable);
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.id = :id")
     Optional<LessonsAnimal> findOneById(Integer id);
+    @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.animal.id = :animalId")
+    Optional<LessonsAnimal> findOneByAnimalId(Integer animalId);
+    @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.lesson.id = :lessonId")
+    Optional<LessonsAnimal> findOneByLessonId(Integer lessonId);
+    @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.animal.name = :animalName")
+    Optional<LessonsAnimal> findOneByAnimalName(String animalName);
+    @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.lesson.name = :lessonName")
+    Optional<LessonsAnimal> findOneByLessonName(Integer lessonName);
 
 }

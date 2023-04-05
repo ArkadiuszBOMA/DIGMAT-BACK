@@ -1,5 +1,6 @@
 package com.codecool.dogmate.entity;
 
+import ch.qos.logback.classic.Logger;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,7 +9,6 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TimeZone;
 
 
 @Entity

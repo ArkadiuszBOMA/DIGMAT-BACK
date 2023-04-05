@@ -1,8 +1,12 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
+import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
 import com.codecool.dogmate.dto.voivodeship.NewVoivodeshipDto;
+import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.VoivodeshipDto;
+import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.VoivodeshipMapper;
 import com.codecool.dogmate.repository.VoivodeshipRepository;
@@ -10,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
@@ -45,11 +50,39 @@ public class VoivodeshipsService {
                 .orElseThrow(() -> new VoivodeshipNotFoundException(id));
     }
 
+    public VoivodeshipDto getVoivodeshipByVoivodeshipName(String name) {
+        return voivodeshipRepository.findOneByName(name)
+                .map(voivodeshipMapper::mapEntityToVoivodeshipDto)
+                .orElseThrow(() -> new VoivodeshipNotFoundException(name));
+    }
+
     public VoivodeshipDto createVoivodeship(NewVoivodeshipDto voivodeship) {
         log.info("Rejestracja {}", voivodeship);
         Voivodeship entity = voivodeshipMapper.mapNewVoivodeshipDtoToEntity(voivodeship);
         Voivodeship savedEntity = voivodeshipRepository.save(entity);
         return voivodeshipMapper.mapEntityToVoivodeshipDto(savedEntity);
+    }
+    public void updateVoivodeshipData(UpdateVoivodeshipDto voivodeshio) {
+        log.info("Zaktualizowałem dane dla id {}", voivodeshio.id());
+        Voivodeship updatedVoivodeship = voivodeshipRepository.findById(voivodeshio.id())
+                .orElseThrow(() -> new VoivodeshipNotFoundException(voivodeshio.id()));
+        updatedVoivodeship.setName(voivodeshio.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedVoivodeship.setTerytId(voivodeshio.terytId().trim().replaceAll("( )+", " "));
+        updatedVoivodeship.setDate_modify(LocalDateTime.now());
+        voivodeshipRepository.save(updatedVoivodeship);
+    }
+
+    public void archiveVoivodeshipData(Integer id) {
+        Voivodeship archivedVoivodeship = voivodeshipRepository.findById(id)
+                .orElseThrow(() -> new VoivodeshipNotFoundException(id));
+        if(!archivedVoivodeship.getArchive()) {
+            archivedVoivodeship.setDate_archive(LocalDateTime.now());
+            archivedVoivodeship.setArchive(true);
+            log.info("Zarchiwizowane dane dla id {}", id);
+        } else {
+            log.info("Dane już były archiwizowane;");
+        }
+        voivodeshipRepository.save(archivedVoivodeship);
     }
 }
 

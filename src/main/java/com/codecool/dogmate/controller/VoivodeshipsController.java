@@ -1,6 +1,7 @@
 package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.voivodeship.NewVoivodeshipDto;
+import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.VoivodeshipDto;
 import com.codecool.dogmate.service.VoivodeshipsService;
 import org.springframework.data.domain.Pageable;
@@ -40,4 +41,13 @@ public class VoivodeshipsController {
         return voivodeshipsService.createVoivodeship(voivodeship);
     }
 
+    @PutMapping("/update/{id}")
+    public void updateVoivodeship(@RequestBody @Valid UpdateVoivodeshipDto voivodeship) {
+        voivodeshipsService.updateVoivodeshipData(voivodeship);
+    }
+
+    @PutMapping("/archive/{id}")
+    public void archiveVoivodeship(@PathVariable Integer id) {
+        voivodeshipsService.archiveVoivodeshipData(id);
+    }
 }

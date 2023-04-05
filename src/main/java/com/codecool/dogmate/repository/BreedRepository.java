@@ -20,4 +20,6 @@ public interface BreedRepository extends JpaRepository<Breed, Integer> {
     List<Breed> findAllBy(Pageable pageable);
     @Query("SELECT DISTINCT b FROM Breed b WHERE b.id = :id")
     Optional<Breed> findOneById(Integer id);
+    @Query("SELECT DISTINCT b FROM Breed b WHERE b.name = :name")
+    Optional<Breed> findOneByName(String id);
 }
