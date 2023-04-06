@@ -1,19 +1,20 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.TrainingLevelNotFoundException;
 import com.codecool.dogmate.dto.traininglevel.NewTrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.TrainingLevelDto;
-import com.codecool.dogmate.entity.TimeUnit;
 import com.codecool.dogmate.entity.TrainingLevel;
 import com.codecool.dogmate.mapper.TrainingLevelMapper;
 import com.codecool.dogmate.repository.TrainingLevelRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
+@Slf4j
 @Service
 public class TrainingLevelsService {
 
@@ -43,12 +44,40 @@ public class TrainingLevelsService {
     public TrainingLevelDto getTrainingLevelById(Integer id) {
         return trainingLevelRepository.findOneById(id)
                 .map(trainingLevelMapper::mapEntityToTrainingLevelDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new TrainingLevelNotFoundException(id));
+    }
+
+    public TrainingLevelDto getTrainingLevelByName(String name) {
+        return trainingLevelRepository.findOneByName(name)
+                .map(trainingLevelMapper::mapEntityToTrainingLevelDto)
+                .orElseThrow(() -> new TrainingLevelNotFoundException(name));
     }
 
     public TrainingLevelDto createTrainingLevel(NewTrainingLevelDto traininglevel) {
         TrainingLevel entity = trainingLevelMapper.mapTrainingLevelDtoToEntity(traininglevel);
         TrainingLevel savedEntity = trainingLevelRepository.save(entity);
         return trainingLevelMapper.mapEntityToTrainingLevelDto(savedEntity);
+    }
+
+    public void updateTrainingLevel(TrainingLevelDto trainingLevel) {
+        log.info("Zaktualizowałem dane dla id {}", trainingLevel.id());
+        TrainingLevel updateTrainingLeve = trainingLevelRepository.findById(trainingLevel.id())
+                .orElseThrow(() -> new TrainingLevelNotFoundException(trainingLevel.id()));
+        updateTrainingLeve.setName(trainingLevel.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateTrainingLeve.setDate_modify(LocalDateTime.now());
+        trainingLevelRepository.save(updateTrainingLeve);
+    }
+
+    public void archiveTrainingLevel(Integer id) {
+        TrainingLevel archivedTrainingLevel = trainingLevelRepository.findById(id)
+                .orElseThrow(() -> new TrainingLevelNotFoundException(id));
+        if(!archivedTrainingLevel.getArchive()) {
+            archivedTrainingLevel.setDate_archive(LocalDateTime.now());
+            archivedTrainingLevel.setArchive(true);
+            log.info("Zarchiwizowane dane dla id {}", id);
+        } else {
+            log.info("Dane już były archiwizowane;");
+        }
+        trainingLevelRepository.save(archivedTrainingLevel);
     }
 }

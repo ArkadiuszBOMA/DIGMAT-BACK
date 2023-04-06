@@ -2,24 +2,18 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.dto.breed.NewBreedDto;
 import com.codecool.dogmate.dto.breed.UpdateBreedDto;
-import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.entity.AnimalType;
-import com.codecool.dogmate.entity.AppUser;
 import com.codecool.dogmate.entity.Breed;
-import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.AnimalTypeMapper;
 import com.codecool.dogmate.mapper.BreedMapper;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
 import com.codecool.dogmate.repository.BreedRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -69,21 +63,21 @@ public class BreedsService {
         return breedMapper.mapEntityToBreedDto(savedEntity);
     }
 
-    public void updateBreedData(UpdateBreedDto breed) {
+    public void updateBreed(UpdateBreedDto breed) {
         log.info("Zaktualizowałem dane dla id {}", breed.id());
         AnimalType animaltype = animalTypeRepository.findOneById(breed.animalType())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(breed.animalType()));
         Breed updatedBread = breedRepository.findById(breed.id())
-                .orElseThrow(() -> new VoivodeshipNotFoundException(breed.id()));
+                .orElseThrow(() -> new BreadNotFoundException(breed.id()));
         updatedBread.setName(breed.name().trim().toUpperCase().replaceAll("( )+", " "));
         updatedBread.setAnimalTypes(animaltype);
         updatedBread.setDate_modify(LocalDateTime.now());
         breedRepository.save(updatedBread);
     }
 
-    public void archiveBreedData(Integer id) {
+    public void archiveBreed(Integer id) {
         Breed archivedBreed = breedRepository.findById(id)
-                .orElseThrow(() -> new VoivodeshipNotFoundException(id));
+                .orElseThrow(() -> new BreadNotFoundException(id));
         if(!archivedBreed.getArchive()) {
             archivedBreed.setDate_archive(LocalDateTime.now());
             archivedBreed.setArchive(true);

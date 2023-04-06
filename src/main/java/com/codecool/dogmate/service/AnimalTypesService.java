@@ -47,10 +47,10 @@ public class AnimalTypesService {
                 .map(animalTypeMapper::mapEntityToAnimalTypeDto)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
     }
-    public AnimalTypeDto getAnimalTypeByName(String nameAT) {
-        return animalTypeRepository.findOneByName(nameAT)
+    public AnimalTypeDto getAnimalTypeByName(String name) {
+        return animalTypeRepository.findOneByName(name)
                 .map(animalTypeMapper::mapEntityToAnimalTypeDto)
-                .orElseThrow(() -> new AnimalTypeNotFoundException(nameAT));
+                .orElseThrow(() -> new AnimalTypeNotFoundException(name));
     }
 
     public AnimalTypeDto createAnimalType(NewAnimalTypeDto animalType) {
@@ -61,7 +61,7 @@ public class AnimalTypesService {
         return animalTypeMapper.mapEntityToAnimalTypeDto(savedEntity);
     }
 
-    public void updateAnimalTypeData(UpdateAnimalTypeDto animalType) {
+    public void updateAnimalType(UpdateAnimalTypeDto animalType) {
         log.info("Zaktualizowałem dane dla id {}", animalType.id());
         AnimalType updatedAnimalType = animalTypeRepository.findById(animalType.id())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(animalType.id()));
@@ -71,10 +71,9 @@ public class AnimalTypesService {
         animalTypeRepository.save(updatedAnimalType);
     }
 
-    public void archiveAnimalTypeData(Integer id) {
+    public void archiveAnimalType(Integer id) {
         AnimalType archivedAnimalType = animalTypeRepository.findById(id)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
-
         if(!archivedAnimalType.getArchive()) {
             archivedAnimalType.setDate_archive(LocalDateTime.now());
             archivedAnimalType.setArchive(true);

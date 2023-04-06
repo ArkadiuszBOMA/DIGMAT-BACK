@@ -19,6 +19,7 @@ public class ErrorControllerAdvice {
             BreadNotFoundException.class,
             CityNotFoundException.class,
             CareTypeAnnouncementNotFoundException.class,
+            LessonAnimalNotFoundException.class,
             LessonNotFoundException.class,
             LessonStepNotFoundException.class,
             TimeUnitNotFoundException.class,

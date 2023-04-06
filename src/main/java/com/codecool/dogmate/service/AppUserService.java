@@ -1,15 +1,15 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.*;
-import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
 import com.codecool.dogmate.dto.appuser.AppUserDto;
-import com.codecool.dogmate.dto.appuser.AppUserLoginDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
 import com.codecool.dogmate.dto.appuser.UpdateAppUserDto;
-import com.codecool.dogmate.entity.*;
+import com.codecool.dogmate.entity.AppUser;
+import com.codecool.dogmate.entity.City;
+import com.codecool.dogmate.entity.UserType;
 import com.codecool.dogmate.mapper.AppUserMapper;
-import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.AppUserRepository;
+import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.UserTypeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -18,12 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -89,14 +86,14 @@ public class AppUserService {
         appUserMapper.mapEntityToAppUserDto(savedEntity);
     }
 
-    public void updateAppUserData(UpdateAppUserDto user) {
+    public void updateAppUser(UpdateAppUserDto user) {
         UserType userType = userTypeRepository.findOneByName(user.userType())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new UserTypeNotFoundException(user.userType()));
         City city = cityRepository.findOneByName(user.city())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new CityNotFoundException(user.city()));
         log.info("Zaktualizowałem dane dla id {}", user.id());
         AppUser updatedAppUser = appUserRepository.findById(user.id())
-                .orElseThrow(() -> new AnimalTypeNotFoundException(user.id()));
+                .orElseThrow(() -> new AppUserNotFoundException(user.id()));
         updatedAppUser.setFirst_name(user.firstName().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAppUser.setLast_name(user.lastName().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAppUser.setPassword(passwordEncoder.encode(user.password()));
@@ -114,7 +111,7 @@ public class AppUserService {
 
     public void archiveAppUser(Integer id) {
         AppUser archivedAppUser = appUserRepository.findById(id)
-                .orElseThrow(() -> new AnimalNotFoundException(id));
+                .orElseThrow(() -> new AppUserNotFoundException(id));
 
         if(!archivedAppUser.getArchive()) {
             archivedAppUser.setDate_archive(LocalDateTime.now());

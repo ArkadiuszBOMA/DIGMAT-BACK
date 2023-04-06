@@ -1,6 +1,9 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
 import com.codecool.dogmate.dto.animal.AnimalDto;
 import com.codecool.dogmate.dto.animal.NewAnimalDto;
 import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
@@ -15,9 +18,7 @@ import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.repository.BreedRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -65,13 +66,19 @@ public class AnimalsService {
                 .orElseThrow(() -> new AnimalNotFoundException(id));
     }
 
+    public AnimalDto getAnimalByName(String name) {
+        return animalRepository.findOneByName(name)
+                .map(animalMapper::mapEntityToAnimalDto)
+                .orElseThrow(() -> new AnimalNotFoundException(name));
+    }
+
     public AnimalDto createAnimal(NewAnimalDto animal) {
         AnimalType animalType = animalTypeRepository.findOneById(animal.animalTypesId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new AnimalTypeNotFoundException(animal.animalTypesId()));
         Breed breed = breedRepository.findOneById(animal.breedId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new BreadNotFoundException(animal.breedId()));
         AppUser appUser = appUserRepository.findById(animal.userId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new AppUserNotFoundException(animal.userId()));
         Animal entity = animalMapper.mapNewAnimalDtoToEntity(
                 animal,animalType,breed, appUser
                 );
@@ -79,13 +86,13 @@ public class AnimalsService {
         return animalMapper.mapEntityToAnimalDto(savedEntity);
     }
 
-    public void updateAnimalData(UpdateAnimalDto animal) {
+    public void updateAnimal(UpdateAnimalDto animal) {
         AnimalType animalType = animalTypeRepository.findOneById(animal.animalTypesId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new AnimalTypeNotFoundException(animal.animalTypesId()));
         Breed breed = breedRepository.findOneById(animal.breedId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new BreadNotFoundException(animal.breedId()));
         AppUser appUser = appUserRepository.findById(animal.userId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+                .orElseThrow(() -> new AppUserNotFoundException(animal.userId()));
 
         log.info("Zaktualizowałem dane dla id {}", animal.id());
         Animal updatedAnimal = animalRepository.findById(animal.id())
@@ -102,7 +109,7 @@ public class AnimalsService {
         animalRepository.save(updatedAnimal);
     }
 
-    public void archiveAnimalData(Integer id) {
+    public void archiveAnimal(Integer id) {
         Animal archivedAnimal = animalRepository.findById(id)
                 .orElseThrow(() -> new AnimalNotFoundException(id));
 

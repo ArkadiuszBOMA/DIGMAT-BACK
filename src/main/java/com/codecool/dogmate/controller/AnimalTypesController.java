@@ -38,11 +38,11 @@ public class AnimalTypesController {
 
     @PutMapping("/update/{id}")
     public void updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {
-        animalTypesService.updateAnimalTypeData(animalType);
+        animalTypesService.updateAnimalType(animalType);
     }
 
     @PutMapping("/archive/{id}")
     public void archiveAnimalType(@PathVariable Integer id) {
-        animalTypesService.archiveAnimalTypeData(id);
+        animalTypesService.archiveAnimalType(id);
     }
 }

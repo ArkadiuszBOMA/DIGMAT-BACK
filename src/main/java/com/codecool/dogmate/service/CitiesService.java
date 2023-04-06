@@ -1,6 +1,7 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.ProvinceNotFoundException;
 import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.city.NewCityDto;
 import com.codecool.dogmate.entity.City;
@@ -11,9 +12,7 @@ import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.ProvinceRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -52,29 +51,29 @@ public class CitiesService {
     public CityDto getCityById(Integer id) {
         return cityRepository.findOneById(id)
                 .map(cityMapper::mapEntityToCityDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new CityNotFoundException(id));
     }
 
     public CityDto getCityByName(String name) {
         return cityRepository.findOneByName(name)
                 .map(cityMapper::mapEntityToCityDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new CityNotFoundException(name));
     }
 
     public CityDto getCityByProvinceId(Integer id) {
         return cityRepository.findOneByProvinceId(id)
                 .map(cityMapper::mapEntityToCityDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ProvinceNotFoundException(id));
     }
 
 
     public CityDto createCity(NewCityDto city) {
-        City entity = cityMapper.mapNewCityDtoToEntity(city);
+        City cityNew = cityMapper.mapNewCityDtoToEntity(city);
         Province province = provinceRepository.findOneById(city.province())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        entity.setProvince(province);
-        province.getCities().add(entity);
-        City savedEntity = cityRepository.save(entity);
+                .orElseThrow(() -> new ProvinceNotFoundException(city.province()));
+        cityNew.setProvince(province);
+        province.getCities().add(cityNew);
+        City savedEntity = cityRepository.save(cityNew);
         return cityMapper.mapEntityToCityDto(savedEntity);
     }
 
@@ -82,12 +81,15 @@ public class CitiesService {
         log.info("Zaktualizowałem dane dla id {}", city.id());
         City updateCity = cityRepository.findById(city.id())
                 .orElseThrow(() -> new CityNotFoundException(city.id()));
+        Province province = provinceRepository.findOneByName(city.province())
+                .orElseThrow(() -> new ProvinceNotFoundException(city.province()));
         updateCity.setName(city.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateCity.setProvince(province);
         updateCity.setDate_modify(LocalDateTime.now());
         cityRepository.save(updateCity);
     }
 
-    public void archiveCityData(Integer id) {
+    public void archiveCity(Integer id) {
         City archivedCity = cityRepository.findById(id)
                 .orElseThrow(() -> new CityNotFoundException(id));
         if(!archivedCity.getArchive()) {

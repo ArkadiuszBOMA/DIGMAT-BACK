@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -42,6 +43,7 @@ public class UserTypesService {
                 .orElseThrow(() -> new UserTypeNotFoundException(id));
     }
 
+
     public UserTypeDto getUserTypeByName(String name) {
         return userTypeRepository.findOneByName(name)
                 .map(userTypeMapper::mapEntityToUserTypeDto)
@@ -53,5 +55,27 @@ public class UserTypesService {
         UserType entity = userTypeMapper.mapNewUserTypeDtoToEntity(usertype);
         UserType savedEntity = userTypeRepository.save(entity);
         return userTypeMapper.mapEntityToUserTypeDto(savedEntity);
+    }
+
+    public void updateUserType(UserTypeDto userType) {
+        log.info("Zaktualizowałem dane dla id {}", userType.id());
+        UserType updateUserType = userTypeRepository.findById(userType.id())
+                .orElseThrow(() -> new UserTypeNotFoundException(userType.id()));
+        updateUserType.setName(userType.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateUserType.setDate_modify(LocalDateTime.now());
+        userTypeRepository.save(updateUserType);
+    }
+
+    public void archiveUserType(Integer id) {
+        UserType archivedUserType = userTypeRepository.findById(id)
+                .orElseThrow(() -> new UserTypeNotFoundException(id));
+        if(!archivedUserType.getArchive()) {
+            archivedUserType.setDate_archive(LocalDateTime.now());
+            archivedUserType.setArchive(true);
+            log.info("Zarchiwizowane dane dla id {}", id);
+        } else {
+            log.info("Dane już były archiwizowane;");
+        }
+        userTypeRepository.save(archivedUserType);
     }
 }

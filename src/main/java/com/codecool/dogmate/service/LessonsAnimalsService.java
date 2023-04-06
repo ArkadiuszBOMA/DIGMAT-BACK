@@ -1,8 +1,11 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.LessonAnimalNotFoundException;
 import com.codecool.dogmate.dto.lessonanimal.LessonAnimalDto;
 import com.codecool.dogmate.dto.lessonanimal.NewLessonAnimalDto;
-import com.codecool.dogmate.entity.*;
+import com.codecool.dogmate.entity.Animal;
+import com.codecool.dogmate.entity.Lesson;
+import com.codecool.dogmate.entity.LessonsAnimal;
 import com.codecool.dogmate.mapper.LessonAnimalMapper;
 import com.codecool.dogmate.repository.AnimalRepository;
 import com.codecool.dogmate.repository.LessonAnimalRepository;
@@ -47,7 +50,13 @@ public class LessonsAnimalsService {
     public LessonAnimalDto getLessonAnimalById(Integer id) {
         return lessonAnimalRepository.findOneById(id)
                 .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new LessonAnimalNotFoundException(id));
+    }
+
+    public LessonAnimalDto getLessonAnimalByName(String name) {
+        return lessonAnimalRepository.findOneByAnimalName(name)
+                .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
+                .orElseThrow(() -> new LessonAnimalNotFoundException(name));
     }
 
     public LessonAnimalDto createLessonAnimal(NewLessonAnimalDto lessonanimal) {

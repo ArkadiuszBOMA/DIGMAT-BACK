@@ -1,7 +1,6 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.CareTypeAnnouncementNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.careannouncmenttype.CareAnnouncementTypeDto;
 import com.codecool.dogmate.dto.careannouncmenttype.NewCareAnnouncementTypeDto;
 import com.codecool.dogmate.entity.CareAnnouncementType;
@@ -9,9 +8,7 @@ import com.codecool.dogmate.mapper.CareAnnouncementTypeMapper;
 import com.codecool.dogmate.repository.CareAnnouncementTypeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -47,13 +44,13 @@ public class CareAnnouncementTypeService {
     public CareAnnouncementTypeDto getCareAnnouncementTypeById(Integer id) {
         return careAnnouncementTypeRepository.findOneById(id)
                 .map(careAnnouncementTypeMapper::mapEntityToCareAnnouncementTypeDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(id));
     }
 
     public CareAnnouncementTypeDto getCareAnnouncementTypeByName(String name) {
         return careAnnouncementTypeRepository.findOneByName(name)
                 .map(careAnnouncementTypeMapper::mapEntityToCareAnnouncementTypeDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(name));
     }
 
     public CareAnnouncementTypeDto createCareAnnouncementType(NewCareAnnouncementTypeDto careannouncementtype) {
@@ -62,7 +59,7 @@ public class CareAnnouncementTypeService {
         return careAnnouncementTypeMapper.mapEntityToCareAnnouncementTypeDto(savedEntity);
     }
 
-    public void updateCareAnnouncementTypeData(CareAnnouncementTypeDto careAnnouncementType) {
+    public void updateCareAnnouncementType(CareAnnouncementTypeDto careAnnouncementType) {
         log.info("Zaktualizowałem dane dla id {}", careAnnouncementType.id());
         CareAnnouncementType updateCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(careAnnouncementType.id())
                 .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(careAnnouncementType.id()));
@@ -71,9 +68,9 @@ public class CareAnnouncementTypeService {
         careAnnouncementTypeRepository.save(updateCareAnnouncementTypeData);
     }
 
-    public void archiveCareAnnouncementTypeData(Integer id) {
+    public void archiveCareAnnouncementType(Integer id) {
         CareAnnouncementType archivedCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(id)
-                .orElseThrow(() -> new VoivodeshipNotFoundException(id));
+                .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(id));
         if(!archivedCareAnnouncementTypeData.getArchive()) {
             archivedCareAnnouncementTypeData.setDate_archive(LocalDateTime.now());
             archivedCareAnnouncementTypeData.setArchive(true);
