@@ -2,9 +2,11 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.animal.AnimalDto;
 import com.codecool.dogmate.dto.animal.NewAnimalDto;
+import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
 import com.codecool.dogmate.service.AnimalsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -20,7 +22,9 @@ public class AnimalsController {
     }
 
     @GetMapping()
-    public List<AnimalDto> getAllAnimals() {return animalsService.getAnimals();}
+    public List<AnimalDto> getAllAnimals() {
+        return animalsService.getAnimals();
+    }
 
     @GetMapping(params = {"page", "size", "sort"})
     public List<AnimalDto> getAllAnimalsWithPageable(Pageable pageable) {
@@ -35,6 +39,16 @@ public class AnimalsController {
     @PostMapping
     public AnimalDto newAnimal(@RequestBody @Valid NewAnimalDto animal) {
         return animalsService.createAnimal(animal);
+    }
+
+    @PutMapping("/update/{id}")
+    public void updateVoivodeship(@RequestBody @Valid UpdateAnimalDto animal) {
+        animalsService.updateAnimal(animal);
+    }
+
+    @PutMapping("/archive/{id}")
+    public void updateVoivodeship(@PathVariable Integer id) {
+        animalsService.archiveAnimal(id);
     }
 }
 

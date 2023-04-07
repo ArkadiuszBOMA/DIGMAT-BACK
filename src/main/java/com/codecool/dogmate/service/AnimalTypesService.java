@@ -63,7 +63,7 @@ public class AnimalTypesService {
 
     public void updateAnimalType(UpdateAnimalTypeDto animalType) {
         log.info("Zaktualizowałem dane dla id {}", animalType.id());
-        AnimalType updatedAnimalType = animalTypeRepository.findById(animalType.id())
+        AnimalType updatedAnimalType = animalTypeRepository.findOneById(animalType.id())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(animalType.id()));
         updatedAnimalType.setName(animalType.name().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAnimalType.setDescription(animalType.description().trim().replaceAll("( )+", " "));
@@ -72,7 +72,7 @@ public class AnimalTypesService {
     }
 
     public void archiveAnimalType(Integer id) {
-        AnimalType archivedAnimalType = animalTypeRepository.findById(id)
+        AnimalType archivedAnimalType = animalTypeRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
         if(!archivedAnimalType.getArchive()) {
             archivedAnimalType.setDate_archive(LocalDateTime.now());

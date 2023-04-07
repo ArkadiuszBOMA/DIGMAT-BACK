@@ -61,7 +61,7 @@ public class TrainingLevelsService {
 
     public void updateTrainingLevel(TrainingLevelDto trainingLevel) {
         log.info("Zaktualizowałem dane dla id {}", trainingLevel.id());
-        TrainingLevel updateTrainingLeve = trainingLevelRepository.findById(trainingLevel.id())
+        TrainingLevel updateTrainingLeve = trainingLevelRepository.findOneById(trainingLevel.id())
                 .orElseThrow(() -> new TrainingLevelNotFoundException(trainingLevel.id()));
         updateTrainingLeve.setName(trainingLevel.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateTrainingLeve.setDate_modify(LocalDateTime.now());
@@ -69,7 +69,7 @@ public class TrainingLevelsService {
     }
 
     public void archiveTrainingLevel(Integer id) {
-        TrainingLevel archivedTrainingLevel = trainingLevelRepository.findById(id)
+        TrainingLevel archivedTrainingLevel = trainingLevelRepository.findOneById(id)
                 .orElseThrow(() -> new TrainingLevelNotFoundException(id));
         if(!archivedTrainingLevel.getArchive()) {
             archivedTrainingLevel.setDate_archive(LocalDateTime.now());

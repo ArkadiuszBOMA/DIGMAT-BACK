@@ -65,7 +65,7 @@ public class LessonsService {
 
     public void updateLesson(LessonDto lesson) {
         log.info("Zaktualizowałem dane dla id {}", lesson.id());
-        Lesson updateLesson = lessonRepository.findById(lesson.id())
+        Lesson updateLesson = lessonRepository.findOneById(lesson.id())
                 .orElseThrow(() -> new LessonNotFoundException(lesson.id()));
         updateLesson.setName(lesson.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateLesson.setDate_modify(LocalDateTime.now());
@@ -73,7 +73,7 @@ public class LessonsService {
     }
 
     public void archiveLesson(Integer id) {
-        Lesson archivedLesson = lessonRepository.findById(id)
+        Lesson archivedLesson = lessonRepository.findOneById(id)
                 .orElseThrow(() -> new LessonNotFoundException(id));
         if(!archivedLesson.getArchive()) {
             archivedLesson.setDate_archive(LocalDateTime.now());

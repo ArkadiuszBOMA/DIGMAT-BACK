@@ -79,7 +79,7 @@ public class CitiesService {
 
     public void updateCity(CityDto city) {
         log.info("Zaktualizowałem dane dla id {}", city.id());
-        City updateCity = cityRepository.findById(city.id())
+        City updateCity = cityRepository.findOneById(city.id())
                 .orElseThrow(() -> new CityNotFoundException(city.id()));
         Province province = provinceRepository.findOneByName(city.province())
                 .orElseThrow(() -> new ProvinceNotFoundException(city.province()));
@@ -90,7 +90,7 @@ public class CitiesService {
     }
 
     public void archiveCity(Integer id) {
-        City archivedCity = cityRepository.findById(id)
+        City archivedCity = cityRepository.findOneById(id)
                 .orElseThrow(() -> new CityNotFoundException(id));
         if(!archivedCity.getArchive()) {
             archivedCity.setDate_archive(LocalDateTime.now());

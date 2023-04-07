@@ -70,7 +70,7 @@ public class ProvincesService {
 
     public void updateProvince(ProvinceDto province) {
         log.info("Zaktualizowałem dane dla id {}", province.id());
-        Province updateProvince = provinceRepository.findById(province.id())
+        Province updateProvince = provinceRepository.findOneById(province.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(province.id()));
         Voivodeship voivodeship = voivodeshipRepository.findOneByName(province.voivodeship())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(province.voivodeship()));

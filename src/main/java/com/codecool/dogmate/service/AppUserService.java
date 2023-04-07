@@ -92,7 +92,7 @@ public class AppUserService {
         City city = cityRepository.findOneByName(user.city())
                 .orElseThrow(() -> new CityNotFoundException(user.city()));
         log.info("Zaktualizowałem dane dla id {}", user.id());
-        AppUser updatedAppUser = appUserRepository.findById(user.id())
+        AppUser updatedAppUser = appUserRepository.findOneById(user.id())
                 .orElseThrow(() -> new AppUserNotFoundException(user.id()));
         updatedAppUser.setFirst_name(user.firstName().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAppUser.setLast_name(user.lastName().trim().toUpperCase().replaceAll("( )+", " "));
@@ -110,7 +110,7 @@ public class AppUserService {
     }
 
     public void archiveAppUser(Integer id) {
-        AppUser archivedAppUser = appUserRepository.findById(id)
+        AppUser archivedAppUser = appUserRepository.findOneById(id)
                 .orElseThrow(() -> new AppUserNotFoundException(id));
 
         if(!archivedAppUser.getArchive()) {

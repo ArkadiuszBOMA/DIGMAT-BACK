@@ -61,7 +61,7 @@ public class CareAnnouncementTypeService {
 
     public void updateCareAnnouncementType(CareAnnouncementTypeDto careAnnouncementType) {
         log.info("Zaktualizowałem dane dla id {}", careAnnouncementType.id());
-        CareAnnouncementType updateCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(careAnnouncementType.id())
+        CareAnnouncementType updateCareAnnouncementTypeData = careAnnouncementTypeRepository.findOneById(careAnnouncementType.id())
                 .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(careAnnouncementType.id()));
         updateCareAnnouncementTypeData.setName(careAnnouncementType.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateCareAnnouncementTypeData.setDate_modify(LocalDateTime.now());
@@ -69,7 +69,7 @@ public class CareAnnouncementTypeService {
     }
 
     public void archiveCareAnnouncementType(Integer id) {
-        CareAnnouncementType archivedCareAnnouncementTypeData = careAnnouncementTypeRepository.findById(id)
+        CareAnnouncementType archivedCareAnnouncementTypeData = careAnnouncementTypeRepository.findOneById(id)
                 .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(id));
         if(!archivedCareAnnouncementTypeData.getArchive()) {
             archivedCareAnnouncementTypeData.setDate_archive(LocalDateTime.now());

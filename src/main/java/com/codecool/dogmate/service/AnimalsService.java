@@ -110,7 +110,7 @@ public class AnimalsService {
     }
 
     public void archiveAnimal(Integer id) {
-        Animal archivedAnimal = animalRepository.findById(id)
+        Animal archivedAnimal = animalRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalNotFoundException(id));
 
         if(!archivedAnimal.getArchive()) {

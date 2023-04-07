@@ -67,7 +67,7 @@ public class BreedsService {
         log.info("Zaktualizowałem dane dla id {}", breed.id());
         AnimalType animaltype = animalTypeRepository.findOneById(breed.animalType())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(breed.animalType()));
-        Breed updatedBread = breedRepository.findById(breed.id())
+        Breed updatedBread = breedRepository.findOneById(breed.id())
                 .orElseThrow(() -> new BreadNotFoundException(breed.id()));
         updatedBread.setName(breed.name().trim().toUpperCase().replaceAll("( )+", " "));
         updatedBread.setAnimalTypes(animaltype);
@@ -76,7 +76,7 @@ public class BreedsService {
     }
 
     public void archiveBreed(Integer id) {
-        Breed archivedBreed = breedRepository.findById(id)
+        Breed archivedBreed = breedRepository.findOneById(id)
                 .orElseThrow(() -> new BreadNotFoundException(id));
         if(!archivedBreed.getArchive()) {
             archivedBreed.setDate_archive(LocalDateTime.now());

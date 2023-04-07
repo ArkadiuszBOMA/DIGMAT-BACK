@@ -1,6 +1,8 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.LessonAnimalNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.LessonNotFoundException;
 import com.codecool.dogmate.dto.lessonanimal.LessonAnimalDto;
 import com.codecool.dogmate.dto.lessonanimal.NewLessonAnimalDto;
 import com.codecool.dogmate.entity.Animal;
@@ -11,9 +13,7 @@ import com.codecool.dogmate.repository.AnimalRepository;
 import com.codecool.dogmate.repository.LessonAnimalRepository;
 import com.codecool.dogmate.repository.LessonRepository;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Comparator;
 import java.util.List;
@@ -61,9 +61,9 @@ public class LessonsAnimalsService {
 
     public LessonAnimalDto createLessonAnimal(NewLessonAnimalDto lessonanimal) {
         Lesson lesson = lessonRepository.findOneById(lessonanimal.lessonId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new LessonNotFoundException(lessonanimal.lessonId()));
         Animal animal = animalRepository.findOneById(lessonanimal.animalId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AnimalNotFoundException(lessonanimal.animalId()));
         LessonsAnimal entity = lessonAnimalMapper.mapNewLessonAnimalDtoToEntity(animal, lesson);
         LessonsAnimal savedEntity = lessonAnimalRepository.save(entity);
         return lessonAnimalMapper.mapEntityToLessonAnimalDto(savedEntity);

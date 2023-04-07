@@ -60,7 +60,7 @@ public class VoivodeshipsService {
     }
     public void updateVoivodeshipData(UpdateVoivodeshipDto voivodeshio) {
         log.info("Zaktualizowałem dane dla id {}", voivodeshio.id());
-        Voivodeship updatedVoivodeship = voivodeshipRepository.findById(voivodeshio.id())
+        Voivodeship updatedVoivodeship = voivodeshipRepository.findOneById(voivodeshio.id())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(voivodeshio.id()));
         updatedVoivodeship.setName(voivodeshio.name().trim().toUpperCase().replaceAll("( )+", " "));
         updatedVoivodeship.setTerytId(voivodeshio.terytId().trim().replaceAll("( )+", " "));
@@ -69,7 +69,7 @@ public class VoivodeshipsService {
     }
 
     public void archiveVoivodeshipData(Integer id) {
-        Voivodeship archivedVoivodeship = voivodeshipRepository.findById(id)
+        Voivodeship archivedVoivodeship = voivodeshipRepository.findOneById(id)
                 .orElseThrow(() -> new VoivodeshipNotFoundException(id));
         if(!archivedVoivodeship.getArchive()) {
             archivedVoivodeship.setDate_archive(LocalDateTime.now());

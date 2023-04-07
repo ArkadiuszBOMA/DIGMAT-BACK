@@ -68,7 +68,7 @@ public class LessonStepsService {
 
     public void updateLesson(LessonStepDto step) {
         log.info("Zaktualizowałem dane dla id {}", step.id());
-        LessonStep updateStep = lessonStepRepository.findById(step.id())
+        LessonStep updateStep = lessonStepRepository.findOneById(step.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(step.id()));
         updateStep.setName(step.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateStep.setDate_modify(LocalDateTime.now());
@@ -76,7 +76,7 @@ public class LessonStepsService {
     }
 
     public void archiveLesson(Integer id) {
-        LessonStep archivedStep = lessonStepRepository.findById(id)
+        LessonStep archivedStep = lessonStepRepository.findOneById(id)
                 .orElseThrow(() -> new LessonStepNotFoundException(id));
         if(!archivedStep.getArchive()) {
             archivedStep.setDate_archive(LocalDateTime.now());

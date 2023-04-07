@@ -59,7 +59,7 @@ public class UserTypesService {
 
     public void updateUserType(UserTypeDto userType) {
         log.info("Zaktualizowałem dane dla id {}", userType.id());
-        UserType updateUserType = userTypeRepository.findById(userType.id())
+        UserType updateUserType = userTypeRepository.findOneById(userType.id())
                 .orElseThrow(() -> new UserTypeNotFoundException(userType.id()));
         updateUserType.setName(userType.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateUserType.setDate_modify(LocalDateTime.now());
@@ -67,7 +67,7 @@ public class UserTypesService {
     }
 
     public void archiveUserType(Integer id) {
-        UserType archivedUserType = userTypeRepository.findById(id)
+        UserType archivedUserType = userTypeRepository.findOneById(id)
                 .orElseThrow(() -> new UserTypeNotFoundException(id));
         if(!archivedUserType.getArchive()) {
             archivedUserType.setDate_archive(LocalDateTime.now());

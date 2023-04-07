@@ -61,7 +61,7 @@ public class TimeUnitService {
 
     public void updateTimeUnit(TimeUnitDto timeUnit) {
         log.info("Zaktualizowałem dane dla id {}", timeUnit.id());
-        TimeUnit updateTimeUnit = timeUnitRepository.findById(timeUnit.id())
+        TimeUnit updateTimeUnit = timeUnitRepository.findOneById(timeUnit.id())
                 .orElseThrow(() -> new TimeUnitNotFoundException(timeUnit.id()));
         updateTimeUnit.setName(timeUnit.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateTimeUnit.setDate_modify(LocalDateTime.now());
@@ -69,7 +69,7 @@ public class TimeUnitService {
     }
 
     public void archiveTimeUnit(Integer id) {
-        TimeUnit archivedTimeUnit = timeUnitRepository.findById(id)
+        TimeUnit archivedTimeUnit = timeUnitRepository.findOneById(id)
                 .orElseThrow(() -> new TimeUnitNotFoundException(id));
         if(!archivedTimeUnit.getArchive()) {
             archivedTimeUnit.setDate_archive(LocalDateTime.now());
