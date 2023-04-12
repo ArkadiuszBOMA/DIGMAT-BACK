@@ -5,6 +5,7 @@ import com.codecool.dogmate.advice.Exceptions.ProvinceNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.province.NewProvinceDto;
 import com.codecool.dogmate.dto.province.ProvinceDto;
+import com.codecool.dogmate.dto.province.UpdateProvinceDto;
 import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.entity.Voivodeship;
 import com.codecool.dogmate.mapper.ProvinceMapper;
@@ -68,11 +69,11 @@ public class ProvincesService {
         return provinceMapper.mapEntityToProvinceDto(savedEntity);
     }
 
-    public void updateProvince(ProvinceDto province) {
+    public void updateProvince(UpdateProvinceDto province) {
         log.info("Zaktualizowałem dane dla id {}", province.id());
         Province updateProvince = provinceRepository.findOneById(province.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(province.id()));
-        Voivodeship voivodeship = voivodeshipRepository.findOneByName(province.voivodeship())
+        Voivodeship voivodeship = voivodeshipRepository.findOneById(province.voivodeship())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(province.voivodeship()));
         updateProvince.setName(province.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateProvince.setVoivodeship(voivodeship);

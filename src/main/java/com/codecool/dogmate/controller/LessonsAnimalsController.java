@@ -2,10 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.lessonanimal.LessonAnimalDto;
 import com.codecool.dogmate.dto.lessonanimal.NewLessonAnimalDto;
-import com.codecool.dogmate.dto.lessons.LessonDto;
-import com.codecool.dogmate.dto.lessons.NewLessonDto;
 import com.codecool.dogmate.service.LessonsAnimalsService;
-import com.codecool.dogmate.service.LessonsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +26,7 @@ public class LessonsAnimalsController {
     public LessonAnimalDto getLessonAnimalByLessonId(@PathVariable Integer id) {
         return lessonsAnimalsService.getLessonAnimalById(id);
     }
-    @PostMapping
+    @PostMapping("/add")
     public LessonAnimalDto newLessonsAnimals(@RequestBody @Valid NewLessonAnimalDto lessonanimal) {
         return lessonsAnimalsService.createLessonAnimal(lessonanimal);
     }

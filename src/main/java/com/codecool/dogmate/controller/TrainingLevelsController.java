@@ -2,6 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.traininglevel.NewTrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.TrainingLevelDto;
+import com.codecool.dogmate.dto.traininglevel.UpdateTrainingLevelDto;
 import com.codecool.dogmate.service.TrainingLevelsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +33,18 @@ public class TrainingLevelsController {
         return trainingLevelsService.getTrainingLevelById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public TrainingLevelDto newTrainingLevel(@RequestBody @Valid NewTrainingLevelDto traininglevel) {
         return trainingLevelsService.createTrainingLevel(traininglevel);
+    }
+    @PutMapping("/update/{id}")
+    public void updateTrainingLevel(@RequestBody @Valid UpdateTrainingLevelDto trainingLevel) {
+        trainingLevelsService.updateTrainingLevel(trainingLevel);
+    }
+
+    @PutMapping("/archive/{id}")
+    public void archiveTimeUnit(@PathVariable Integer id) {
+        trainingLevelsService.archiveTrainingLevel(id);
     }
 }
 

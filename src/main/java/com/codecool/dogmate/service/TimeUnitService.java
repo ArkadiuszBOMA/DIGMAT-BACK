@@ -3,6 +3,7 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.advice.Exceptions.TimeUnitNotFoundException;
 import com.codecool.dogmate.dto.timeunit.NewTimeUnitDto;
 import com.codecool.dogmate.dto.timeunit.TimeUnitDto;
+import com.codecool.dogmate.dto.timeunit.UpdateTimeUnitDto;
 import com.codecool.dogmate.entity.TimeUnit;
 import com.codecool.dogmate.mapper.TimeUnitMapper;
 import com.codecool.dogmate.repository.TimeUnitRepository;
@@ -59,7 +60,7 @@ public class TimeUnitService {
         return timeUnitMapper.mapEntityToTimeUnitDto(savedEntity);
     }
 
-    public void updateTimeUnit(TimeUnitDto timeUnit) {
+    public void updateTimeUnit(UpdateTimeUnitDto timeUnit) {
         log.info("Zaktualizowałem dane dla id {}", timeUnit.id());
         TimeUnit updateTimeUnit = timeUnitRepository.findOneById(timeUnit.id())
                 .orElseThrow(() -> new TimeUnitNotFoundException(timeUnit.id()));

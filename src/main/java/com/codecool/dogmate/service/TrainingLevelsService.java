@@ -3,6 +3,7 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.advice.Exceptions.TrainingLevelNotFoundException;
 import com.codecool.dogmate.dto.traininglevel.NewTrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.TrainingLevelDto;
+import com.codecool.dogmate.dto.traininglevel.UpdateTrainingLevelDto;
 import com.codecool.dogmate.entity.TrainingLevel;
 import com.codecool.dogmate.mapper.TrainingLevelMapper;
 import com.codecool.dogmate.repository.TrainingLevelRepository;
@@ -59,7 +60,7 @@ public class TrainingLevelsService {
         return trainingLevelMapper.mapEntityToTrainingLevelDto(savedEntity);
     }
 
-    public void updateTrainingLevel(TrainingLevelDto trainingLevel) {
+    public void updateTrainingLevel(UpdateTrainingLevelDto trainingLevel) {
         log.info("Zaktualizowałem dane dla id {}", trainingLevel.id());
         TrainingLevel updateTrainingLeve = trainingLevelRepository.findOneById(trainingLevel.id())
                 .orElseThrow(() -> new TrainingLevelNotFoundException(trainingLevel.id()));

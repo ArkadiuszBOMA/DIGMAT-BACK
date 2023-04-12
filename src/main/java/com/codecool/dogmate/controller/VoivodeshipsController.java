@@ -36,7 +36,7 @@ public class VoivodeshipsController {
         return voivodeshipsService.getVoivodeshipByVoivodeshipId(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public VoivodeshipDto newVoivodeship(@RequestBody @Valid NewVoivodeshipDto voivodeship) {
         return voivodeshipsService.createVoivodeship(voivodeship);
     }

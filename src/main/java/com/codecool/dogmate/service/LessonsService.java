@@ -4,6 +4,7 @@ import com.codecool.dogmate.advice.Exceptions.LessonNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.TrainingLevelNotFoundException;
 import com.codecool.dogmate.dto.lessons.LessonDto;
 import com.codecool.dogmate.dto.lessons.NewLessonDto;
+import com.codecool.dogmate.dto.lessons.UpdateLessonDto;
 import com.codecool.dogmate.entity.Lesson;
 import com.codecool.dogmate.entity.TrainingLevel;
 import com.codecool.dogmate.mapper.LessonMapper;
@@ -63,7 +64,7 @@ public class LessonsService {
         return lessonMapper.mapEntityToLessonDto(savedEntity);
     }
 
-    public void updateLesson(LessonDto lesson) {
+    public void updateLesson(UpdateLessonDto lesson) {
         log.info("Zaktualizowałem dane dla id {}", lesson.id());
         Lesson updateLesson = lessonRepository.findOneById(lesson.id())
                 .orElseThrow(() -> new LessonNotFoundException(lesson.id()));

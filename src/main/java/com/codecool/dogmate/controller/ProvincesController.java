@@ -2,6 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.province.NewProvinceDto;
 import com.codecool.dogmate.dto.province.ProvinceDto;
+import com.codecool.dogmate.dto.province.UpdateProvinceDto;
 import com.codecool.dogmate.service.ProvincesService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,17 @@ public class ProvincesController {
         return provincesService.getProvinceById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ProvinceDto newProvince(@RequestBody @Valid NewProvinceDto province) {
         return provincesService.createProvince(province);
+    }
+    @PutMapping("/update/{id}")
+    public void updateProvince(@RequestBody @Valid UpdateProvinceDto province) {
+        provincesService.updateProvince(province);
+    }
+
+    @PutMapping("/archive/{id}")
+    public void archiveProvince(@PathVariable Integer id) {
+        provincesService.archiveProvince(id);
     }
 }

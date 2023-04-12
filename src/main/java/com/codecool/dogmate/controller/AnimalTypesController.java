@@ -24,23 +24,13 @@ public class AnimalTypesController {
     @GetMapping()
     public List<AnimalTypeDto> getAllAnimalTypes() {return animalTypesService.getAnimalType();}
     @GetMapping(params = {"page", "size", "sort"})
-    public List<AnimalTypeDto> getAllAnimalTypesWithPageable(Pageable pageable) {
-        return animalTypesService.getAnimalType(pageable);
-    }
+    public List<AnimalTypeDto> getAllAnimalTypesWithPageable(Pageable pageable) {return animalTypesService.getAnimalType(pageable);}
     @GetMapping("/{id}")
-    public AnimalTypeDto getAnimalTypeByAnimalTypeId(@PathVariable Integer id) {
-        return animalTypesService.getAnimalTypeById(id);
-    }
-    @PostMapping
-    public AnimalTypeDto newAnimalType(@RequestBody @Valid NewAnimalTypeDto animalType) {
-        return animalTypesService.createAnimalType(animalType);
-    }
-
+    public AnimalTypeDto getAnimalTypeByAnimalTypeId(@PathVariable Integer id) {return animalTypesService.getAnimalTypeById(id);}
+    @PostMapping("/add")
+    public AnimalTypeDto newAnimalType(@RequestBody @Valid NewAnimalTypeDto animalType) {return animalTypesService.createAnimalType(animalType);}
     @PutMapping("/update/{id}")
-    public void updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {
-        animalTypesService.updateAnimalType(animalType);
-    }
-
+    public void updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {animalTypesService.updateAnimalType(animalType);}
     @PutMapping("/archive/{id}")
     public void archiveAnimalType(@PathVariable Integer id) {
         animalTypesService.archiveAnimalType(id);

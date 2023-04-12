@@ -4,6 +4,7 @@ import com.codecool.dogmate.advice.Exceptions.LessonNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.LessonStepNotFoundException;
 import com.codecool.dogmate.dto.lessonsteps.LessonStepDto;
 import com.codecool.dogmate.dto.lessonsteps.NewLessonStepDto;
+import com.codecool.dogmate.dto.lessonsteps.UpdateLessonStepDto;
 import com.codecool.dogmate.entity.Lesson;
 import com.codecool.dogmate.entity.LessonStep;
 import com.codecool.dogmate.mapper.LessonStepMapper;
@@ -66,7 +67,7 @@ public class LessonStepsService {
         return lessonStepMapper.mapEntityToLessonStepDto(savedEntity);
     }
 
-    public void updateLesson(LessonStepDto step) {
+    public void updateLessonStep(UpdateLessonStepDto step) {
         log.info("Zaktualizowałem dane dla id {}", step.id());
         LessonStep updateStep = lessonStepRepository.findOneById(step.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(step.id()));
@@ -75,7 +76,7 @@ public class LessonStepsService {
         lessonStepRepository.save(updateStep);
     }
 
-    public void archiveLesson(Integer id) {
+    public void archiveLessonStep(Integer id) {
         LessonStep archivedStep = lessonStepRepository.findOneById(id)
                 .orElseThrow(() -> new LessonStepNotFoundException(id));
         if(!archivedStep.getArchive()) {

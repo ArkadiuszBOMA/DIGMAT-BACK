@@ -2,12 +2,10 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.dto.breed.NewBreedDto;
+import com.codecool.dogmate.dto.breed.UpdateBreedDto;
 import com.codecool.dogmate.service.BreedsService;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PostUpdate;
 import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
@@ -27,16 +25,12 @@ public class BreedsController {
     public BreedDto getBreedByBreedId(@PathVariable Integer id) {
         return breedsService.getBreedById(id);
     }
-    @PostMapping
+    @PostMapping("/add")
     public BreedDto newBreed(@RequestBody @Valid NewBreedDto breed) {
         return breedsService.createBreed(breed);
     }
     @PutMapping("/update/{id}")
-    public BreedDto updateBreed(@PathVariable @Valid NewBreedDto id) {
-        return breedsService.createBreed(id);
-    }
+    public void updateBreed(@RequestBody @Valid UpdateBreedDto breedDto){breedsService.updateBreed(breedDto);}
     @PutMapping("/archive/{id}")
-    public BreedDto archiveBreed(@PathVariable @Valid NewBreedDto id) {
-        return breedsService.createBreed(id);
-    }
+    public void archiveBreed(@PathVariable Integer id) {breedsService.archiveBreed(id);}
 }

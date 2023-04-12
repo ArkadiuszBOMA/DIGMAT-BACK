@@ -4,6 +4,7 @@ import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.ProvinceNotFoundException;
 import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.city.NewCityDto;
+import com.codecool.dogmate.dto.city.UpdateCityDto;
 import com.codecool.dogmate.entity.City;
 import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.mapper.CityMapper;
@@ -77,11 +78,11 @@ public class CitiesService {
         return cityMapper.mapEntityToCityDto(savedEntity);
     }
 
-    public void updateCity(CityDto city) {
+    public void updateCity(UpdateCityDto city) {
         log.info("Zaktualizowałem dane dla id {}", city.id());
         City updateCity = cityRepository.findOneById(city.id())
                 .orElseThrow(() -> new CityNotFoundException(city.id()));
-        Province province = provinceRepository.findOneByName(city.province())
+        Province province = provinceRepository.findOneById(city.province())
                 .orElseThrow(() -> new ProvinceNotFoundException(city.province()));
         updateCity.setName(city.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateCity.setProvince(province);

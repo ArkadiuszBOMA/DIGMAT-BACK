@@ -2,6 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.timeunit.NewTimeUnitDto;
 import com.codecool.dogmate.dto.timeunit.TimeUnitDto;
+import com.codecool.dogmate.dto.timeunit.UpdateTimeUnitDto;
 import com.codecool.dogmate.service.TimeUnitService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,19 @@ public class TimeUnitsController {
         return timeUnitService.getTimeUnitById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public TimeUnitDto newTimeUnit(@RequestBody @Valid NewTimeUnitDto timeunit) {
         return timeUnitService.createTimeUnit(timeunit);
+    }
+
+    @PutMapping("/update/{id}")
+    public void updateTimeUnit(@RequestBody @Valid UpdateTimeUnitDto timeUnit) {
+        timeUnitService.updateTimeUnit(timeUnit);
+    }
+
+    @PutMapping("/archive/{id}")
+    public void archiveTimeUnit(@PathVariable Integer id) {
+        timeUnitService.archiveTimeUnit(id);
     }
 }
 

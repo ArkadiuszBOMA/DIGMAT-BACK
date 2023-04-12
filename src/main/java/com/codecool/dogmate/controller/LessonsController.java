@@ -2,6 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.lessons.LessonDto;
 import com.codecool.dogmate.dto.lessons.NewLessonDto;
+import com.codecool.dogmate.dto.lessons.UpdateLessonDto;
 import com.codecool.dogmate.service.LessonsService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,16 @@ public class LessonsController {
     public LessonDto getLessonByLessonId(@PathVariable Integer id) {
         return lessonsService.getLessonById(id);
     }
-    @PostMapping
+    @PostMapping("/add")
     public LessonDto newLessons(@RequestBody @Valid NewLessonDto lesson) {
         return lessonsService.createLesson(lesson);
+    }
+    @PutMapping("/update/{id}")
+    public void updateLesson(@RequestBody @Valid UpdateLessonDto lesson) {
+        lessonsService.updateLesson(lesson);
+    }
+    @PutMapping("/archive/{id}")
+    public void archiveLesson(@PathVariable Integer id) {
+        lessonsService.archiveLesson(id);
     }
 }

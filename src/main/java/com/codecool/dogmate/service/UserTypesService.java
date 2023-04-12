@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
 import com.codecool.dogmate.dto.usertype.NewUserTypeDto;
+import com.codecool.dogmate.dto.usertype.UpdateUserTypeDto;
 import com.codecool.dogmate.dto.usertype.UserTypeDto;
 import com.codecool.dogmate.entity.UserType;
 import com.codecool.dogmate.mapper.UserTypeMapper;
@@ -57,7 +58,7 @@ public class UserTypesService {
         return userTypeMapper.mapEntityToUserTypeDto(savedEntity);
     }
 
-    public void updateUserType(UserTypeDto userType) {
+    public void updateUserType(UpdateUserTypeDto userType) {
         log.info("Zaktualizowałem dane dla id {}", userType.id());
         UserType updateUserType = userTypeRepository.findOneById(userType.id())
                 .orElseThrow(() -> new UserTypeNotFoundException(userType.id()));

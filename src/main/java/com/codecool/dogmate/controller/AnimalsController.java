@@ -36,18 +36,18 @@ public class AnimalsController {
         return animalsService.getAnimalById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public AnimalDto newAnimal(@RequestBody @Valid NewAnimalDto animal) {
         return animalsService.createAnimal(animal);
     }
 
     @PutMapping("/update/{id}")
-    public void updateVoivodeship(@RequestBody @Valid UpdateAnimalDto animal) {
+    public void updateAnimal(@RequestBody @Valid UpdateAnimalDto animal) {
         animalsService.updateAnimal(animal);
     }
 
     @PutMapping("/archive/{id}")
-    public void updateVoivodeship(@PathVariable Integer id) {
+    public void archiveAnimal(@PathVariable Integer id) {
         animalsService.archiveAnimal(id);
     }
 }
