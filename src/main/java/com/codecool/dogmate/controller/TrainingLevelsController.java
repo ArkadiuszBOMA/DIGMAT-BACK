@@ -43,8 +43,13 @@ public class TrainingLevelsController {
     }
 
     @PutMapping("/archive/{id}")
-    public void archiveTimeUnit(@PathVariable Integer id) {
+    public void archiveTrainingLevel(@PathVariable Integer id) {
         trainingLevelsService.archiveTrainingLevel(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteTrainingLevel(@PathVariable Integer id) {
+        trainingLevelsService.deleteTrainingLevelData(id);
     }
 }
 

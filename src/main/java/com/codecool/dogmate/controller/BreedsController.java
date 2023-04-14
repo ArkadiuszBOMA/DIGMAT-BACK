@@ -33,4 +33,8 @@ public class BreedsController {
     public void updateBreed(@RequestBody @Valid UpdateBreedDto breedDto){breedsService.updateBreed(breedDto);}
     @PutMapping("/archive/{id}")
     public void archiveBreed(@PathVariable Integer id) {breedsService.archiveBreed(id);}
+    @DeleteMapping("/delete/{id}")
+    public void deleteBreed(@PathVariable Integer id) {
+        breedsService.deleteBreedData(id);
+    }
 }

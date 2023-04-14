@@ -49,6 +49,11 @@ public class UserTypesController {
         userTypesService.archiveUserType(id);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteUserType(@PathVariable Integer id) {
+        userTypesService.deleteUserTypelData(id);
+    }
+
 
 
 }

@@ -30,4 +30,8 @@ public class LessonsAnimalsController {
     public LessonAnimalDto newLessonsAnimals(@RequestBody @Valid NewLessonAnimalDto lessonanimal) {
         return lessonsAnimalsService.createLessonAnimal(lessonanimal);
     }
+    @DeleteMapping("/delete/{id}")
+    public void deleteLessonsAnimals(@PathVariable Integer id) {
+        lessonsAnimalsService.deleteLessonAnimalData(id);
+    }
 }

@@ -35,4 +35,8 @@ public class AnimalTypesController {
     public void archiveAnimalType(@PathVariable Integer id) {
         animalTypesService.archiveAnimalType(id);
     }
+    @DeleteMapping("/delete/{id}")
+    public void deleteAnimalType(@PathVariable Integer id) {
+        animalTypesService.deleteAnimalTypeData(id);
+    }
 }

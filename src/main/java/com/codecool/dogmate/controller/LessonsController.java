@@ -39,4 +39,8 @@ public class LessonsController {
     public void archiveLesson(@PathVariable Integer id) {
         lessonsService.archiveLesson(id);
     }
+    @DeleteMapping("/delete/{id}")
+    public void deleteLesson(@PathVariable Integer id) {
+        lessonsService.deleteLessonData(id);
+    }
 }

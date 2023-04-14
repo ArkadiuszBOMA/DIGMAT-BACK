@@ -45,5 +45,9 @@ public class CareAnnouncementTypesController {
     public void archiveCareAnnouncementType(@PathVariable Integer id) {
         careAnnouncementTypeService.archiveCareAnnouncementType(id);
     }
+    @DeleteMapping("/delete/{id}")
+    public void deleteCareAnnouncementType(@PathVariable Integer id) {
+        careAnnouncementTypeService.deleteCareAnnouncementTypeData(id);
+    }
 }
 

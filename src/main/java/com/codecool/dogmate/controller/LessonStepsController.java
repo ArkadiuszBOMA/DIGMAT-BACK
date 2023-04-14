@@ -40,4 +40,9 @@ public class LessonStepsController {
     public void archiveLessonStep(@PathVariable Integer id) {
         lessonStepService.archiveLessonStep(id);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteLessonStep(@PathVariable Integer id) {
+        lessonStepService.deleteLessonStepData(id);
+    }
 }

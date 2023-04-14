@@ -48,5 +48,10 @@ public class TimeUnitsController {
     public void archiveTimeUnit(@PathVariable Integer id) {
         timeUnitService.archiveTimeUnit(id);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteTimeUnit(@PathVariable Integer id) {
+        timeUnitService.deleteTimeUnitData(id);
+    }
 }
 

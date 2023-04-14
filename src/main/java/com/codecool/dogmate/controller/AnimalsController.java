@@ -50,5 +50,10 @@ public class AnimalsController {
     public void archiveAnimal(@PathVariable Integer id) {
         animalsService.archiveAnimal(id);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteAnimal(@PathVariable Integer id) {
+        animalsService.deleteAnimalData(id);
+    }
 }
 

@@ -46,4 +46,9 @@ public class ProvincesController {
 
     @PutMapping("/archive/{id}")
     public void archiveProvince(@PathVariable Integer id) {provincesService.archiveProvince(id);}
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteProvince(@PathVariable Integer id) {
+        provincesService.deleteProvinceData(id);
+    }
 }

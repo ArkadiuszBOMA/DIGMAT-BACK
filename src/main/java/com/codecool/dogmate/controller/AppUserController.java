@@ -67,5 +67,10 @@ public class AppUserController {
         return appUserService.login(appUserLoginDto.email(), appUserLoginDto.password());
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        appUserService.deleteAppUserData(id);
+    }
+
 }
 
