@@ -50,4 +50,9 @@ public class VoivodeshipsController {
     public void archiveVoivodeship(@PathVariable Integer id) {
         voivodeshipsService.archiveVoivodeshipData(id);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteVoivodeship(@PathVariable Integer id) {
+        voivodeshipsService.deleteVoivodeshipData(id);
+    }
 }

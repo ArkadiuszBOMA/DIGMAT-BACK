@@ -23,12 +23,10 @@ public class CitiesController {
     public List<CityDto> getAllCitiesWithPageable(Pageable pageable) {
         return citiesService.getCities(pageable);
     }
-
     @GetMapping("/{id}")
     public CityDto getCityByCityId(@PathVariable Integer id) {
         return citiesService.getCityById(id);
     }
-
     @PostMapping("/add")
     public CityDto newCity(@RequestBody @Valid NewCityDto city) {
         return citiesService.createCity(city);
@@ -37,9 +35,12 @@ public class CitiesController {
     public void updateCity(@RequestBody @Valid UpdateCityDto city) {
         citiesService.updateCity(city);
     }
-
     @PutMapping("/archive/{id}")
     public void archiveCity(@PathVariable Integer id) {
         citiesService.archiveCity(id);
+    }
+    @DeleteMapping("/delete/{id}")
+    public void deleteCity(@PathVariable Integer id) {
+        citiesService.deleteCityData(id);
     }
 }

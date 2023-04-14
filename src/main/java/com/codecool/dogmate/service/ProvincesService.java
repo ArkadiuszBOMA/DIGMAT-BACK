@@ -76,13 +76,14 @@ public class ProvincesService {
         Voivodeship voivodeship = voivodeshipRepository.findOneById(province.voivodeship())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(province.voivodeship()));
         updateProvince.setName(province.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateProvince.setTerytId(province.terytId());
         updateProvince.setVoivodeship(voivodeship);
         updateProvince.setDate_modify(LocalDateTime.now());
         provinceRepository.save(updateProvince);
     }
 
     public void archiveProvince(Integer id) {
-        Province archivedProvince = provinceRepository.findById(id)
+        Province archivedProvince = provinceRepository.findOneById(id)
                 .orElseThrow(() -> new ProvinceNotFoundException(id));
         if(!archivedProvince.getArchive()) {
             archivedProvince.setDate_archive(LocalDateTime.now());

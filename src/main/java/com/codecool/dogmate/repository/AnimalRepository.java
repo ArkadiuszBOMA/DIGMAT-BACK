@@ -3,6 +3,7 @@ package com.codecool.dogmate.repository;
 import com.codecool.dogmate.entity.Animal;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +35,8 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
     Optional<Animal> findOneByBirthYear(Integer id);
     @Query("SELECT DISTINCT a FROM Animal a WHERE a.gender = :name")
     Optional<Animal> findOneByGender(String name);
+    @Modifying
+    @Query("DELETE FROM Animal a WHERE a.id = :id")
+    void deleteById(Integer id);
 
 }

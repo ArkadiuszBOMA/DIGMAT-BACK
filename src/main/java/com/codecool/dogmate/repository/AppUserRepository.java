@@ -3,6 +3,7 @@ package com.codecool.dogmate.repository;
 import com.codecool.dogmate.entity.AppUser;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +32,7 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     List<AppUser> findAllByUserTypeId(Integer userTypeId);
     @Query("SELECT DISTINCT a FROM AppUser a WHERE a.userType.name = :userType")
     List<AppUser> findAllByUserTypeName(String userType);
+    @Modifying
+    @Query("DELETE FROM AppUser a WHERE a.id = :id")
+    void deleteById(Integer id);
 }

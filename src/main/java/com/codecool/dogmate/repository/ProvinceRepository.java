@@ -1,9 +1,9 @@
 package com.codecool.dogmate.repository;
 
 import com.codecool.dogmate.entity.Province;
-import com.codecool.dogmate.entity.TimeUnit;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +21,8 @@ public interface ProvinceRepository extends JpaRepository<Province, Integer> {
     Optional<Province> findOneById(Integer id);
     @Query("SELECT DISTINCT p FROM Province p WHERE p.name = :name")
     Optional<Province> findOneByName(String name);
+    @Modifying
+    @Query("DELETE FROM Province p WHERE p.id = :id")
+    void deleteById(Integer id);
 
 }

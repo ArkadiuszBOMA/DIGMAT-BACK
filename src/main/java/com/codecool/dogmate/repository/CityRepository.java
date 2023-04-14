@@ -1,9 +1,9 @@
 package com.codecool.dogmate.repository;
 
 import com.codecool.dogmate.entity.City;
-import com.codecool.dogmate.entity.Lesson;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +24,9 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     Optional<City> findOneByProvinceId(Integer id);
     @Query("SELECT DISTINCT c FROM City c WHERE c.province.name = :name")
     Optional<City> findOneByProvinceName(String name);
+    @Modifying
+    @Query("DELETE FROM City c WHERE c.id = :id")
+    void deleteById(Integer id);
 
 
 

@@ -2,6 +2,7 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.ProvinceNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
 import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.city.NewCityDto;
 import com.codecool.dogmate.dto.city.UpdateCityDto;
@@ -101,5 +102,12 @@ public class CitiesService {
             log.info("Dane już były archiwizowane;");
         }
         cityRepository.save(archivedCity);
+    }
+
+    public void deleteCityData(Integer id) {
+        City deletedCity = cityRepository.findOneById(id)
+                .orElseThrow(() -> new VoivodeshipNotFoundException(id));
+        log.info("Usunąłeś miasto o id {}", id);
+        cityRepository.deleteById(deletedCity.getId());
     }
 }

@@ -45,7 +45,5 @@ public class ProvincesController {
     }
 
     @PutMapping("/archive/{id}")
-    public void archiveProvince(@PathVariable Integer id) {
-        provincesService.archiveProvince(id);
-    }
+    public void archiveProvince(@PathVariable Integer id) {provincesService.archiveProvince(id);}
 }

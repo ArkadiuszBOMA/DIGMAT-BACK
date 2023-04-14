@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TimeZone;
 
 @Entity
 @Table(name = "provinces")
@@ -25,17 +24,17 @@ public class Province {
 
 
     @EqualsAndHashCode.Include
+    @NotNull
     @Column(name = "teryt_id", unique = true)
     private String terytId;
 
     @Column(name = "name")
-    @NotNull
+    @Size(min = 5, max = 50)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "voivodeship_id")
     @NotNull
-    @Size(min = 5, max = 50)
     private Voivodeship voivodeship;
 
     @Column(name = "archive")

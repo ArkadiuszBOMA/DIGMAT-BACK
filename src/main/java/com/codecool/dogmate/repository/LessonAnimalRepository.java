@@ -1,10 +1,9 @@
 package com.codecool.dogmate.repository;
 
-import com.codecool.dogmate.entity.Lesson;
-import com.codecool.dogmate.entity.LessonStep;
 import com.codecool.dogmate.entity.LessonsAnimal;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +26,8 @@ public interface LessonAnimalRepository extends JpaRepository<LessonsAnimal, Int
     Optional<LessonsAnimal> findOneByAnimalName(String animalName);
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.lesson.name = :lessonName")
     Optional<LessonsAnimal> findOneByLessonName(Integer lessonName);
+    @Modifying
+    @Query("DELETE FROM LessonsAnimal a WHERE a.id = :id")
+    void deleteById(Integer id);
 
 }

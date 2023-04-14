@@ -1,9 +1,9 @@
 package com.codecool.dogmate.repository;
 
 import com.codecool.dogmate.entity.TimeUnit;
-import com.codecool.dogmate.entity.UserType;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +21,8 @@ public interface TimeUnitRepository extends JpaRepository<TimeUnit, Integer> {
     Optional<TimeUnit> findOneById(Integer id);
     @Query("SELECT DISTINCT a FROM TimeUnit a WHERE a.name = :name")
     Optional<TimeUnit> findOneByName(String name);
+    @Modifying
+    @Query("DELETE FROM TimeUnit a WHERE a.id = :id")
+    void deleteById(Integer id);
 
 }

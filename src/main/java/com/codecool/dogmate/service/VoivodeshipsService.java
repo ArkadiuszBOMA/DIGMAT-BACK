@@ -80,5 +80,12 @@ public class VoivodeshipsService {
         }
         voivodeshipRepository.save(archivedVoivodeship);
     }
+
+    public void deleteVoivodeshipData(Integer id) {
+        Voivodeship deletedVoivodeship = voivodeshipRepository.findOneById(id)
+                .orElseThrow(() -> new VoivodeshipNotFoundException(id));
+        log.info("Usunąłeś województwo o id {}", id);
+        voivodeshipRepository.deleteById(deletedVoivodeship.getId());
+    }
 }
 
