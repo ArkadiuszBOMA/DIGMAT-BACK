@@ -1,5 +1,6 @@
 package com.codecool.dogmate.service;
 
+import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
 import com.codecool.dogmate.dto.breed.BreedDto;
@@ -86,5 +87,11 @@ public class BreedsService {
             log.info("Dane już były archiwizowane;");
         }
         breedRepository.save(archivedBreed);
+    }
+    public void deleteBreedData(Integer id) {
+        Breed deletedBreed = breedRepository.findOneById(id)
+                .orElseThrow(() -> new AnimalNotFoundException(id));
+        log.info("Usunąłeś rasę o id {}", id);
+        breedRepository.deleteById(deletedBreed.getId());
     }
 }

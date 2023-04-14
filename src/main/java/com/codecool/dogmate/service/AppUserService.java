@@ -1,6 +1,9 @@
 package com.codecool.dogmate.service;
 
-import com.codecool.dogmate.advice.Exceptions.*;
+import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.UserTypeNotFoundException;
 import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
 import com.codecool.dogmate.dto.appuser.UpdateAppUserDto;
@@ -122,4 +125,12 @@ public class AppUserService {
         }
         appUserRepository.save(archivedAppUser);
     }
+
+    public void deleteAppUserData(Integer id) {
+        AppUser deletedAppUser = appUserRepository.findOneById(id)
+                .orElseThrow(() -> new AnimalTypeNotFoundException(id));
+        log.info("Usunąłeś użytkownika o id {}", id);
+        appUserRepository.deleteById(deletedAppUser.getId());
+    }
+
 }

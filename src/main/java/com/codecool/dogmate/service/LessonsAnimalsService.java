@@ -12,12 +12,14 @@ import com.codecool.dogmate.mapper.LessonAnimalMapper;
 import com.codecool.dogmate.repository.AnimalRepository;
 import com.codecool.dogmate.repository.LessonAnimalRepository;
 import com.codecool.dogmate.repository.LessonRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
 
+@Slf4j
 @Service
 public class LessonsAnimalsService {
 
@@ -67,5 +69,11 @@ public class LessonsAnimalsService {
         LessonsAnimal entity = lessonAnimalMapper.mapNewLessonAnimalDtoToEntity(animal, lesson);
         LessonsAnimal savedEntity = lessonAnimalRepository.save(entity);
         return lessonAnimalMapper.mapEntityToLessonAnimalDto(savedEntity);
+    }
+    public void deleteLessonAnimalData(Integer id) {
+        LessonsAnimal deletedLessonsAnimal = lessonAnimalRepository.findOneById(id)
+                .orElseThrow(() -> new LessonAnimalNotFoundException(id));
+        log.info("Usunąłeś zwierzaka o id {}", id);
+        lessonAnimalRepository.deleteById(deletedLessonsAnimal.getId());
     }
 }

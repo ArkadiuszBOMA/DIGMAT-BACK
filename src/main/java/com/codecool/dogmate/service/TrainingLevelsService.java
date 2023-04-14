@@ -81,4 +81,11 @@ public class TrainingLevelsService {
         }
         trainingLevelRepository.save(archivedTrainingLevel);
     }
+
+    public void deleteTrainingLevelData(Integer id) {
+        TrainingLevel deletedTrainingLevel = trainingLevelRepository.findOneById(id)
+                .orElseThrow(() -> new TrainingLevelNotFoundException(id));
+        log.info("Usunąłeś poziom trudności o id {}", id);
+        trainingLevelRepository.deleteById(deletedTrainingLevel.getId());
+    }
 }

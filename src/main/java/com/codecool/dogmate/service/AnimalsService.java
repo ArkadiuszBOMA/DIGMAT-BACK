@@ -1,16 +1,10 @@
 package com.codecool.dogmate.service;
 
-import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
-import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.*;
 import com.codecool.dogmate.dto.animal.AnimalDto;
 import com.codecool.dogmate.dto.animal.NewAnimalDto;
 import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
-import com.codecool.dogmate.entity.Animal;
-import com.codecool.dogmate.entity.AnimalType;
-import com.codecool.dogmate.entity.AppUser;
-import com.codecool.dogmate.entity.Breed;
+import com.codecool.dogmate.entity.*;
 import com.codecool.dogmate.mapper.AnimalMapper;
 import com.codecool.dogmate.repository.AnimalRepository;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
@@ -121,5 +115,12 @@ public class AnimalsService {
             log.info("Dane już były archiwizowane;");
         }
         animalRepository.save(archivedAnimal);
+    }
+
+    public void deleteAnimalData(Integer id) {
+        Animal deletedAnimal = animalRepository.findOneById(id)
+                .orElseThrow(() -> new AnimalNotFoundException(id));
+        log.info("Usunąłeś zwierzaka o id {}", id);
+        animalRepository.deleteById(deletedAnimal.getId());
     }
 }

@@ -85,4 +85,11 @@ public class LessonsService {
         }
         lessonRepository.save(archivedLesson);
     }
+
+    public void deleteLessonData(Integer id) {
+        Lesson deletedLesson = lessonRepository.findOneById(id)
+                .orElseThrow(() -> new LessonNotFoundException(id));
+        log.info("Usunąłeś lekcję o id {}", id);
+        lessonRepository.deleteById(deletedLesson.getId());
+    }
 }

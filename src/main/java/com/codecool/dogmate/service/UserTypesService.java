@@ -79,4 +79,11 @@ public class UserTypesService {
         }
         userTypeRepository.save(archivedUserType);
     }
+
+    public void deleteUserTypelData(Integer id) {
+        UserType deletedUserType = userTypeRepository.findOneById(id)
+                .orElseThrow(() -> new UserTypeNotFoundException(id));
+        log.info("Usunąłeś typ użytkownika o id {}", id);
+        userTypeRepository.deleteById(deletedUserType.getId());
+    }
 }

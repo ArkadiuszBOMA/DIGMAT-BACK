@@ -88,4 +88,11 @@ public class LessonStepsService {
         }
         lessonStepRepository.save(archivedStep);
     }
+
+    public void deleteLessonStepData(Integer id) {
+        LessonStep deletedLessonStep = lessonStepRepository.findOneById(id)
+                .orElseThrow(() -> new LessonStepNotFoundException(id));
+        log.info("Usunąłeś krok o id {}", id);
+        lessonStepRepository.deleteById(deletedLessonStep.getId());
+    }
 }

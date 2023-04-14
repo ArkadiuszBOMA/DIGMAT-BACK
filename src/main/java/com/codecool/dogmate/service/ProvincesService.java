@@ -95,6 +95,13 @@ public class ProvincesService {
         provinceRepository.save(archivedProvince);
     }
 
+    public void deleteProvinceData(Integer id) {
+        Province deletedProvince = provinceRepository.findOneById(id)
+                .orElseThrow(() -> new ProvinceNotFoundException(id));
+        log.info("Usunąłeś powiat o id {}", id);
+        provinceRepository.deleteById(deletedProvince.getId());
+    }
+
 
 }
 

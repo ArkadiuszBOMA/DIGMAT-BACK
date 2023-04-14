@@ -7,9 +7,9 @@ import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
 import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.mapper.AnimalTypeMapper;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -82,5 +82,12 @@ public class AnimalTypesService {
             log.info("Dane już były archiwizowane;");
         }
         animalTypeRepository.save(archivedAnimalType);
+    }
+
+    public void deleteAnimalTypeData(Integer id) {
+        AnimalType deletedAnimalType = animalTypeRepository.findOneById(id)
+                .orElseThrow(() -> new AnimalTypeNotFoundException(id));
+        log.info("Usunąłeś typ zwierzaków o id {}", id);
+        animalTypeRepository.deleteById(deletedAnimalType.getId());
     }
 }

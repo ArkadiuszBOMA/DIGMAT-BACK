@@ -80,4 +80,10 @@ public class CareAnnouncementTypeService {
         }
         careAnnouncementTypeRepository.save(archivedCareAnnouncementTypeData);
     }
+    public void deleteCareAnnouncementTypeData(Integer id) {
+        CareAnnouncementType deletedCareAnnouncementType = careAnnouncementTypeRepository.findOneById(id)
+                .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(id));
+        log.info("Usunąłeś rodzaj opieki o id {}", id);
+        careAnnouncementTypeRepository.deleteById(deletedCareAnnouncementType.getId());
+    }
 }
