@@ -68,7 +68,12 @@ public class LessonsService {
         log.info("Zaktualizowałem dane dla id {}", lesson.id());
         Lesson updateLesson = lessonRepository.findOneById(lesson.id())
                 .orElseThrow(() -> new LessonNotFoundException(lesson.id()));
+        TrainingLevel trainingLevel = trainingLevelRepository.findOneById(lesson.trainingLevel())
+                .orElseThrow(() -> new TrainingLevelNotFoundException(lesson.trainingLevel()));
         updateLesson.setName(lesson.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateLesson.setDescription(lesson.description().trim().replaceAll("( )+", " "));
+        updateLesson.setTrainingLevel(trainingLevel);
+        updateLesson.setImageLocation(lesson.imageLocation());
         updateLesson.setDate_modify(LocalDateTime.now());
         lessonRepository.save(updateLesson);
     }

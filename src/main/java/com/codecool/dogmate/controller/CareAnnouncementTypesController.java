@@ -2,6 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.careannouncmenttype.CareAnnouncementTypeDto;
 import com.codecool.dogmate.dto.careannouncmenttype.NewCareAnnouncementTypeDto;
+import com.codecool.dogmate.dto.careannouncmenttype.UpdateCareAnnouncementTypeDto;
 import com.codecool.dogmate.service.CareAnnouncementTypeService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +39,8 @@ public class CareAnnouncementTypesController {
         return careAnnouncementTypeService.createCareAnnouncementType(careannouncementtype);
     }
     @PutMapping("/update/{id}")
-    public void updateCareAnnouncementType(@PathVariable @Valid CareAnnouncementTypeDto id) {
-        careAnnouncementTypeService.updateCareAnnouncementType(id);
+    public void updateCareAnnouncementType(@RequestBody @Valid UpdateCareAnnouncementTypeDto careAnnouncementTypeDto) {
+        careAnnouncementTypeService.updateCareAnnouncementType(careAnnouncementTypeDto);
     }
     @PutMapping("/archive/{id}")
     public void archiveCareAnnouncementType(@PathVariable Integer id) {

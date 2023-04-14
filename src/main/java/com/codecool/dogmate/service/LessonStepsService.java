@@ -71,8 +71,13 @@ public class LessonStepsService {
         log.info("Zaktualizowałem dane dla id {}", step.id());
         LessonStep updateStep = lessonStepRepository.findOneById(step.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(step.id()));
+        Lesson lesson = lessonRepository.findOneById(step.lesson())
+                .orElseThrow(() -> new LessonNotFoundException(step.lesson()));
         updateStep.setName(step.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updateStep.setDescription(step.description().trim().replaceAll("( )+", " "));
+        updateStep.setStepNumber(step.stepNumber());
         updateStep.setDate_modify(LocalDateTime.now());
+        updateStep.setLesson(lesson);
         lessonStepRepository.save(updateStep);
     }
 

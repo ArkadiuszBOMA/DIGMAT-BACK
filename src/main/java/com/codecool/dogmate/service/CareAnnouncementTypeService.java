@@ -3,6 +3,7 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.advice.Exceptions.CareTypeAnnouncementNotFoundException;
 import com.codecool.dogmate.dto.careannouncmenttype.CareAnnouncementTypeDto;
 import com.codecool.dogmate.dto.careannouncmenttype.NewCareAnnouncementTypeDto;
+import com.codecool.dogmate.dto.careannouncmenttype.UpdateCareAnnouncementTypeDto;
 import com.codecool.dogmate.entity.CareAnnouncementType;
 import com.codecool.dogmate.mapper.CareAnnouncementTypeMapper;
 import com.codecool.dogmate.repository.CareAnnouncementTypeRepository;
@@ -59,7 +60,7 @@ public class CareAnnouncementTypeService {
         return careAnnouncementTypeMapper.mapEntityToCareAnnouncementTypeDto(savedEntity);
     }
 
-    public void updateCareAnnouncementType(CareAnnouncementTypeDto careAnnouncementType) {
+    public void updateCareAnnouncementType(UpdateCareAnnouncementTypeDto careAnnouncementType) {
         log.info("Zaktualizowałem dane dla id {}", careAnnouncementType.id());
         CareAnnouncementType updateCareAnnouncementTypeData = careAnnouncementTypeRepository.findOneById(careAnnouncementType.id())
                 .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(careAnnouncementType.id()));
