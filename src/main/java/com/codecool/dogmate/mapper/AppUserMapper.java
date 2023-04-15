@@ -43,10 +43,7 @@ public class AppUserMapper {
                 entity.getIsLocked(),
                 entity.getIsBanned(),
                 entity.getBanExpiration(),
-                entity.getIsActive(),
-                entity.getAnimals().stream()
-                        .map(animalMapper::mapEntityToAnimalDto)
-                        .toList()
+                entity.getIsActive()
 
         );
     }

@@ -1,13 +1,10 @@
 package com.codecool.dogmate.dto.appuser;
 
 
-import com.codecool.dogmate.dto.animal.AnimalDto;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.OffsetDateTime;
-import java.util.List;
 
 public record UpdateAppUserDto(
         @NotNull
@@ -26,8 +23,7 @@ public record UpdateAppUserDto(
         Boolean isLocked,
         Boolean isBanned,
         OffsetDateTime banExpiration,
-        Boolean isActive,
-        List<AnimalDto> animals
+        Boolean isActive
 ){
     public void setPassword(String encodedPassword) {
     }

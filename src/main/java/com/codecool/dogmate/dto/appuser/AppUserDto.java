@@ -1,10 +1,7 @@
 package com.codecool.dogmate.dto.appuser;
 
 
-import com.codecool.dogmate.dto.animal.AnimalDto;
-
 import java.time.OffsetDateTime;
-import java.util.List;
 
 public record AppUserDto(
 
@@ -20,7 +17,6 @@ public record AppUserDto(
         Boolean isLocked,
         Boolean isBanned,
         OffsetDateTime banExpiration,
-        Boolean isActive,
-        List<AnimalDto> animals
+        Boolean isActive
 ){
 }

@@ -35,10 +35,7 @@ public class LessonMapper {
                 entity.getDate_create(),
                 entity.getDate_modify(),
                 entity.getDate_archive(),
-                entity.getArchive(),
-                entity.getLessonSteps().stream()
-                        .map(lessonStepMapper::mapEntityToLessonStepDto)
-                        .toList()
+                entity.getArchive()
 
         );
     }

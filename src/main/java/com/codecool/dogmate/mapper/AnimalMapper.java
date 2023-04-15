@@ -45,10 +45,7 @@ public class AnimalMapper {
                 entity.getDate_create(),
                 entity.getDate_modify(),
                 entity.getDate_archive(),
-                entity.getArchive(),
-                entity.getLessonsAnimals().stream()
-                        .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
-                        .toList()
+                entity.getArchive()
         );
     }
 }
