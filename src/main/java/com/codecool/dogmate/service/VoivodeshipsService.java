@@ -1,11 +1,14 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
+import com.codecool.dogmate.dto.province.ProvinceDto;
 import com.codecool.dogmate.dto.voivodeship.NewVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.VoivodeshipDto;
 import com.codecool.dogmate.entity.Voivodeship;
+import com.codecool.dogmate.mapper.ProvinceMapper;
 import com.codecool.dogmate.mapper.VoivodeshipMapper;
+import com.codecool.dogmate.repository.ProvinceRepository;
 import com.codecool.dogmate.repository.VoivodeshipRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -18,11 +21,15 @@ import java.util.List;
 @Service
 public class VoivodeshipsService {
     private final VoivodeshipRepository voivodeshipRepository;
+    private final ProvinceRepository provinceRepository;
     private final VoivodeshipMapper voivodeshipMapper;
+    private final ProvinceMapper provinceMapper;
 
-    public VoivodeshipsService(VoivodeshipRepository voivodeshipRepository, VoivodeshipMapper voivodeshipMapper) {
+    public VoivodeshipsService(VoivodeshipRepository voivodeshipRepository, ProvinceRepository provinceRepository, VoivodeshipMapper voivodeshipMapper, ProvinceMapper provinceMapper) {
         this.voivodeshipRepository = voivodeshipRepository;
+        this.provinceRepository = provinceRepository;
         this.voivodeshipMapper = voivodeshipMapper;
+        this.provinceMapper = provinceMapper;
     }
 
     public List<VoivodeshipDto> getVoivodeships() {
@@ -86,6 +93,13 @@ public class VoivodeshipsService {
                 .orElseThrow(() -> new VoivodeshipNotFoundException(id));
         log.info("Usunąłeś województwo o id {}", id);
         voivodeshipRepository.deleteById(deletedVoivodeship.getId());
+    }
+
+    public List<ProvinceDto> getProvincesForThisVoivodeshipById(Integer id) {
+        return provinceRepository.findAllByVoivodeshipId(id)
+                .stream()
+                .map(provinceMapper::mapEntityToProvinceDto)
+                .toList();
     }
 }
 

@@ -11,6 +11,7 @@ import com.codecool.dogmate.entity.Breed;
 import com.codecool.dogmate.mapper.AnimalTypeMapper;
 import com.codecool.dogmate.mapper.BreedMapper;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
+import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.repository.BreedRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -23,15 +24,19 @@ import java.util.List;
 @Service
 public class BreedsService {
     private final BreedRepository breedRepository;
-    private final BreedMapper breedMapper;
     private final AnimalTypeRepository animalTypeRepository;
-    private final AnimalTypeMapper animalTypeMapper;
 
-    public BreedsService(BreedRepository breedRepository, BreedMapper breedMapper, AnimalTypeRepository animalTypeRepository, AnimalTypeMapper animalTypeMapper) {
+    private final AppUserRepository appUserRepository;
+
+    private final BreedMapper breedMapper;
+
+
+
+    public BreedsService(BreedRepository breedRepository, BreedMapper breedMapper, AnimalTypeRepository animalTypeRepository, AnimalTypeMapper animalTypeMapper, AppUserRepository appUserRepository) {
         this.breedRepository = breedRepository;
         this.breedMapper = breedMapper;
         this.animalTypeRepository = animalTypeRepository;
-        this.animalTypeMapper = animalTypeMapper;
+        this.appUserRepository = appUserRepository;
     }
 
 
@@ -94,4 +99,5 @@ public class BreedsService {
         log.info("Usunąłeś rasę o id {}", id);
         breedRepository.deleteById(deletedBreed.getId());
     }
+
 }

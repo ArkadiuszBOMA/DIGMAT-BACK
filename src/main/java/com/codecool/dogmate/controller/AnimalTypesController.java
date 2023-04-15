@@ -3,6 +3,7 @@ package com.codecool.dogmate.controller;
 import com.codecool.dogmate.dto.animaltype.AnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.NewAnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
+import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.service.AnimalTypesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -27,15 +28,19 @@ public class AnimalTypesController {
     public List<AnimalTypeDto> getAllAnimalTypesWithPageable(Pageable pageable) {return animalTypesService.getAnimalType(pageable);}
     @GetMapping("/{id}")
     public AnimalTypeDto getAnimalTypeByAnimalTypeId(@PathVariable Integer id) {return animalTypesService.getAnimalTypeById(id);}
-    @PostMapping("/add")
+    @GetMapping(value="/{id}", params={"breeds"})
+    public List<BreedDto> getBreedForThisAnimalTypeById(@PathVariable Integer id) {
+        return animalTypesService.getBreedForThisAnimalTypeById(id);
+    }
+    @PostMapping()
     public AnimalTypeDto newAnimalType(@RequestBody @Valid NewAnimalTypeDto animalType) {return animalTypesService.createAnimalType(animalType);}
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {animalTypesService.updateAnimalType(animalType);}
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveAnimalType(@PathVariable Integer id) {
         animalTypesService.archiveAnimalType(id);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAnimalType(@PathVariable Integer id) {
         animalTypesService.deleteAnimalTypeData(id);
     }

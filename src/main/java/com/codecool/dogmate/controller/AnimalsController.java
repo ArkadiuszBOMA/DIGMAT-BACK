@@ -36,22 +36,22 @@ public class AnimalsController {
         return animalsService.getAnimalById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public AnimalDto newAnimal(@RequestBody @Valid NewAnimalDto animal) {
         return animalsService.createAnimal(animal);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateAnimal(@RequestBody @Valid UpdateAnimalDto animal) {
         animalsService.updateAnimal(animal);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveAnimal(@PathVariable Integer id) {
         animalsService.archiveAnimal(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAnimal(@PathVariable Integer id) {
         animalsService.deleteAnimalData(id);
     }

@@ -19,11 +19,11 @@ public interface LessonAnimalRepository extends JpaRepository<LessonsAnimal, Int
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.id = :id")
     Optional<LessonsAnimal> findOneById(Integer id);
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.animal.id = :animalId")
-    Optional<LessonsAnimal> findOneByAnimalId(Integer animalId);
+    List<LessonsAnimal> findAllByAnimalId(Integer animalId);
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.lesson.id = :lessonId")
     Optional<LessonsAnimal> findOneByLessonId(Integer lessonId);
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.animal.name = :animalName")
-    Optional<LessonsAnimal> findOneByAnimalName(String animalName);
+    List<LessonsAnimal> findAllByAnimalName(String animalName);
     @Query("SELECT DISTINCT a FROM LessonsAnimal a WHERE a.lesson.name = :lessonName")
     Optional<LessonsAnimal> findOneByLessonName(Integer lessonName);
     @Modifying

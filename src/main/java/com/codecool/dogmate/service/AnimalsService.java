@@ -1,15 +1,16 @@
 package com.codecool.dogmate.service;
 
-import com.codecool.dogmate.advice.Exceptions.*;
+import com.codecool.dogmate.advice.Exceptions.AnimalNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.BreadNotFoundException;
 import com.codecool.dogmate.dto.animal.AnimalDto;
 import com.codecool.dogmate.dto.animal.NewAnimalDto;
 import com.codecool.dogmate.dto.animal.UpdateAnimalDto;
 import com.codecool.dogmate.entity.*;
 import com.codecool.dogmate.mapper.AnimalMapper;
-import com.codecool.dogmate.repository.AnimalRepository;
-import com.codecool.dogmate.repository.AnimalTypeRepository;
-import com.codecool.dogmate.repository.AppUserRepository;
-import com.codecool.dogmate.repository.BreedRepository;
+import com.codecool.dogmate.mapper.LessonAnimalMapper;
+import com.codecool.dogmate.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,15 +27,19 @@ public class AnimalsService {
     private final AnimalTypeRepository animalTypeRepository;
     private final BreedRepository breedRepository;
     private final AppUserRepository appUserRepository;
+    private final LessonAnimalRepository lessonAnimalRepository;
 
     private final AnimalMapper animalMapper;
+    private final LessonAnimalMapper lessonAnimalMapper;
 
-    public AnimalsService(AnimalRepository animalRepository, AnimalTypeRepository animalTypeRepository, BreedRepository breedRepository, AppUserRepository appUserRepository, AnimalMapper animalMapper) {
+    public AnimalsService(AnimalRepository animalRepository, AnimalTypeRepository animalTypeRepository, BreedRepository breedRepository, AppUserRepository appUserRepository, LessonsAnimal lessonsAnimal, LessonAnimalRepository lessonAnimalRepository, AnimalMapper animalMapper, LessonAnimalMapper lessonAnimalMapper) {
         this.animalRepository = animalRepository;
         this.animalTypeRepository = animalTypeRepository;
         this.breedRepository = breedRepository;
         this.appUserRepository = appUserRepository;
+        this.lessonAnimalRepository = lessonAnimalRepository;
         this.animalMapper = animalMapper;
+        this.lessonAnimalMapper = lessonAnimalMapper;
     }
 
 
@@ -123,4 +128,5 @@ public class AnimalsService {
         log.info("Usunąłeś zwierzaka o id {}", id);
         animalRepository.deleteById(deletedAnimal.getId());
     }
+
 }

@@ -2,11 +2,8 @@ package com.codecool.dogmate.mapper;
 
 import com.codecool.dogmate.dto.animaltype.AnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.NewAnimalTypeDto;
-import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
 import com.codecool.dogmate.entity.AnimalType;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 
 @Component
@@ -30,10 +27,7 @@ public class AnimalTypeMapper {
                 entity.getDate_create(),
                 entity.getDate_modify(),
                 entity.getDate_archive(),
-                entity.getArchive(),
-                entity.getBreeds().stream()
-                        .map(breedMapper::mapEntityToBreedDto)
-                        .toList()
+                entity.getArchive()
 
         );
     }

@@ -3,13 +3,16 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.ProvinceNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
+import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.city.NewCityDto;
 import com.codecool.dogmate.dto.city.UpdateCityDto;
 import com.codecool.dogmate.entity.City;
 import com.codecool.dogmate.entity.Province;
+import com.codecool.dogmate.mapper.AppUserMapper;
 import com.codecool.dogmate.mapper.CityMapper;
 import com.codecool.dogmate.mapper.ProvinceMapper;
+import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.ProvinceRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -23,18 +26,21 @@ import java.util.List;
 @Slf4j
 @Service
 public class CitiesService {
+
+    private final AppUserRepository appUserRepository;
     private final CityRepository cityRepository;
     private final ProvinceRepository provinceRepository;
+    private final AppUserMapper appUserMapper;
     private final CityMapper cityMapper;
-    private final ProvinceMapper provinceMapper;
 
 
 
-    public CitiesService(CityRepository cityRepository, ProvinceRepository provinceRepository, CityMapper cityMapper, ProvinceMapper provinceMapper) {
+    public CitiesService(CityRepository cityRepository, ProvinceRepository provinceRepository, CityMapper cityMapper, ProvinceMapper provinceMapper, AppUserRepository appUserRepository, AppUserMapper appUserMapper) {
         this.cityRepository = cityRepository;
         this.provinceRepository = provinceRepository;
         this.cityMapper = cityMapper;
-        this.provinceMapper = provinceMapper;
+        this.appUserRepository = appUserRepository;
+        this.appUserMapper = appUserMapper;
     }
 
     public List<CityDto> getCities() {
@@ -61,13 +67,6 @@ public class CitiesService {
                 .map(cityMapper::mapEntityToCityDto)
                 .orElseThrow(() -> new CityNotFoundException(name));
     }
-
-    public CityDto getCityByProvinceId(Integer id) {
-        return cityRepository.findOneByProvinceId(id)
-                .map(cityMapper::mapEntityToCityDto)
-                .orElseThrow(() -> new ProvinceNotFoundException(id));
-    }
-
 
     public CityDto createCity(NewCityDto city) {
         City cityNew = cityMapper.mapNewCityDtoToEntity(city);
@@ -109,5 +108,12 @@ public class CitiesService {
                 .orElseThrow(() -> new VoivodeshipNotFoundException(id));
         log.info("Usunąłeś miasto o id {}", id);
         cityRepository.deleteById(deletedCity.getId());
+    }
+
+    public List<AppUserDto> getAppUserForThisCityId(Integer id) {
+        return appUserRepository.findAllByCityId(id)
+                .stream()
+                .map(appUserMapper::mapEntityToAppUserDto)
+                .toList();
     }
 }

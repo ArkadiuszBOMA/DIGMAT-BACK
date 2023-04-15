@@ -3,12 +3,16 @@ package com.codecool.dogmate.service;
 import com.codecool.dogmate.advice.Exceptions.LessonStepNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.ProvinceNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.VoivodeshipNotFoundException;
+import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.province.NewProvinceDto;
 import com.codecool.dogmate.dto.province.ProvinceDto;
 import com.codecool.dogmate.dto.province.UpdateProvinceDto;
 import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.entity.Voivodeship;
+import com.codecool.dogmate.mapper.CityMapper;
 import com.codecool.dogmate.mapper.ProvinceMapper;
+import com.codecool.dogmate.mapper.VoivodeshipMapper;
+import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.ProvinceRepository;
 import com.codecool.dogmate.repository.VoivodeshipRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -23,13 +27,20 @@ import java.util.List;
 @Service
 public class ProvincesService {
 
+    private final CityRepository cityRepository;
     private final ProvinceRepository provinceRepository;
     private final VoivodeshipRepository voivodeshipRepository;
+    private final CityMapper cityMapper;
     private final ProvinceMapper provinceMapper;
 
-    public ProvincesService(ProvinceRepository provinceRepository, VoivodeshipRepository voivodeshipRepository, ProvinceMapper provinceMapper) {
+
+
+    public ProvincesService(CityRepository cityRepository, ProvinceRepository provinceRepository,
+                            VoivodeshipRepository voivodeshipRepository, CityMapper cityMapper, ProvinceMapper provinceMapper, VoivodeshipMapper voivodeshipMapper) {
+        this.cityRepository = cityRepository;
         this.provinceRepository = provinceRepository;
         this.voivodeshipRepository = voivodeshipRepository;
+        this.cityMapper = cityMapper;
         this.provinceMapper = provinceMapper;
     }
 
@@ -103,5 +114,12 @@ public class ProvincesService {
     }
 
 
+    public List<CityDto> getCitiesForThisProvinceById(Integer id) {
+        return cityRepository.findAllByProvinceId(id)
+                .stream()
+                .map(cityMapper::mapEntityToCityDto)
+                .toList();
+
+    }
 }
 

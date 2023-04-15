@@ -38,5 +38,4 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
     @Modifying
     @Query("DELETE FROM Animal a WHERE a.id = :id")
     void deleteById(Integer id);
-
 }

@@ -27,19 +27,19 @@ public class LessonsController {
     public LessonDto getLessonByLessonId(@PathVariable Integer id) {
         return lessonsService.getLessonById(id);
     }
-    @PostMapping("/add")
+    @PostMapping()
     public LessonDto newLessons(@RequestBody @Valid NewLessonDto lesson) {
         return lessonsService.createLesson(lesson);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateLesson(@RequestBody @Valid UpdateLessonDto lesson) {
         lessonsService.updateLesson(lesson);
     }
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveLesson(@PathVariable Integer id) {
         lessonsService.archiveLesson(id);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteLesson(@PathVariable Integer id) {
         lessonsService.deleteLessonData(id);
     }

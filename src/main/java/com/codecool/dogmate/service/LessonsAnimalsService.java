@@ -55,10 +55,11 @@ public class LessonsAnimalsService {
                 .orElseThrow(() -> new LessonAnimalNotFoundException(id));
     }
 
-    public LessonAnimalDto getLessonAnimalByName(String name) {
-        return lessonAnimalRepository.findOneByAnimalName(name)
+    public List<LessonAnimalDto> getLessonAnimalByName(String name) {
+        return lessonAnimalRepository.findAllByAnimalName(name)
+                .stream()
                 .map(lessonAnimalMapper::mapEntityToLessonAnimalDto)
-                .orElseThrow(() -> new LessonAnimalNotFoundException(name));
+                .toList();
     }
 
     public LessonAnimalDto createLessonAnimal(NewLessonAnimalDto lessonanimal) {

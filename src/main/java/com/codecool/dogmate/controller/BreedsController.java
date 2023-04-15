@@ -18,22 +18,21 @@ public class BreedsController {
         this.breedsService = breedsService;
     }
 
-
     @GetMapping()
     public List<BreedDto> getAllBreeds() {return breedsService.getBreeds();}
     @GetMapping("/{id}")
     public BreedDto getBreedByBreedId(@PathVariable Integer id) {
         return breedsService.getBreedById(id);
     }
-    @PostMapping("/add")
+    @PostMapping()
     public BreedDto newBreed(@RequestBody @Valid NewBreedDto breed) {
         return breedsService.createBreed(breed);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateBreed(@RequestBody @Valid UpdateBreedDto breedDto){breedsService.updateBreed(breedDto);}
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveBreed(@PathVariable Integer id) {breedsService.archiveBreed(id);}
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteBreed(@PathVariable Integer id) {
         breedsService.deleteBreedData(id);
     }

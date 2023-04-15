@@ -27,21 +27,21 @@ public class LessonStepsController {
     public LessonStepDto getLessonStepByLessonStepId(@PathVariable Integer id) {
         return lessonStepService.getLessonStepById(id);
     }
-    @PostMapping("/add")
+    @PostMapping()
     public LessonStepDto newLessonStep(@RequestBody @Valid NewLessonStepDto lessonStep) {
         return lessonStepService.createLessonStep(lessonStep);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateLessonStep(@RequestBody @Valid UpdateLessonStepDto lessonStep) {
         lessonStepService.updateLessonStep(lessonStep);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveLessonStep(@PathVariable Integer id) {
         lessonStepService.archiveLessonStep(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteLessonStep(@PathVariable Integer id) {
         lessonStepService.deleteLessonStepData(id);
     }

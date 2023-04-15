@@ -33,21 +33,21 @@ public class TrainingLevelsController {
         return trainingLevelsService.getTrainingLevelById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public TrainingLevelDto newTrainingLevel(@RequestBody @Valid NewTrainingLevelDto traininglevel) {
         return trainingLevelsService.createTrainingLevel(traininglevel);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateTrainingLevel(@RequestBody @Valid UpdateTrainingLevelDto trainingLevel) {
         trainingLevelsService.updateTrainingLevel(trainingLevel);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveTrainingLevel(@PathVariable Integer id) {
         trainingLevelsService.archiveTrainingLevel(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteTrainingLevel(@PathVariable Integer id) {
         trainingLevelsService.deleteTrainingLevelData(id);
     }

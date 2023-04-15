@@ -34,22 +34,22 @@ public class TimeUnitsController {
         return timeUnitService.getTimeUnitById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public TimeUnitDto newTimeUnit(@RequestBody @Valid NewTimeUnitDto timeunit) {
         return timeUnitService.createTimeUnit(timeunit);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateTimeUnit(@RequestBody @Valid UpdateTimeUnitDto timeUnit) {
         timeUnitService.updateTimeUnit(timeUnit);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveTimeUnit(@PathVariable Integer id) {
         timeUnitService.archiveTimeUnit(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteTimeUnit(@PathVariable Integer id) {
         timeUnitService.deleteTimeUnitData(id);
     }

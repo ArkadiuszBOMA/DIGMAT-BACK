@@ -35,21 +35,21 @@ public class UserTypesController {
         return userTypesService.getUserTypeById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public UserTypeDto newUserType(@RequestBody @Valid NewUserTypeDto userTypeDto) {
         return userTypesService.createUserType(userTypeDto);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateUserType(@RequestBody @Valid UpdateUserTypeDto userType) {
         userTypesService.updateUserType(userType);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveUserType(@PathVariable Integer id) {
         userTypesService.archiveUserType(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUserType(@PathVariable Integer id) {
         userTypesService.deleteUserTypelData(id);
     }

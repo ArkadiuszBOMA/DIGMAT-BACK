@@ -22,10 +22,7 @@ public class VoivodeshipMapper {
                 entity.getDate_create(),
                 entity.getDate_modify(),
                 entity.getDate_archive(),
-                entity.getArchive(),
-                entity.getProvinces().stream()
-                        .map(provinceMapper::mapEntityToProvinceDto)
-                        .toList()
+                entity.getArchive()
         );
     }
 }

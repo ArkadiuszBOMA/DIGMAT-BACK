@@ -26,11 +26,11 @@ public class LessonsAnimalsController {
     public LessonAnimalDto getLessonAnimalByLessonId(@PathVariable Integer id) {
         return lessonsAnimalsService.getLessonAnimalById(id);
     }
-    @PostMapping("/add")
+    @PostMapping()
     public LessonAnimalDto newLessonsAnimals(@RequestBody @Valid NewLessonAnimalDto lessonanimal) {
         return lessonsAnimalsService.createLessonAnimal(lessonanimal);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteLessonsAnimals(@PathVariable Integer id) {
         lessonsAnimalsService.deleteLessonAnimalData(id);
     }

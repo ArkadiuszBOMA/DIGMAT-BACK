@@ -34,19 +34,19 @@ public class CareAnnouncementTypesController {
         return careAnnouncementTypeService.getCareAnnouncementTypeById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public CareAnnouncementTypeDto newCareAnnouncementType(@RequestBody @Valid NewCareAnnouncementTypeDto careannouncementtype) {
         return careAnnouncementTypeService.createCareAnnouncementType(careannouncementtype);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateCareAnnouncementType(@RequestBody @Valid UpdateCareAnnouncementTypeDto careAnnouncementTypeDto) {
         careAnnouncementTypeService.updateCareAnnouncementType(careAnnouncementTypeDto);
     }
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveCareAnnouncementType(@PathVariable Integer id) {
         careAnnouncementTypeService.archiveCareAnnouncementType(id);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCareAnnouncementType(@PathVariable Integer id) {
         careAnnouncementTypeService.deleteCareAnnouncementTypeData(id);
     }

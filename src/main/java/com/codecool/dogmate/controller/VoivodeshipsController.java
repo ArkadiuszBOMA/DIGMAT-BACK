@@ -1,5 +1,6 @@
 package com.codecool.dogmate.controller;
 
+import com.codecool.dogmate.dto.province.ProvinceDto;
 import com.codecool.dogmate.dto.voivodeship.NewVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.UpdateVoivodeshipDto;
 import com.codecool.dogmate.dto.voivodeship.VoivodeshipDto;
@@ -36,22 +37,27 @@ public class VoivodeshipsController {
         return voivodeshipsService.getVoivodeshipByVoivodeshipId(id);
     }
 
-    @PostMapping("/add")
+    @GetMapping(value="/{id}", params={"province"})
+    public List<ProvinceDto> getProvincesForThisVoivodeshipById(@PathVariable Integer id) {
+        return voivodeshipsService.getProvincesForThisVoivodeshipById(id);
+    }
+
+    @PostMapping()
     public VoivodeshipDto newVoivodeship(@RequestBody @Valid NewVoivodeshipDto voivodeship) {
         return voivodeshipsService.createVoivodeship(voivodeship);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateVoivodeship(@RequestBody @Valid UpdateVoivodeshipDto voivodeship) {
         voivodeshipsService.updateVoivodeshipData(voivodeship);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveVoivodeship(@PathVariable Integer id) {
         voivodeshipsService.archiveVoivodeshipData(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteVoivodeship(@PathVariable Integer id) {
         voivodeshipsService.deleteVoivodeshipData(id);
     }

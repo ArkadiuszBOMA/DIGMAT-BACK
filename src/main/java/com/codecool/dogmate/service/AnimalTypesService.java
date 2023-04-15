@@ -4,9 +4,12 @@ import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.dto.animaltype.AnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.NewAnimalTypeDto;
 import com.codecool.dogmate.dto.animaltype.UpdateAnimalTypeDto;
+import com.codecool.dogmate.dto.breed.BreedDto;
 import com.codecool.dogmate.entity.AnimalType;
 import com.codecool.dogmate.mapper.AnimalTypeMapper;
+import com.codecool.dogmate.mapper.BreedMapper;
 import com.codecool.dogmate.repository.AnimalTypeRepository;
+import com.codecool.dogmate.repository.BreedRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,11 +23,15 @@ import java.util.List;
 public class AnimalTypesService {
 
     private final AnimalTypeRepository animalTypeRepository;
+    private final BreedRepository breedRepository;
     private final AnimalTypeMapper animalTypeMapper;
+    private final BreedMapper breedMapper;
 
-    public AnimalTypesService(AnimalTypeRepository animalTypeRepository, AnimalTypeMapper animalTypeMapper) {
+    public AnimalTypesService(AnimalTypeRepository animalTypeRepository, BreedRepository breedRepository, AnimalTypeMapper animalTypeMapper, BreedMapper breedMapper) {
         this.animalTypeRepository = animalTypeRepository;
+        this.breedRepository = breedRepository;
         this.animalTypeMapper = animalTypeMapper;
+        this.breedMapper = breedMapper;
     }
 
 
@@ -89,5 +96,12 @@ public class AnimalTypesService {
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
         log.info("Usunąłeś typ zwierzaków o id {}", id);
         animalTypeRepository.deleteById(deletedAnimalType.getId());
+    }
+
+    public List<BreedDto> getBreedForThisAnimalTypeById(Integer id) {
+        return breedRepository.findAllByAnimalTypesId(id)
+                .stream()
+                .map(breedMapper::mapEntityToBreedDto)
+                .toList();
     }
 }

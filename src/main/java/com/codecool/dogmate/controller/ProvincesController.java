@@ -1,5 +1,6 @@
 package com.codecool.dogmate.controller;
 
+import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.province.NewProvinceDto;
 import com.codecool.dogmate.dto.province.ProvinceDto;
 import com.codecool.dogmate.dto.province.UpdateProvinceDto;
@@ -35,19 +36,25 @@ public class ProvincesController {
         return provincesService.getProvinceById(id);
     }
 
-    @PostMapping("/add")
+    @GetMapping(value="/{id}", params={"cities"})
+    public List<CityDto> getCitiesForThisProvinceById(@PathVariable Integer id) {
+        return provincesService.getCitiesForThisProvinceById(id);
+    }
+
+
+    @PostMapping()
     public ProvinceDto newProvince(@RequestBody @Valid NewProvinceDto province) {
         return provincesService.createProvince(province);
     }
-    @PutMapping("/update/{id}")
+    @PutMapping(params={"update"})
     public void updateProvince(@RequestBody @Valid UpdateProvinceDto province) {
         provincesService.updateProvince(province);
     }
 
-    @PutMapping("/archive/{id}")
+    @PutMapping(value="/{id}", params={"archive"})
     public void archiveProvince(@PathVariable Integer id) {provincesService.archiveProvince(id);}
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteProvince(@PathVariable Integer id) {
         provincesService.deleteProvinceData(id);
     }
