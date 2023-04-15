@@ -24,4 +24,5 @@ public interface LessonRepository extends JpaRepository<Lesson, Integer> {
     @Query("DELETE FROM Lesson a WHERE a.id = :id")
     void deleteById(Integer id);
 
+    List<Lesson> findAllByTrainingLevelId(Integer id);
 }

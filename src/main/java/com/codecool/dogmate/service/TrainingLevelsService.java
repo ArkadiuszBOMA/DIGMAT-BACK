@@ -1,11 +1,14 @@
 package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.TrainingLevelNotFoundException;
+import com.codecool.dogmate.dto.lessons.LessonDto;
 import com.codecool.dogmate.dto.traininglevel.NewTrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.TrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.UpdateTrainingLevelDto;
 import com.codecool.dogmate.entity.TrainingLevel;
+import com.codecool.dogmate.mapper.LessonMapper;
 import com.codecool.dogmate.mapper.TrainingLevelMapper;
+import com.codecool.dogmate.repository.LessonRepository;
 import com.codecool.dogmate.repository.TrainingLevelRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -20,11 +23,16 @@ import java.util.List;
 public class TrainingLevelsService {
 
     private final TrainingLevelRepository trainingLevelRepository;
-    private final TrainingLevelMapper trainingLevelMapper;
 
-    public TrainingLevelsService(TrainingLevelRepository trainingLevelRepository, TrainingLevelMapper trainingLevelMapper) {
+    private final LessonRepository lessonRepository;
+    private final TrainingLevelMapper trainingLevelMapper;
+    private final LessonMapper lessonMapper;
+
+    public TrainingLevelsService(TrainingLevelRepository trainingLevelRepository, LessonRepository lessonRepository, TrainingLevelMapper trainingLevelMapper, LessonMapper lessonMapper) {
         this.trainingLevelRepository = trainingLevelRepository;
+        this.lessonRepository = lessonRepository;
         this.trainingLevelMapper = trainingLevelMapper;
+        this.lessonMapper = lessonMapper;
     }
 
 
@@ -87,5 +95,12 @@ public class TrainingLevelsService {
                 .orElseThrow(() -> new TrainingLevelNotFoundException(id));
         log.info("Usunąłeś poziom trudności o id {}", id);
         trainingLevelRepository.deleteById(deletedTrainingLevel.getId());
+    }
+
+    public List<LessonDto> getLessonForThisTrainingLevelId(Integer id) {
+        return lessonRepository.findAllByTrainingLevelId(id)
+                .stream()
+                .map(lessonMapper::mapEntityToLessonDto)
+                .toList();
     }
 }

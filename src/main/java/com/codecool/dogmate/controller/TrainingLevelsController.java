@@ -1,5 +1,6 @@
 package com.codecool.dogmate.controller;
 
+import com.codecool.dogmate.dto.lessons.LessonDto;
 import com.codecool.dogmate.dto.traininglevel.NewTrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.TrainingLevelDto;
 import com.codecool.dogmate.dto.traininglevel.UpdateTrainingLevelDto;
@@ -31,6 +32,11 @@ public class TrainingLevelsController {
     @GetMapping("/{id}")
     public TrainingLevelDto getTrainingLevelByTrainingLevelId(@PathVariable Integer id) {
         return trainingLevelsService.getTrainingLevelById(id);
+    }
+
+    @GetMapping(value="/{id}", params={"lessons"})
+    public List<LessonDto> getLessonForThisTrainingLevelId(@PathVariable Integer id) {
+        return trainingLevelsService.getLessonForThisTrainingLevelId(id);
     }
 
     @PostMapping()

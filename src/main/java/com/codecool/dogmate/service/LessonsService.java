@@ -5,10 +5,13 @@ import com.codecool.dogmate.advice.Exceptions.TrainingLevelNotFoundException;
 import com.codecool.dogmate.dto.lessons.LessonDto;
 import com.codecool.dogmate.dto.lessons.NewLessonDto;
 import com.codecool.dogmate.dto.lessons.UpdateLessonDto;
+import com.codecool.dogmate.dto.lessonsteps.LessonStepDto;
 import com.codecool.dogmate.entity.Lesson;
 import com.codecool.dogmate.entity.TrainingLevel;
 import com.codecool.dogmate.mapper.LessonMapper;
+import com.codecool.dogmate.mapper.LessonStepMapper;
 import com.codecool.dogmate.repository.LessonRepository;
+import com.codecool.dogmate.repository.LessonStepRepository;
 import com.codecool.dogmate.repository.TrainingLevelRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -22,13 +25,18 @@ import java.util.List;
 @Service
 public class LessonsService {
     private final LessonRepository lessonRepository;
+    private final LessonStepRepository lessonStepRepository;
     private final TrainingLevelRepository trainingLevelRepository;
     private final LessonMapper lessonMapper;
+    private final LessonStepMapper lessonStepMapper;
 
-    public LessonsService(LessonRepository lessonRepository, TrainingLevelRepository trainingLevelRepository, LessonMapper lessonMapper) {
+
+    public LessonsService(LessonRepository lessonRepository, LessonStepRepository lessonStepRepository, TrainingLevelRepository trainingLevelRepository, LessonMapper lessonMapper, LessonStepMapper lessonStepMapper) {
         this.lessonRepository = lessonRepository;
+        this.lessonStepRepository = lessonStepRepository;
         this.trainingLevelRepository = trainingLevelRepository;
         this.lessonMapper = lessonMapper;
+        this.lessonStepMapper = lessonStepMapper;
     }
 
     public List<LessonDto> getLessons() {
@@ -96,5 +104,13 @@ public class LessonsService {
                 .orElseThrow(() -> new LessonNotFoundException(id));
         log.info("Usunąłeś lekcję o id {}", id);
         lessonRepository.deleteById(deletedLesson.getId());
+    }
+
+    public List<LessonStepDto> getStepsForThisLessonId(Integer id) {
+        return lessonStepRepository.findAllByLessonId(id)
+                .stream()
+                .map(lessonStepMapper::mapEntityToLessonStepDto)
+                .toList();
+
     }
 }
