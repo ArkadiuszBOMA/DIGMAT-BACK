@@ -10,20 +10,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class BreedMapperTest {
 
-    private BreedMapper breedMapper = new BreedMapper();
-    private EasyRandom easyRandom = new EasyRandom();
+    private final BreedMapper breedMapper = new BreedMapper();
+    private final EasyRandom easyRandom = new EasyRandom();
 
     @Test
     void shouldMapNewBreedDtoToEntity() {
         // given:
         Breed breed = easyRandom.nextObject(Breed.class);
-
-
         // when:
         BreedDto actual = breedMapper.mapEntityToBreedDto(breed);
-
         // then
-
         BreedDto expected = new BreedDto(
                 breed.getId(),
                 breed.getName(),
@@ -33,7 +29,6 @@ class BreedMapperTest {
                 breed.getDate_modify(),
                 breed.getArchive()
         );
-
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -41,12 +36,9 @@ class BreedMapperTest {
     void shouldMapEntityToBreedDto() {
         // given:
         NewBreedDto dto = easyRandom.nextObject(NewBreedDto.class);
-
         // when:
         Breed actual = breedMapper.mapNewBreedDtoToEntity(dto);
-
         // then:
-
         assertBreedEntityIsCorrect(dto, actual);
     }
 

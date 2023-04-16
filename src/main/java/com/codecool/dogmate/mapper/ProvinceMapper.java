@@ -8,10 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProvinceMapper {
 
-    private final CityMapper cityMapper;
-    public ProvinceMapper(CityMapper cityMapper) {
-        this.cityMapper = cityMapper; }
-
     public Province mapNewProvinceDtoToEntity(NewProvinceDto dto) {
         return new Province(dto.name(), dto.terytId());
     }

@@ -25,6 +25,8 @@ public class ErrorControllerAdvice {
             TimeUnitNotFoundException.class,
             TrainingLevelNotFoundException.class,
             ProvinceNotFoundException.class,
+            UserTypeNotFoundException.class,
+            UserRoleNotFoundException.class,
             VoivodeshipNotFoundException.class,
     })
     @ResponseStatus(HttpStatus.NOT_FOUND)

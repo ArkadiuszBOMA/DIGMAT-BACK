@@ -11,13 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnimalMapper {
 
-    private final LessonAnimalMapper lessonAnimalMapper;
-
-    public AnimalMapper(LessonAnimalMapper lessonAnimalMapper) {
-        this.lessonAnimalMapper = lessonAnimalMapper;
-    }
-
-
     public Animal mapNewAnimalDtoToEntity(NewAnimalDto dto, AnimalType animalType, Breed breed, AppUser appUser) {
         return new Animal(
                 dto.name(),

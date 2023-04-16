@@ -8,9 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class VoivodeshipMapper {
 
-    private final ProvinceMapper provinceMapper;
-    public VoivodeshipMapper(ProvinceMapper provinceMapper) {this.provinceMapper = provinceMapper; }
-
     public Voivodeship mapNewVoivodeshipDtoToEntity(NewVoivodeshipDto dto) {
         return new Voivodeship(dto.name(), dto.terytId());
     }

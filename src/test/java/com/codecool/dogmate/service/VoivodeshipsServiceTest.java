@@ -32,9 +32,9 @@ class VoivodeshipsServiceTest {
         Voivodeship v2 = new Voivodeship("voj2", "1223");
 
         VoivodeshipDto v1DTO = new VoivodeshipDto(null, "1222", "voj1",
-                null, null, null, null, null);
+                null, null, null, null);
         VoivodeshipDto v2DTO = new VoivodeshipDto(null, "1223", "voj2",
-                null, null, null, null, null);
+                null, null, null, null);
 
         Mockito.when(voivodeshipRepository.findAllBy()).thenReturn(List.of(v1, v2));
         Mockito.when(voivodeshipMapper.mapEntityToVoivodeshipDto(v1)).thenReturn(v1DTO);
