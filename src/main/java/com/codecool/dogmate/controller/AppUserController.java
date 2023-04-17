@@ -1,19 +1,13 @@
 package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.appuser.AppUserDto;
-import com.codecool.dogmate.dto.appuser.AppUserLoginDto;
-import com.codecool.dogmate.dto.appuser.NewAppUserDto;
-import com.codecool.dogmate.entity.AppUser;
 import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.service.AppUserService;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
@@ -47,24 +41,6 @@ public class AppUserController {
     @GetMapping(params= {"name"})
     public List<AppUserDto> getAppUserByName(@RequestParam String name) {
         return appUserService.getAppUserByName(name);
-    }
-
-    @PostMapping("register")
-    public AppUserDto newAppUser(@RequestBody @Valid NewAppUserDto newAppUserDto) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(newAppUserDto.password());
-        newAppUserDto.setPassword(encodedPassword);
-        appUserService.createAppUser(newAppUserDto);
-        return appUserService.login(newAppUserDto.email(), newAppUserDto.password());
-    }
-
-    @PostMapping("login")
-    public AppUserDto loginUser(@RequestBody AppUserLoginDto appUserLoginDto) {
-        Optional<AppUser> appUser = appUserRepository.findOneByEmail(appUserLoginDto.email());
-        if(appUser.isEmpty() || !passwordEncoder.matches(appUserLoginDto.password(),appUser.get().getPassword())){
-            return null;
-        }
-        return appUserService.login(appUserLoginDto.email(), appUserLoginDto.password());
     }
 
     @DeleteMapping("/delete/{id}")

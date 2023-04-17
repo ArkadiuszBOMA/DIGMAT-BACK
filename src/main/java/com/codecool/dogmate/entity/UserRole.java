@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -43,10 +44,22 @@ public class UserRole {
     @Column(name = "date_archive")
     private LocalDateTime date_archive ;
 
-    @OneToMany(mappedBy = "userType", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(mappedBy = "userRoles", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private Set<AppUser> appUsers = new HashSet<>();
+
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(name="user_role_privilege",
+            joinColumns = @JoinColumn(name="user_privilege_id",
+                    referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="user_role_id",
+                    referencedColumnName = "id"))
+    private Set<UserPrivilege> userPrivileges = new LinkedHashSet<>();
 
     public UserRole(String name) {
         this.name = name;
+    }
+
+    public void addAppUser(AppUser r) {
+        appUsers.add(r);
     }
 }

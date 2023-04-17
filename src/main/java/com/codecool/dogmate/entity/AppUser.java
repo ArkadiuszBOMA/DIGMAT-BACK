@@ -1,7 +1,6 @@
 package com.codecool.dogmate.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -39,20 +38,14 @@ public class AppUser {
 
     @Column(name = "password")
     @NotNull
-    @Type(type = "org.hibernate.type.TextType")
     private String password;
 
-    @Lob
     @Column(name = "profile_picture_location")
     private String profilePictureLocation;
 
-    @Lob
     @Column(name = "avatar_small_location")
     private String avatarSmallLocation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_type_id")
-    private UserType userType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
@@ -92,10 +85,20 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser")
     private Set<Animal> animals = new LinkedHashSet<>();
 
-    public AppUser(String first_name, String last_name, String email, String password) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(name="users_roles",
+            joinColumns = @JoinColumn(name="appuser_id",
+                    referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name= "user_role_id",
+                    referencedColumnName = "id"))
+    private Set<UserRole> userRoles = new LinkedHashSet<>();
+
+    public AppUser(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public void addUserRole(UserRole r) {
+        userRoles.add(r);
     }
 }

@@ -9,50 +9,49 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/user-roles")
+@RequestMapping("/api/v1/user-types")
 public class UserRoleController {
 
-    private final UserRolesService userRoleService;
+    private final UserRolesService userRolesService;
 
-    public UserRoleController(UserRolesService userRoleService) {
-        this.userRoleService = userRoleService;
+    public UserRoleController(UserRolesService userRolesService) {
+        this.userRolesService = userRolesService;
     }
 
 
     @GetMapping()
-    public List<UserRoleDto> getAllUserRoles() {return userRoleService.getUserRole();}
+    public List<UserRoleDto> getAllUserRole() {return userRolesService.getUserRole();}
 
 
     @GetMapping(params = {"page", "size", "sort"})
     public List<UserRoleDto> getAllUserRolesWithPageable(Pageable pageable) {
-        return userRoleService.getUserRole(pageable);
+        return userRolesService.getUserRoles(pageable);
     }
 
     @GetMapping("/{id}")
-    public UserRoleDto getAppUserRoleByUserTypeId(@PathVariable Integer id) {
-        return userRoleService.getUserRoleById(id);
+    public UserRoleDto getAppUserRoleByUserRoleId(@PathVariable Integer id) {
+        return userRolesService.getUserRoleById(id);
     }
 
     @PostMapping()
     public UserRoleDto newUserRole(@RequestBody @Valid NewUserRoleDto userRoleDto) {
-        return userRoleService.createUserRole(userRoleDto);
+        return userRolesService.createUserRole(userRoleDto);
     }
     @PutMapping(params={"update"})
     public void updateUserRole(@RequestBody @Valid UpdateUserRoleDto userRole) {
-        userRoleService.updateUserRole(userRole);
+        userRolesService.updateUserRole(userRole);
     }
 
     @PutMapping(value="/{id}", params={"archive"})
     public void archiveUserRole(@PathVariable Integer id) {
-        userRoleService.archiveUserRole(id);
+        userRolesService.archiveUserRole(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteUserRole(@PathVariable Integer id) {
-        userRoleService.deleteUserRoleData(id);
+        userRolesService.deleteUserRoleData(id);
     }
 
 

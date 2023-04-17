@@ -23,8 +23,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     List<AppUser> findAllByLastName(String name);
     List<AppUser> findAllByCityId(Integer cityId);
     List<AppUser> findAllByCityName(String cityName);
-    List<AppUser> findAllByUserTypeId(Integer userTypeId);
-    List<AppUser> findAllByUserTypeName(String userType);
     @Modifying
     void deleteById(Integer id);
 }

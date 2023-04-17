@@ -17,7 +17,6 @@ public record UpdateAppUserDto(
         @NotNull
         String profilePictureLocation,
         String avatarSmallLocation,
-        String userType,
         String city,
         String description,
         Boolean isLocked,

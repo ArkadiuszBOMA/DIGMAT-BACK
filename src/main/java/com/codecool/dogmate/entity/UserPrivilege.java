@@ -10,13 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user_types")
+@Table(name = "user_privileges")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class UserType {
+public class UserPrivilege {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +28,11 @@ public class UserType {
     @Column(name = "name", unique = true)
     private String name;
 
-    @Column(name = "archive")
-    private Boolean archive = false;
-
     @Version
     private Integer version;
+
+    @Column(name = "archive")
+    private Boolean archive = false;
 
     @Column(name = "date_create")
     private LocalDateTime date_create = LocalDateTime.now();
@@ -43,10 +43,11 @@ public class UserType {
     @Column(name = "date_archive")
     private LocalDateTime date_archive ;
 
-    @OneToMany(mappedBy = "userType", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    private Set<AppUser> appUsers = new HashSet<>();
+    @ManyToMany(mappedBy = "userPrivileges", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    private Set<UserRole> userRoles = new HashSet<>();
 
-    public UserType(String name) {
+
+    public UserPrivilege(String name) {
         this.name = name;
     }
 }

@@ -1,9 +1,9 @@
-package com.codecool.dogmate.dto.usertype;
+package com.codecool.dogmate.dto.userprivilege;
 
 
 import java.time.LocalDateTime;
 
-public record UserTypeDto (
+public record UserPrivilegeDto(
 
         Integer id,
         String name,

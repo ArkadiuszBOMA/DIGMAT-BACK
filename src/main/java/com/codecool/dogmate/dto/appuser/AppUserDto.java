@@ -11,7 +11,6 @@ public record AppUserDto(
         String email,
         String profilePictureLocation,
         String avatarSmallLocation,
-        String userType,
         String city,
         String description,
         Boolean isLocked,
