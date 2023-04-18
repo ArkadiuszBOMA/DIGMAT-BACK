@@ -10,7 +10,6 @@ import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 class AnimalMapperTest {
 
     private final AnimalMapper animalMapper = new AnimalMapper();

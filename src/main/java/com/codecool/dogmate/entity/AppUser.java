@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.LinkedHashSet;
@@ -25,8 +24,6 @@ public class AppUser {
     private Integer id;
 
     @Column(name = "first_name")
-    @NotNull
-    @Size(min = 5, max = 50)
     private String first_name;
     @Column(name = "last_name")
     private String last_name;
@@ -46,7 +43,6 @@ public class AppUser {
     @Column(name = "avatar_small_location")
     private String avatarSmallLocation;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
@@ -65,7 +61,6 @@ public class AppUser {
 
     @Column(name = "is_active")
     private Boolean isActive = true ;
-
 
     @Column(name = "archive")
     private Boolean archive = false;
@@ -93,9 +88,11 @@ public class AppUser {
                     referencedColumnName = "id"))
     private Set<UserRole> userRoles = new LinkedHashSet<>();
 
-    public AppUser(String email, String password) {
+    public AppUser(String email, String password, String first_name, String last_name) {
         this.email = email;
         this.password = password;
+        this.first_name = first_name;
+        this.last_name = last_name;
     }
 
     public void addUserRole(UserRole r) {

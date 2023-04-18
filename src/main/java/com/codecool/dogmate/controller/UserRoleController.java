@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/user-types")
+@RequestMapping("/api/v1/user-roles")
 public class UserRoleController {
 
     private final UserRolesService userRolesService;

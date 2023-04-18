@@ -23,7 +23,9 @@ public class AppUserMapper {
     public AppUser mapNewAppUserDtoToEntity(NewAppUserDto dto, String encodedPassword) {
         return new AppUser(
                 dto.email(),
-                encodedPassword
+                encodedPassword,
+                dto.firstName(),
+                dto.lastName()
         );
     }
 

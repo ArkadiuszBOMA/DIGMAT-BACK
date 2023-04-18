@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ProvinceMapperTest {
 
-    private final CityMapper cityMapper = new CityMapper();
     private final ProvinceMapper provinceMapper = new ProvinceMapper();
     private final EasyRandom easyRandom = new EasyRandom();
 

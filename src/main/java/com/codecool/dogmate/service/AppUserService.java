@@ -2,10 +2,15 @@ package com.codecool.dogmate.service;
 
 import com.codecool.dogmate.advice.Exceptions.AnimalTypeNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.AppUserNotFoundException;
+import com.codecool.dogmate.advice.Exceptions.CityNotFoundException;
 import com.codecool.dogmate.advice.Exceptions.UserRoleNotFoundException;
 import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
+import com.codecool.dogmate.dto.appuser.UpdateAppUserDto;
+import com.codecool.dogmate.dto.auth.JwtTokenRequest;
+import com.codecool.dogmate.dto.auth.JwtTokenResponse;
 import com.codecool.dogmate.entity.AppUser;
+import com.codecool.dogmate.entity.City;
 import com.codecool.dogmate.entity.UserRole;
 import com.codecool.dogmate.mapper.AppUserMapper;
 import com.codecool.dogmate.repository.AppUserRepository;
@@ -58,51 +63,46 @@ public class AppUserService {
                 .orElseThrow(() -> new AppUserNotFoundException(id));
     }
 
-    public AppUserDto login(String email, String password) {
-        return appUserRepository.findOneByEmail(email)
-                .map(appUserMapper::mapEntityToAppUserDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
     public List<AppUserDto> getAppUserByName(String name) {
         return appUserRepository.findAllByName(name).stream()
             .map(appUserMapper::mapEntityToAppUserDto)
             .toList();
     }
-
     public void createAppUser(NewAppUserDto appuser) {
 //  metody walidacyjne "backendu"
+        System.out.println(appuser.firstName());
+        System.out.println(appuser.lastName());
         AppUser newAppUser = appUserMapper.mapNewAppUserDtoToEntity(appuser, passwordEncoder.encode(appuser.password()));
         UserRole userRole = userRoleRepository.findOneByName("USER")
                 .orElseThrow(() -> new UserRoleNotFoundException("USER"));
+        City city = cityRepository.findOneById(0)
+                .orElseThrow(() -> new CityNotFoundException(0));
         newAppUser.addUserRole(userRole);
+        newAppUser.setCity(city);
         userRole.addAppUser(newAppUser);
         AppUser savedEntity = appUserRepository.save(newAppUser);
         appUserMapper.mapEntityToAppUserDto(savedEntity);
     }
 
-//    public void updateAppUser(UpdateAppUserDto user) {
-//        UserRole userRole = userRoleRepository.findOneByName(user.userType())
-//                .orElseThrow(() -> new UserRoleNotFoundException(user.userType()));
-//        City city = cityRepository.findOneByName(user.city())
-//                .orElseThrow(() -> new CityNotFoundException(user.city()));
-//        log.info("Zaktualizowałem dane dla id {}", user.id());
-//        AppUser updatedAppUser = appUserRepository.findOneById(user.id())
-//                .orElseThrow(() -> new AppUserNotFoundException(user.id()));
-//        updatedAppUser.setFirst_name(user.firstName().trim().toUpperCase().replaceAll("( )+", " "));
-//        updatedAppUser.setLast_name(user.lastName().trim().toUpperCase().replaceAll("( )+", " "));
-//        updatedAppUser.setPassword(passwordEncoder.encode(user.password()));
-//        updatedAppUser.setProfilePictureLocation(user.profilePictureLocation());
-//        updatedAppUser.setAvatarSmallLocation(user.avatarSmallLocation());
-//        updatedAppUser.setUserType(userRole);
-//        updatedAppUser.setCity(city);
-//        updatedAppUser.setIsLocked(user.isLocked());
-//        updatedAppUser.setIsBanned(user.isBanned());
-//        updatedAppUser.setBanExpiration(user.banExpiration());
-//        updatedAppUser.setIsActive(user.isActive());
-//        updatedAppUser.setDate_modify(LocalDateTime.now());
-//        appUserRepository.save(updatedAppUser);
-//    }
+    public void updateAppUser(UpdateAppUserDto user) {
+        City city = cityRepository.findOneByName(user.city())
+                .orElseThrow(() -> new CityNotFoundException(user.city()));
+        log.info("Zaktualizowałem dane dla id {}", user.id());
+        AppUser updatedAppUser = appUserRepository.findOneById(user.id())
+                .orElseThrow(() -> new AppUserNotFoundException(user.id()));
+        updatedAppUser.setFirst_name(user.firstName().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedAppUser.setLast_name(user.lastName().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedAppUser.setPassword(passwordEncoder.encode(user.password()));
+        updatedAppUser.setProfilePictureLocation(user.profilePictureLocation());
+        updatedAppUser.setAvatarSmallLocation(user.avatarSmallLocation());
+        updatedAppUser.setCity(city);
+        updatedAppUser.setIsLocked(user.isLocked());
+        updatedAppUser.setIsBanned(user.isBanned());
+        updatedAppUser.setBanExpiration(user.banExpiration());
+        updatedAppUser.setIsActive(user.isActive());
+        updatedAppUser.setDate_modify(LocalDateTime.now());
+        appUserRepository.save(updatedAppUser);
+    }
 
     public void archiveAppUser(Integer id) {
         AppUser archivedAppUser = appUserRepository.findOneById(id)

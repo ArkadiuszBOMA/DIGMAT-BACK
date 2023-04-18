@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/user-roles")
+@RequestMapping("/api/v1/user-privileges")
 public class UserPrivilegeController {
 
     private final UserPrivilegesService userPrivilegesService;

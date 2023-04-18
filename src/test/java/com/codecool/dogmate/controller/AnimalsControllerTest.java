@@ -1,11 +1,14 @@
 package com.codecool.dogmate.controller;
 
+import com.codecool.dogmate.auth.SpringSecurityConfig;
 import com.codecool.dogmate.service.AnimalsService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = AnimalsController.class)
+@Import(SpringSecurityConfig.class)
 class AnimalsControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -24,6 +28,7 @@ class AnimalsControllerTest {
     private AnimalsService animalsService;
 
     @Test
+    @WithMockUser(roles = "ADMIN")
     void shouldReturnEmptyJson() throws Exception {
         // given:
         Mockito.when(animalsService.getAnimals()).thenReturn(List.of());

@@ -39,7 +39,7 @@ class AnimalTypeMapperTest {
 
     @Test
     void mapEntityToAnimalTypeDto() {
-
+        //given
         NewAnimalTypeDto dto = easyRandom.nextObject(NewAnimalTypeDto.class);
 
         // when:

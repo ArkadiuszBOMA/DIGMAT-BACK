@@ -24,6 +24,4 @@ public record UpdateAppUserDto(
         OffsetDateTime banExpiration,
         Boolean isActive
 ){
-    public void setPassword(String encodedPassword) {
-    }
 }
