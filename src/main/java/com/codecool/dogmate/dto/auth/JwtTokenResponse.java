@@ -1,4 +1,10 @@
 package com.codecool.dogmate.dto.auth;
 
-public record JwtTokenResponse(String token) {
+public record JwtTokenResponse(
+        Integer id,
+        String firstName,
+        String lastName,
+        String email,
+        String avatarSmallLocation,
+        String token) {
 }
