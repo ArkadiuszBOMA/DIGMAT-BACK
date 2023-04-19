@@ -3,21 +3,15 @@ package com.codecool.dogmate.mapper;
 import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
 import com.codecool.dogmate.entity.AppUser;
-import com.codecool.dogmate.repository.CityRepository;
-import com.codecool.dogmate.repository.UserRoleRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AppUserMapper {
 
     private final AnimalMapper animalMapper;
-    private final UserRoleRepository userRoleRepository;
-    private final CityRepository cityRepository;
 
-    public AppUserMapper(AnimalMapper animalMapper, UserRoleRepository userRoleRepository, CityRepository cityRepository) {
+    public AppUserMapper(AnimalMapper animalMapper) {
         this.animalMapper = animalMapper;
-        this.userRoleRepository = userRoleRepository;
-        this.cityRepository = cityRepository;
     }
 
     public AppUser mapNewAppUserDtoToEntity(NewAppUserDto dto, String encodedPassword) {

@@ -2,6 +2,7 @@ package com.codecool.dogmate.controller;
 
 import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.appuser.NewAppUserDto;
+import com.codecool.dogmate.dto.appuser.UpdateAppUserDto;
 import com.codecool.dogmate.dto.auth.JwtTokenRequest;
 import com.codecool.dogmate.dto.auth.JwtTokenResponse;
 import com.codecool.dogmate.repository.AppUserRepository;
@@ -31,7 +32,9 @@ public class AppUserController {
 
 
     @GetMapping()
-    public List<AppUserDto> getAllAppUsers() {return appUserService.getAppUsers();}
+    public List<AppUserDto> getAllAppUsers() {
+        return appUserService.getAppUsers();
+    }
 
     @GetMapping(params = {"page", "size", "sort"})
     public List<AppUserDto> getAllUserWithPageable(Pageable pageable) {
@@ -43,7 +46,7 @@ public class AppUserController {
         return appUserService.getAppUserById(id);
     }
 
-    @GetMapping(params= {"name"})
+    @GetMapping(params = {"name"})
     public List<AppUserDto> getAppUserByName(@RequestParam String name) {
         return appUserService.getAppUserByName(name);
     }
@@ -54,15 +57,23 @@ public class AppUserController {
     }
 
     @PostMapping("/register")
-    public void register(@Valid @RequestBody NewAppUserDto newAppUserDto){
+    public void register(@Valid @RequestBody NewAppUserDto newAppUserDto) {
         appUserService.createAppUser(newAppUserDto);
     }
 
-
-    @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Integer id) {
-        appUserService.deleteAppUserData(id);
+    @PutMapping(params = {"update"})
+    public void updateAppUser(@RequestBody @Valid UpdateAppUserDto appUserDto) {
+        appUserService.updateAppUser(appUserDto);
     }
 
+    @PutMapping(value = "/{id}", params = {"archive"})
+    public void archiveAppUser(@PathVariable Integer id) {
+        appUserService.archiveAppUser(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAnimal(@PathVariable Integer id) {
+        appUserService.deleteAppUserData(id);
+    }
 }
 

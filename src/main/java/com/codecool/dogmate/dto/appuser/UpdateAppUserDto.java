@@ -14,7 +14,6 @@ public record UpdateAppUserDto(
         @Email
         String email,
         String password,
-        @NotNull
         String profilePictureLocation,
         String avatarSmallLocation,
         String city,
