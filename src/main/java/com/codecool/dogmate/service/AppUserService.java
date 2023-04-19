@@ -102,6 +102,7 @@ public class AppUserService {
         updatedAppUser.setFirst_name(user.firstName().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAppUser.setLast_name(user.lastName().trim().toUpperCase().replaceAll("( )+", " "));
         updatedAppUser.setPassword(passwordEncoder.encode(user.password()));
+        updatedAppUser.setEmail(user.email());
         updatedAppUser.setProfilePictureLocation(user.profilePictureLocation());
         updatedAppUser.setAvatarSmallLocation(user.avatarSmallLocation());
         updatedAppUser.setCity(city);
