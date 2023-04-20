@@ -1,3 +1,632 @@
+PUT http://localhost:9090/api/v1/voivodeships/0?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkzNDEwNywiZXhwIjoxNjgxOTQwMTA3fQ.EpuE8wOGkTYrsqQ2tIiFw8G_KVLzstCI_ReJ1htj395Ds2xZ8A2BIbuEvTJwdHEWsjbBn-jzXkDaL25kTW_ILw
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T215507.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/431?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTYxOSwiZXhwIjoxNjgxOTM1NjE5fQ.XHN_9GdaYOboVOB26O0GjqFUa16rjR03xJAMhvLqLAPdc1pFETyhhwHB8agegxuAIhy5KKWsL_44ofQ31kE4HQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/429?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTYxOSwiZXhwIjoxNjgxOTM1NjE5fQ.XHN_9GdaYOboVOB26O0GjqFUa16rjR03xJAMhvLqLAPdc1pFETyhhwHB8agegxuAIhy5KKWsL_44ofQ31kE4HQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+PUT http://localhost:9090/api/v1/breeds?update=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 60
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 429,
+  "name": "gównoijady",
+  "animalType": 1
+
+}
+
+###
+
+DELETE http://localhost:9090/api/v1/breeds/409
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTYxOSwiZXhwIjoxNjgxOTM1NjE5fQ.XHN_9GdaYOboVOB26O0GjqFUa16rjR03xJAMhvLqLAPdc1pFETyhhwHB8agegxuAIhy5KKWsL_44ofQ31kE4HQ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+DELETE http://localhost:9090/api/v1/breeds/409
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:9090/api/v1/breeds
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTYxOSwiZXhwIjoxNjgxOTM1NjE5fQ.XHN_9GdaYOboVOB26O0GjqFUa16rjR03xJAMhvLqLAPdc1pFETyhhwHB8agegxuAIhy5KKWsL_44ofQ31kE4HQ
+Content-Type: application/json
+Content-Length: 51
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Kaszlaczkowaaay",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T204107.200.json
+
+###
+
+POST http://localhost:9090/api/v1/breeds
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTYxOSwiZXhwIjoxNjgxOTM1NjE5fQ.XHN_9GdaYOboVOB26O0GjqFUa16rjR03xJAMhvLqLAPdc1pFETyhhwHB8agegxuAIhy5KKWsL_44ofQ31kE4HQ
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Kaszlaczkowy",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T204101.500.json
+
+###
+
+POST http://localhost:9090/api/v1/breeds
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Kaszlaczkowy",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T204054.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/4?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTYxOSwiZXhwIjoxNjgxOTM1NjE5fQ.XHN_9GdaYOboVOB26O0GjqFUa16rjR03xJAMhvLqLAPdc1pFETyhhwHB8agegxuAIhy5KKWsL_44ofQ31kE4HQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T204038.500.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T204019.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/4?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTQ1OCwiZXhwIjoxNjgxOTM1NDU4fQ.S3ZPE7KsLLVWCs3qQvkBO08trm_0pKkFvMTvMstv5L9CNR94LPBcBaY4wlTNQ0DZhwMrT2A6vjUw6Xl_ip048w"
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T204009.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/?archive=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTQ1OCwiZXhwIjoxNjgxOTM1NDU4fQ.S3ZPE7KsLLVWCs3qQvkBO08trm_0pKkFvMTvMstv5L9CNR94LPBcBaY4wlTNQ0DZhwMrT2A6vjUw6Xl_ip048w"
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T203947.400.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/4?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTQ1OCwiZXhwIjoxNjgxOTM1NDU4fQ.S3ZPE7KsLLVWCs3qQvkBO08trm_0pKkFvMTvMstv5L9CNR94LPBcBaY4wlTNQ0DZhwMrT2A6vjUw6Xl_ip048w"
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T203839.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyOTQ1OCwiZXhwIjoxNjgxOTM1NDU4fQ.S3ZPE7KsLLVWCs3qQvkBO08trm_0pKkFvMTvMstv5L9CNR94LPBcBaY4wlTNQ0DZhwMrT2A6vjUw6Xl_ip048w"
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T203801.500.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T203738.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/430?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+PUT http://localhost:9090/api/v1/breeds?update=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 430,
+  "name": "daaaupaaaaaa",
+  "animalType": 1
+
+}
+
+###
+
+PUT http://localhost:9090/api/v1/breeds?update=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 60
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 430,
+  "name": "daaaupaaaaa",
+  "animalType": 1
+
+}
+
+###
+
+PUT http://localhost:9090/api/v1/breeds?update=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 57
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 430,
+  "name": "daaaupaa",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T195741.500.json
+
+###
+
+POST http://localhost:9090/api/v1/breeds
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 48
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Kaszlaczkowy",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T195731.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds?update=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 57
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 430,
+  "name": "daaaupaa",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T195703.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/430?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:9090/api/v1/breeds
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Type: application/json
+Content-Length: 44
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Kaszlacz",
+  "animalType": 1
+
+}
+
+<> 2023-04-19T195551.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T195531.500.json
+
+###
+
+GET http://localhost:9090/api/v1/breeds/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T195522.200.json
+
+###
+
+GET http://localhost:9090/api/v1/breeds
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjg5NywiZXhwIjoxNjgxOTMyODk3fQ.Onh8xxZSZbwxjkjtApLrs29JfRuf-y8s4qEBLJKimTd6HXrzGDExkExJAtcXsyNn_LaxAaHdH3HBPME9zGxZRQ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T195516.200.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T195457.200.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjYwNCwiZXhwIjoxNjgxOTMyNjA0fQ._l2tiSRXLF4tWmOBp58dZREkQwSwoeqAAA4G-z86kGn35ntNC2XYEbd_BS3i9v8zCidvBPk0iE_I0X8EXxMAyw
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T195031.500.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T195004.200.json
+
+###
+
+GET http://localhost:9090/api/v1/breeds/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjQzMSwiZXhwIjoxNjgxOTMyNDMxfQ.emrgsQn3XfxFqiiHbBvT4YsIpijoG-EHjq-cOPer_IaTwoCoYJ7CZOxBWb2wMc8T3oAgUXNsw07xIOONC0KTqg
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T194843.200.json
+
+###
+
+GET http://localhost:9090/api/v1/breeds/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg1NjQzMCwiZXhwIjoxNjgxODYyNDMwfQ.XAeekGd80-_bAF1xyG9yy91kUcILZ2f3FEVYHeCvn0P37lJksua9qJBjYDSVwMPye22-1t8C0aUwEn9zPYlr2g
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjQzMSwiZXhwIjoxNjgxOTMyNDMxfQ.emrgsQn3XfxFqiiHbBvT4YsIpijoG-EHjq-cOPer_IaTwoCoYJ7CZOxBWb2wMc8T3oAgUXNsw07xIOONC0KTqg
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T194803.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjQzMSwiZXhwIjoxNjgxOTMyNDMxfQ.emrgsQn3XfxFqiiHbBvT4YsIpijoG-EHjq-cOPer_IaTwoCoYJ7CZOxBWb2wMc8T3oAgUXNsw07xIOONC0KTqg
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T194730.500.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T194711.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjA5NCwiZXhwIjoxNjgxOTMyMDk0fQ.0jZtqyXBA77vQwGYdPkNkpbhmpNsfp0Zdu19RFRl3q1Xrtt3ykZSREiyV9FMY396GfGPpclTIfpwra6zOw6dVQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T194257.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjA5NCwiZXhwIjoxNjgxOTMyMDk0fQ.0jZtqyXBA77vQwGYdPkNkpbhmpNsfp0Zdu19RFRl3q1Xrtt3ykZSREiyV9FMY396GfGPpclTIfpwra6zOw6dVQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T194226.500.json
+
+###
+
+PUT http://localhost:9090/api/v1/breeds/3?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkyNjA5NCwiZXhwIjoxNjgxOTMyMDk0fQ.0jZtqyXBA77vQwGYdPkNkpbhmpNsfp0Zdu19RFRl3q1Xrtt3ykZSREiyV9FMY396GfGPpclTIfpwra6zOw6dVQ
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-04-19T194151.500.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T194134.200.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T194132.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/animal-types/110?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMjczMCwiZXhwIjoxNjgxOTA4NzMwfQ.7tJwAD1crhN2kOUl0h17aq28t9l9wrGaYlJDhkbBfV3rogEQcXn7ngfV6vpaRF2BYc1fnsL6MK0hWYZKk4RMfA
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T131210.200.json
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-19T131118.200.json
+
+###
+
+PUT http://localhost:9090/api/v1/lesson-steps/21?archive=
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg1Nzc0NiwiZXhwIjoxNjgxODYzNzQ2fQ.Q-WbuWea4TKjNN39aG93MrmNjiFNjIBKl2tovgWnufAin2GhgGf7qewwkCVjRGPcMrujPZcuRyZmPj0d9nRh3A
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
 PUT http://localhost:9090/api/v1/app-users?update=
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMjAzOSwiZXhwIjoxNjgxOTA4MDM5fQ.1nc88humDxJ3GBjN61fuQaM0sYb8Ol4HXBhvwzuZ39mqYshp5dUzMP5EMOlnH7MTk5QaR3TTzg9fteQ0-yM_Pw
 Content-Type: application/json
@@ -40,823 +669,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
   "isActive": true,
   "ban_expiration": "2019-10-19T17:12:30.174Z"
 }
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMjAzOSwiZXhwIjoxNjgxOTA4MDM5fQ.1nc88humDxJ3GBjN61fuQaM0sYb8Ol4HXBhvwzuZ39mqYshp5dUzMP5EMOlnH7MTk5QaR3TTzg9fteQ0-yM_Pw
-Content-Type: application/json
-Content-Length: 270
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "ban_expiration": "2019-10-19T17:12:30.174Z"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMjAzOSwiZXhwIjoxNjgxOTA4MDM5fQ.1nc88humDxJ3GBjN61fuQaM0sYb8Ol4HXBhvwzuZ39mqYshp5dUzMP5EMOlnH7MTk5QaR3TTzg9fteQ0-yM_Pw
-Content-Type: application/json
-Content-Length: 270
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": "2019-10-19T17:12:30.174Z"
-}
-
-###
-
-POST http://localhost:9090/api/v1/app-users/login
-Content-Type: application/json
-Content-Length: 75
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior"
-}
-
-<> 2023-04-19T130039.200.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMTcyMywiZXhwIjoxNjgxOTA3NzIzfQ._pjBvIXraNYEQ0VznOgAiaHes_XgJo25hU03zzI-MveRtYP57pFYkOTomSJAHCyF1iKIe8oPj1OjBX15Od7PdQ
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true
-}
-
-<> 2023-04-19T125610.500.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMTcyMywiZXhwIjoxNjgxOTA3NzIzfQ._pjBvIXraNYEQ0VznOgAiaHes_XgJo25hU03zzI-MveRtYP57pFYkOTomSJAHCyF1iKIe8oPj1OjBX15Od7PdQ
-Content-Type: application/json
-Content-Length: 223
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-}
-
-<> 2023-04-19T125553.400.json
-
-###
-
-POST http://localhost:9090/api/v1/app-users/login
-Content-Type: application/json
-Content-Length: 75
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior"
-}
-
-<> 2023-04-19T125523.200.json
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/28?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMTU3MSwiZXhwIjoxNjgxOTA3NTcxfQ.mpOu1hPW5s1_Nc07YGmKKNPRQbN7BknFVRAV4wNTYgZyq3MChPKAibCMldykMIa5FbiHabBalsPRITFDH1cwnw
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-POST http://localhost:9090/api/v1/app-users/login
-Content-Type: application/json
-Content-Length: 75
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior"
-}
-
-<> 2023-04-19T125251.200.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6YWFhQGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMTUyNCwiZXhwIjoxNjgxOTA3NTI0fQ.felnxjjzCtbbHiGDYo0k9MUsPXVzQSP6kfqluH9T3gikHoLAiDLSEVqMvlR-KUuOsPhk7G49EsyR3o2Iae6eMQ
-Content-Type: application/json
-Content-Length: 278
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": {"year":2017,"month": 11,"day":25}
-}
-
-###
-
-POST http://localhost:9090/api/v1/app-users/login
-Content-Type: application/json
-Content-Length: 78
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "bojara.arkadiuszaaa@gmail.com",
-  "password": "backend_junior"
-}
-
-<> 2023-04-19T125204.200.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMTQwNSwiZXhwIjoxNjgxOTA3NDA1fQ.AxRGRliwMnFHRZZ4bi4y7xP6MSUiXL7TvxMC0k7UDpEHLkYtqGVikv5EkkAfw23nKmtE_O0SYEAaMZv4FMe7ow
-Content-Type: application/json
-Content-Length: 278
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": {"year":2017,"month": 11,"day":25}
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMTQwNSwiZXhwIjoxNjgxOTA3NDA1fQ.AxRGRliwMnFHRZZ4bi4y7xP6MSUiXL7TvxMC0k7UDpEHLkYtqGVikv5EkkAfw23nKmtE_O0SYEAaMZv4FMe7ow
-Content-Type: application/json
-Content-Length: 281
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 28  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiuszaaa@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": {"year":2017,"month": 11,"day":25}
-}
-
-###
-
-POST http://localhost:9090/api/v1/app-users/login
-Content-Type: application/json
-Content-Length: 75
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior"
-}
-
-<> 2023-04-19T125005.200.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 281
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiuszaaaaa@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": {"year":2017,"month": 11,"day":25}
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 276
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": {"year":2017,"month": 11,"day":25}
-}
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/33?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/76?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/38?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/20?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-04-19T124450.500.json
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/74?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/73?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/72?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/68?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/71?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-PUT http://localhost:9090/api/v1/app-users/75?archive=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-04-19T124356.404.json
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/67?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 263
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": {"year":2017,"month": 11,"day":25}
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 264
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": "2023-04-17 21:42:10.526119 +00:00"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 250
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": "2017-11-01T00:00:00"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 250
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": "LocalDateTime.now()"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 241
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime": "2000-01-01"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 256
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "OffsetDateTime":"2000-01-01 00:00:00.000001"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 207
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 210
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "is_locked": true,
-  "is_banned": true,
-  "is_active": true
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 213
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "is_locked": false,
-  "is_banned": false,
-  "is_active": false
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 213
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO",
-  "is_locked": false,
-  "is_banned": false,
-  "is_active": false
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 147
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 147
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 147
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 74,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 147
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 76,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "GNIEZNO"
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 148
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 76,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "WARSZAWA"
-}
-
-<> 2023-04-19T121612.500.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 147
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 76,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę",
-  "city": "Gniezno"
-}
-
-<> 2023-04-19T121601.404.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5OTE4OCwiZXhwIjoxNjgxOTA1MTg4fQ.hFWXtcBL0IESJpxfc-yzjG0TQggRm0IKixaPaW0UNvR9LCMAHvAJtGfnlgskBMJwx7xzuCTvpYgCJzgyYZc6Gg
-Content-Type: application/json
-Content-Length: 126
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 76,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę"
-}
-
-<> 2023-04-19T121326.404.json
-
-###
-
-POST http://localhost:9090/api/v1/app-users/login
-Content-Type: application/json
-Content-Length: 75
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior"
-}
-
-<> 2023-04-19T121308.200.json
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Content-Type: application/json
-Content-Length: 126
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 76,
-  "firstName": "Maniek",
-  "lastName": "mańkowski",
-  "email": "m.m@gmail.com",
-  "password": "dupa w kratę"
-}
-
-<> 2023-04-19T121114.400.json
-
-###
-
-DELETE http://localhost:9090/api/v1/app-users/75?delete=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-PUT http://localhost:9090/api/v1/app-users/75?archive=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5Nzk5MCwiZXhwIjoxNjgxOTAzOTkwfQ.WBZIgz3guAupP1Ju9IcC-loqEDNWl6crHYTBcyHmOQUMpLfp4t54MTnV5ZKqo8L5D5tbfjitkI8MSE1bjenhnA
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-GET http://localhost:9090/api/v1/app-users/20
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTg5ODc3NywiZXhwIjoxNjgxOTA0Nzc3fQ.3OPDsBmghDMofba0uNn2MTS55MPtD70B7NTzKRzrUYxNHgSUT85iQRbJFgwPU_FfOj4mFlclrCjWEV8XDhIYiQ
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-04-19T120734.200.json
 
 ###
 

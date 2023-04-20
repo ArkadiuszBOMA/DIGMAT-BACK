@@ -3,7 +3,6 @@ package com.codecool.dogmate.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
@@ -22,7 +21,7 @@ public class CareAnnouncementType {
 
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
-    @Size(min = 5, max = 255)
+    @Size(min = 5, max = 50)
     private String name;
 
     @Column(name = "archive")

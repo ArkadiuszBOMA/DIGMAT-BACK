@@ -60,8 +60,10 @@ public class VoivodeshipsService {
     }
 
     public VoivodeshipDto createVoivodeship(NewVoivodeshipDto voivodeship) {
-        log.info("Rejestracja {}", voivodeship);
+        log.info("Dodałeś województwo {}", voivodeship);
         Voivodeship entity = voivodeshipMapper.mapNewVoivodeshipDtoToEntity(voivodeship);
+        entity.setName(voivodeship.name().trim().toUpperCase().replaceAll("( )+", " "));
+        entity.setTerytId(voivodeship.terytId().trim().replaceAll("( )+", " "));
         Voivodeship savedEntity = voivodeshipRepository.save(entity);
         return voivodeshipMapper.mapEntityToVoivodeshipDto(savedEntity);
     }

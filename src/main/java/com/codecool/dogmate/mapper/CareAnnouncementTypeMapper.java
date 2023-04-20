@@ -15,7 +15,11 @@ public class CareAnnouncementTypeMapper {
     public CareAnnouncementTypeDto mapEntityToCareAnnouncementTypeDto(CareAnnouncementType entity) {
         return new CareAnnouncementTypeDto(
                 entity.getId(),
-                entity.getName()
+                entity.getName(),
+                entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
+                entity.getArchive()
         );
     }
 }

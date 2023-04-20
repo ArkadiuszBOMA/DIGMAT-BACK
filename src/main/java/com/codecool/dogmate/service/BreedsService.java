@@ -82,6 +82,7 @@ public class BreedsService {
     }
 
     public void archiveBreed(Integer id) {
+        System.out.println("tu jestem");
         Breed archivedBreed = breedRepository.findOneById(id)
                 .orElseThrow(() -> new BreadNotFoundException(id));
         if(!archivedBreed.getArchive()) {
