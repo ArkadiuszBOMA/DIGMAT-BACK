@@ -21,7 +21,7 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     Optional<City> findOneById(Integer id);
     @Query("SELECT DISTINCT a FROM City a WHERE a.name = :name")
     Optional<City> findOneByName(String name);
-    @Query("SELECT DISTINCT a FROM City a WHERE a.province.id = :name")
+    @Query("SELECT DISTINCT a FROM City a WHERE a.province.id = :id")
     List<City> findAllByProvinceId(Integer id);
     @Modifying
     void deleteById(Integer id);
