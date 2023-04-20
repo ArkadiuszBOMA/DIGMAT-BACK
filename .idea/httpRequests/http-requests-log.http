@@ -1,3 +1,27 @@
+DELETE http://localhost:9090/api/v1/breeds/440
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MjAwMzUwOCwiZXhwIjoxNjgyMDA5NTA4fQ.NG63SNiG3sfL8NCDiX2hcFNn75RFh1nCahfjNU1RU4bMde_2od-dE78_We8RDlmYBWxO2A8p9Ds-b8MVT4FJcQ
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:9090/api/v1/app-users/login
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "bojara.arkadiusz@gmail.com",
+  "password": "backend_junior"
+}
+
+<> 2023-04-20T171148.200.json
+
+###
+
 PUT http://localhost:9090/api/v1/voivodeships/0?archive=
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkzNDEwNywiZXhwIjoxNjgxOTQwMTA3fQ.EpuE8wOGkTYrsqQ2tIiFw8G_KVLzstCI_ReJ1htj395Ds2xZ8A2BIbuEvTJwdHEWsjbBn-jzXkDaL25kTW_ILw
 Content-Length: 0
@@ -624,51 +648,6 @@ Content-Length: 0
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
 Accept-Encoding: br,deflate,gzip,x-gzip
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMjAzOSwiZXhwIjoxNjgxOTA4MDM5fQ.1nc88humDxJ3GBjN61fuQaM0sYb8Ol4HXBhvwzuZ39mqYshp5dUzMP5EMOlnH7MTk5QaR3TTzg9fteQ0-yM_Pw
-Content-Type: application/json
-Content-Length: 222
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true
-}
-
-###
-
-PUT http://localhost:9090/api/v1/app-users?update=
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2phcmEuYXJrYWRpdXN6QGdtYWlsLmNvbSIsImlhdCI6MTY4MTkwMjAzOSwiZXhwIjoxNjgxOTA4MDM5fQ.1nc88humDxJ3GBjN61fuQaM0sYb8Ol4HXBhvwzuZ39mqYshp5dUzMP5EMOlnH7MTk5QaR3TTzg9fteQ0-yM_Pw
-Content-Type: application/json
-Content-Length: 270
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.5)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "id": 20  ,
-  "firstName": "Arkadiusz",
-  "lastName": "Bojara",
-  "email": "bojara.arkadiusz@gmail.com",
-  "password": "backend_junior",
-  "city": "GNIEZNO",
-  "isLocked": true,
-  "isBanned": true,
-  "isActive": true,
-  "ban_expiration": "2019-10-19T17:12:30.174Z"
-}
 
 ###
 

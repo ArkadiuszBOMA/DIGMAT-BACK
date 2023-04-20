@@ -21,7 +21,6 @@ public class UserPrivilegeController {
         this.userPrivilegesService = userPrivilegesService;
     }
 
-
     @GetMapping()
     public List<UserPrivilegeDto> getAllUserRoles() {return userPrivilegesService.getUserPrivilege();}
 

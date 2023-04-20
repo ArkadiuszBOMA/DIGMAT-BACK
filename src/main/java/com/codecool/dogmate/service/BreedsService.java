@@ -82,9 +82,10 @@ public class BreedsService {
     }
 
     public void archiveBreed(Integer id) {
-        System.out.println("tu jestem");
+        System.out.println("jestem na backendzie");
         Breed archivedBreed = breedRepository.findOneById(id)
                 .orElseThrow(() -> new BreadNotFoundException(id));
+        System.out.println(archivedBreed.getId());
         if(!archivedBreed.getArchive()) {
             archivedBreed.setDate_archive(LocalDateTime.now());
             archivedBreed.setArchive(true);
@@ -93,6 +94,7 @@ public class BreedsService {
             log.info("Dane już były archiwizowane;");
         }
         breedRepository.save(archivedBreed);
+        System.out.println(archivedBreed.getId());
     }
     public void deleteBreedData(Integer id) {
         Breed deletedBreed = breedRepository.findOneById(id)

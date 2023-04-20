@@ -19,7 +19,7 @@ public interface UserPrivilegeRepository extends JpaRepository<UserPrivilege, In
     List<UserPrivilege> findAllBy(Pageable pageable);
     @Query("SELECT DISTINCT a FROM UserPrivilege a WHERE a.id = :id")
     Optional<UserPrivilege> findOneById(Integer id);
-    @Query("SELECT DISTINCT a FROM UserPrivilege a WHERE a.name = :name")
+    @Query("SELECT DISTINCT a FROM UserPrivilege a WHERE a.name = :id")
     Optional<UserPrivilege> findOneByName(String name);
     @Modifying
     @Query("DELETE FROM UserPrivilege a WHERE a.id = :id")

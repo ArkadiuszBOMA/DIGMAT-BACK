@@ -32,7 +32,7 @@ public class BreedsController {
     public void updateBreed(@RequestBody @Valid UpdateBreedDto breedDto){breedsService.updateBreed(breedDto);}
     @PutMapping(value="/{id}", params={"archive"})
     public void archiveBreed(@PathVariable Integer id) {breedsService.archiveBreed(id);}
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public void deleteBreed(@PathVariable Integer id) {
         breedsService.deleteBreedData(id);
     }
