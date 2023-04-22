@@ -82,9 +82,9 @@ public class UserPrivilegesService {
     }
 
     public void deleteUserPrivilegeData(Integer id) {
-        UserPrivilege deletedUserPrivilege = userPrivilegeRepository.findOneById(id)
+        userPrivilegeRepository.findOneById(id)
                 .orElseThrow(() -> new UserPrivilegesNotFoundException(id));
         log.info("Usunąłeś typ użytkownika o id {}", id);
-        userPrivilegeRepository.deleteById(deletedUserPrivilege.getId());
+        userPrivilegeRepository.deleteById(id);
     }
 }

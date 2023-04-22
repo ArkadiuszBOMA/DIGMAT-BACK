@@ -128,10 +128,10 @@ public class AnimalsService {
     }
 
     public void deleteAnimalData(Integer id) {
-        Animal deletedAnimal = animalRepository.findOneById(id)
+        animalRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalNotFoundException(id));
         log.info("Usunąłeś zwierzaka o id {}", id);
-        animalRepository.deleteById(deletedAnimal.getId());
+        animalRepository.deleteById(id);
     }
 
 }

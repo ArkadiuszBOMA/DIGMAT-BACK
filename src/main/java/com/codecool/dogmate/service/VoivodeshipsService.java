@@ -91,10 +91,10 @@ public class VoivodeshipsService {
     }
 
     public void deleteVoivodeshipData(Integer id) {
-        Voivodeship deletedVoivodeship = voivodeshipRepository.findOneById(id)
+        voivodeshipRepository.findOneById(id)
                 .orElseThrow(() -> new VoivodeshipNotFoundException(id));
         log.info("Usunąłeś województwo o id {}", id);
-        voivodeshipRepository.deleteById(deletedVoivodeship.getId());
+        voivodeshipRepository.deleteById(id);
     }
 
     public List<ProvinceDto> getProvincesForThisVoivodeshipById(Integer id) {

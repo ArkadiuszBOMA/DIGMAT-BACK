@@ -91,10 +91,10 @@ public class TrainingLevelsService {
     }
 
     public void deleteTrainingLevelData(Integer id) {
-        TrainingLevel deletedTrainingLevel = trainingLevelRepository.findOneById(id)
+        trainingLevelRepository.findOneById(id)
                 .orElseThrow(() -> new TrainingLevelNotFoundException(id));
         log.info("Usunąłeś poziom trudności o id {}", id);
-        trainingLevelRepository.deleteById(deletedTrainingLevel.getId());
+        trainingLevelRepository.deleteById(id);
     }
 
     public List<LessonDto> getLessonForThisTrainingLevelId(Integer id) {

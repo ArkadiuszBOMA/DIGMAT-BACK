@@ -104,10 +104,10 @@ public class CitiesService {
     }
 
     public void deleteCityData(Integer id) {
-        City deletedCity = cityRepository.findOneById(id)
+        cityRepository.findOneById(id)
                 .orElseThrow(() -> new VoivodeshipNotFoundException(id));
         log.info("Usunąłeś miasto o id {}", id);
-        cityRepository.deleteById(deletedCity.getId());
+        cityRepository.deleteById(id);
     }
 
     public List<AppUserDto> getAppUserForThisCityId(Integer id) {

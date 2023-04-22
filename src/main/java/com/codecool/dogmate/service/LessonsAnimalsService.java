@@ -72,9 +72,9 @@ public class LessonsAnimalsService {
         return lessonAnimalMapper.mapEntityToLessonAnimalDto(savedEntity);
     }
     public void deleteLessonAnimalData(Integer id) {
-        LessonsAnimal deletedLessonsAnimal = lessonAnimalRepository.findOneById(id)
+        lessonAnimalRepository.findOneById(id)
                 .orElseThrow(() -> new LessonAnimalNotFoundException(id));
         log.info("Usunąłeś zwierzaka o id {}", id);
-        lessonAnimalRepository.deleteById(deletedLessonsAnimal.getId());
+        lessonAnimalRepository.deleteById(id);
     }
 }

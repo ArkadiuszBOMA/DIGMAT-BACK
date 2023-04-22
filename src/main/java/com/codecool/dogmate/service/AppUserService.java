@@ -129,10 +129,10 @@ public class AppUserService {
     }
 
     public void deleteAppUserData(Integer id) {
-        AppUser deletedAppUser = appUserRepository.findOneById(id)
+        appUserRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
         log.info("Usunąłeś użytkownika o id {}", id);
-        appUserRepository.deleteById(deletedAppUser.getId());
+        appUserRepository.deleteById(id);
     }
 
     public JwtTokenResponse loginUser(JwtTokenRequest jwtTokenRequest) {

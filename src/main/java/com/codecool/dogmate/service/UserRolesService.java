@@ -81,9 +81,9 @@ public class UserRolesService {
     }
 
     public void deleteUserRoleData(Integer id) {
-        UserRole deletedUserRole = userRoleRepository.findOneById(id)
+        userRoleRepository.findOneById(id)
                 .orElseThrow(() -> new UserRoleNotFoundException(id));
         log.info("Usunąłeś typ użytkownika o id {}", id);
-        userRoleRepository.deleteById(deletedUserRole.getId());
+        userRoleRepository.deleteById(id);
     }
 }

@@ -97,10 +97,10 @@ public class BreedsService {
         System.out.println(archivedBreed.getId());
     }
     public void deleteBreedData(Integer id) {
-        Breed deletedBreed = breedRepository.findOneById(id)
+        breedRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalNotFoundException(id));
         log.info("Usunąłeś rasę o id {}", id);
-        breedRepository.deleteById(deletedBreed.getId());
+        breedRepository.deleteById(id);
     }
 
 }

@@ -22,15 +22,14 @@ public class Province {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "name")
+    @Size(min = 5, max = 50)
+    private String name;
 
     @EqualsAndHashCode.Include
     @NotNull
     @Column(name = "teryt_id", unique = true)
     private String terytId;
-
-    @Column(name = "name")
-    @Size(min = 5, max = 50)
-    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "voivodeship_id")

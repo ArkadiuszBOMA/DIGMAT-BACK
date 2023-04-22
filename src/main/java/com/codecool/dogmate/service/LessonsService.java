@@ -100,10 +100,10 @@ public class LessonsService {
     }
 
     public void deleteLessonData(Integer id) {
-        Lesson deletedLesson = lessonRepository.findOneById(id)
+        lessonRepository.findOneById(id)
                 .orElseThrow(() -> new LessonNotFoundException(id));
         log.info("Usunąłeś lekcję o id {}", id);
-        lessonRepository.deleteById(deletedLesson.getId());
+        lessonRepository.deleteById(id);
     }
 
     public List<LessonStepDto> getStepsForThisLessonId(Integer id) {

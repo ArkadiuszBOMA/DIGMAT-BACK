@@ -92,10 +92,10 @@ public class AnimalTypesService {
     }
 
     public void deleteAnimalTypeData(Integer id) {
-        AnimalType deletedAnimalType = animalTypeRepository.findOneById(id)
+        animalTypeRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
         log.info("Usunąłeś typ zwierzaków o id {}", id);
-        animalTypeRepository.deleteById(deletedAnimalType.getId());
+        animalTypeRepository.deleteById(id);
     }
 
     public List<BreedDto> getBreedForThisAnimalTypeById(Integer id) {

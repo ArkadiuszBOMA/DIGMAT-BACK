@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public record ProvinceDto(
         Integer id,
-        String terytId,
         String name,
+        String terytId,
         LocalDateTime date_create,
         LocalDateTime date_modify,
         LocalDateTime date_archive,

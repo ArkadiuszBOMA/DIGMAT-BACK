@@ -82,9 +82,9 @@ public class TimeUnitService {
         timeUnitRepository.save(archivedTimeUnit);
     }
     public void deleteTimeUnitData(Integer id) {
-        TimeUnit deletedTimeUnit = timeUnitRepository.findOneById(id)
+        timeUnitRepository.findOneById(id)
                 .orElseThrow(() -> new TimeUnitNotFoundException(id));
         log.info("Usunąłeś powiat o id {}", id);
-        timeUnitRepository.deleteById(deletedTimeUnit.getId());
+        timeUnitRepository.deleteById(id);
     }
 }

@@ -95,9 +95,9 @@ public class LessonStepsService {
     }
 
     public void deleteLessonStepData(Integer id) {
-        LessonStep deletedLessonStep = lessonStepRepository.findOneById(id)
+        lessonStepRepository.findOneById(id)
                 .orElseThrow(() -> new LessonStepNotFoundException(id));
         log.info("Usunąłeś krok o id {}", id);
-        lessonStepRepository.deleteById(deletedLessonStep.getId());
+        lessonStepRepository.deleteById(id);
     }
 }
