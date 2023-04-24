@@ -22,5 +22,6 @@ public interface VoivodeshipRepository extends JpaRepository<Voivodeship, Intege
     @Query("SELECT DISTINCT a FROM Voivodeship a WHERE a.name = :name")
     Optional<Voivodeship> findOneByName(String name);
     @Modifying
+    @Query("DELETE FROM Voivodeship a WHERE a.id = :id")
     void deleteById(Integer id);
 }

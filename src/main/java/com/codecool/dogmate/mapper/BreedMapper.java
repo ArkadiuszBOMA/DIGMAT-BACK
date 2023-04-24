@@ -18,8 +18,8 @@ public class BreedMapper {
                 entity.getName(),
                 entity.getAnimalTypes().getName(),
                 entity.getDate_create(),
-                entity.getDate_archive(),
                 entity.getDate_modify(),
+                entity.getDate_archive(),
                 entity.getArchive()
         );
     }

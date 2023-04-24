@@ -29,5 +29,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     @Query("SELECT DISTINCT a FROM AppUser a WHERE a.city.name = :name")
     List<AppUser> findAllByCityName(String name);
     @Modifying
+    @Query("DELETE FROM AppUser a WHERE a.id = :id")
     void deleteById(Integer id);
 }

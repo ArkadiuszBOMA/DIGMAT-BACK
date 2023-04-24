@@ -1,7 +1,6 @@
 package com.codecool.dogmate.mapper;
 
 import com.codecool.dogmate.dto.lessonanimal.LessonAnimalDto;
-import com.codecool.dogmate.dto.lessonanimal.NewLessonAnimalDto;
 import com.codecool.dogmate.entity.Animal;
 import com.codecool.dogmate.entity.Lesson;
 import com.codecool.dogmate.entity.LessonsAnimal;
@@ -24,9 +23,9 @@ public class LessonAnimalMapper {
                 entity.getFinished(),
                 entity.getAnimal().getId(),
                 entity.getLesson().getId(),
-                entity.getDate_archive(),
-                entity.getDate_modify(),
                 entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
                 entity.getArchive()
         );
     }

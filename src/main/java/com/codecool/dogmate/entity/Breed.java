@@ -22,7 +22,7 @@ public class Breed {
 
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
-    @Size(min = 5, max = 55)
+    @Size(min = 3, max = 55)
     private String name;
 
     @Column(name = "archive")

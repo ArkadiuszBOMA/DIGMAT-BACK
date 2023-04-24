@@ -81,9 +81,11 @@ public class AnimalTypesService {
     public void archiveAnimalType(Integer id) {
         AnimalType archivedAnimalType = animalTypeRepository.findOneById(id)
                 .orElseThrow(() -> new AnimalTypeNotFoundException(id));
+        System.out.println(archivedAnimalType.getArchive());
         if(!archivedAnimalType.getArchive()) {
             archivedAnimalType.setDate_archive(LocalDateTime.now());
             archivedAnimalType.setArchive(true);
+            System.out.println(archivedAnimalType.getArchive());
             log.info("Zarchiwizowane dane dla id {}", id);
         } else {
             log.info("Dane już były archiwizowane;");

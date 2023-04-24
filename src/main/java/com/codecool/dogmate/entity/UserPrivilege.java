@@ -24,7 +24,7 @@ public class UserPrivilege {
 
     @EqualsAndHashCode.Include
     @NotNull
-    @Size(min = 5, max = 50)
+    @Size(min = 3, max = 50)
     @Column(name = "name", unique = true)
     private String name;
 

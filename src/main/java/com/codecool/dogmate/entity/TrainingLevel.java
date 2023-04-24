@@ -25,7 +25,7 @@ public class TrainingLevel {
     @EqualsAndHashCode.Include
     @Column(name = "name", unique = true)
     @NotNull
-    @Size(min = 5, max = 10)
+    @Size(min = 5, max = 50)
     private String name;
 
     @Column(name = "description")
