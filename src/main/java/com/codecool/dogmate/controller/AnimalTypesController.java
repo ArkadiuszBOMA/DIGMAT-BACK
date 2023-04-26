@@ -35,7 +35,8 @@ public class AnimalTypesController {
     @PostMapping()
     public AnimalTypeDto newAnimalType(@RequestBody @Valid NewAnimalTypeDto animalType) {return animalTypesService.createAnimalType(animalType);}
     @PutMapping(params={"update"})
-    public void updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {animalTypesService.updateAnimalType(animalType);}
+    public AnimalTypeDto updateAnimalType(@RequestBody @Valid UpdateAnimalTypeDto animalType) {
+        return animalTypesService.updateAnimalType(animalType);}
     @PutMapping(value="/{id}", params={"archive"})
     public void archiveAnimalType(@PathVariable Integer id) {
         animalTypesService.archiveAnimalType(id);

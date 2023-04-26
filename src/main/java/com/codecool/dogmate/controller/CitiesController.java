@@ -41,8 +41,8 @@ public class CitiesController {
         return citiesService.createCity(city);
     }
     @PutMapping(params={"update"})
-    public void updateCity(@RequestBody @Valid UpdateCityDto city) {
-        citiesService.updateCity(city);
+    public CityDto updateCity(@RequestBody @Valid UpdateCityDto city) {
+        return citiesService.updateCity(city);
     }
     @PutMapping(value="/{id}", params={"archive"})
     public void archiveCity(@PathVariable Integer id) {

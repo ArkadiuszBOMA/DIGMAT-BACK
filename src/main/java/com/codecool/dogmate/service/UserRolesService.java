@@ -58,13 +58,14 @@ public class UserRolesService {
         return userRoleMapper.mapEntityToUserTypeDto(savedEntity);
     }
 
-    public void updateUserRole(UpdateUserRoleDto userrole) {
+    public UserRoleDto updateUserRole(UpdateUserRoleDto userrole) {
         log.info("Zaktualizowałem dane dla id {}", userrole.id());
         UserRole updateUserRole = userRoleRepository.findOneById(userrole.id())
                 .orElseThrow(() -> new UserRoleNotFoundException(userrole.id()));
         updateUserRole.setName(userrole.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateUserRole.setDate_modify(LocalDateTime.now());
         userRoleRepository.save(updateUserRole);
+        return userRoleMapper.mapEntityToUserTypeDto(updateUserRole);
     }
 
     public void archiveUserRole(Integer id) {

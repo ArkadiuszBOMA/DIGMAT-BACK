@@ -60,13 +60,14 @@ public class CareAnnouncementTypeService {
         return careAnnouncementTypeMapper.mapEntityToCareAnnouncementTypeDto(savedEntity);
     }
 
-    public void updateCareAnnouncementType(UpdateCareAnnouncementTypeDto careAnnouncementType) {
+    public CareAnnouncementTypeDto updateCareAnnouncementType(UpdateCareAnnouncementTypeDto careAnnouncementType) {
         log.info("Zaktualizowałem dane dla id {}", careAnnouncementType.id());
         CareAnnouncementType updateCareAnnouncementTypeData = careAnnouncementTypeRepository.findOneById(careAnnouncementType.id())
                 .orElseThrow(() -> new CareTypeAnnouncementNotFoundException(careAnnouncementType.id()));
         updateCareAnnouncementTypeData.setName(careAnnouncementType.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateCareAnnouncementTypeData.setDate_modify(LocalDateTime.now());
         careAnnouncementTypeRepository.save(updateCareAnnouncementTypeData);
+        return careAnnouncementTypeMapper.mapEntityToCareAnnouncementTypeDto(updateCareAnnouncementTypeData);
     }
 
     public void archiveCareAnnouncementType(Integer id) {

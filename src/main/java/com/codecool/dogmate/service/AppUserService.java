@@ -93,7 +93,7 @@ public class AppUserService {
         appUserMapper.mapEntityToAppUserDto(savedEntity);
     }
 
-    public void updateAppUser(UpdateAppUserDto user) {
+    public AppUserDto updateAppUser(UpdateAppUserDto user) {
         City city = cityRepository.findOneByName(user.city())
                 .orElseThrow(() -> new CityNotFoundException(user.city()));
         log.info("Zaktualizowałem dane dla id {}", user.id());
@@ -112,6 +112,7 @@ public class AppUserService {
         updatedAppUser.setIsActive(user.isActive());
         updatedAppUser.setDate_modify(LocalDateTime.now());
         appUserRepository.save(updatedAppUser);
+        return appUserMapper.mapEntityToAppUserDto(updatedAppUser);
     }
 
     public void archiveAppUser(Integer id) {

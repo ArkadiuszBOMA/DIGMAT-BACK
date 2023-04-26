@@ -40,8 +40,8 @@ public class TimeUnitsController {
     }
 
     @PutMapping(params={"update"})
-    public void updateTimeUnit(@RequestBody @Valid UpdateTimeUnitDto timeUnit) {
-        timeUnitService.updateTimeUnit(timeUnit);
+    public TimeUnitDto updateTimeUnit(@RequestBody @Valid UpdateTimeUnitDto timeUnit) {
+        return timeUnitService.updateTimeUnit(timeUnit);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

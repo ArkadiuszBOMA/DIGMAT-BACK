@@ -42,8 +42,8 @@ public class AnimalsController {
     }
 
     @PutMapping(params={"update"})
-    public void updateAnimal(@RequestBody @Valid UpdateAnimalDto animal) {
-        animalsService.updateAnimal(animal);
+    public AnimalDto updateAnimal(@RequestBody @Valid UpdateAnimalDto animal) {
+        return animalsService.updateAnimal(animal);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

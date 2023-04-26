@@ -40,8 +40,8 @@ public class UserPrivilegeController {
         return userPrivilegesService.createUserPrivilege(userPrivilegeDto);
     }
     @PutMapping(params={"update"})
-    public void updateUserPrivilege(@RequestBody @Valid UpdateUserPrivilegeDto userPrivilege) {
-        userPrivilegesService.updateUserPrivileg(userPrivilege);
+    public UserPrivilegeDto updateUserPrivilege(@RequestBody @Valid UpdateUserPrivilegeDto userPrivilege) {
+        return userPrivilegesService.updateUserPrivileg(userPrivilege);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

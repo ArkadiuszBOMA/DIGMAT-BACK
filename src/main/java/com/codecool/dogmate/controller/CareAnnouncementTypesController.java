@@ -35,12 +35,12 @@ public class CareAnnouncementTypesController {
     }
 
     @PostMapping()
-    public CareAnnouncementTypeDto newCareAnnouncementType(@RequestBody @Valid NewCareAnnouncementTypeDto careannouncementtype) {
-        return careAnnouncementTypeService.createCareAnnouncementType(careannouncementtype);
+    public CareAnnouncementTypeDto newCareAnnouncementType(@RequestBody @Valid NewCareAnnouncementTypeDto careAnnouncementTypeDto) {
+        return careAnnouncementTypeService.createCareAnnouncementType(careAnnouncementTypeDto);
     }
     @PutMapping(params={"update"})
-    public void updateCareAnnouncementType(@RequestBody @Valid UpdateCareAnnouncementTypeDto careAnnouncementTypeDto) {
-        careAnnouncementTypeService.updateCareAnnouncementType(careAnnouncementTypeDto);
+    public CareAnnouncementTypeDto updateCareAnnouncementType(@RequestBody @Valid UpdateCareAnnouncementTypeDto careAnnouncementTypeDto) {
+        return careAnnouncementTypeService.updateCareAnnouncementType(careAnnouncementTypeDto);
     }
     @PutMapping(value="/{id}", params={"archive"})
     public void archiveCareAnnouncementType(@PathVariable Integer id) {

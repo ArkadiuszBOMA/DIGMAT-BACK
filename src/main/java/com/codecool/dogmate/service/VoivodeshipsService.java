@@ -67,7 +67,7 @@ public class VoivodeshipsService {
         Voivodeship savedEntity = voivodeshipRepository.save(entity);
         return voivodeshipMapper.mapEntityToVoivodeshipDto(savedEntity);
     }
-    public void updateVoivodeshipData(UpdateVoivodeshipDto voivodeshio) {
+    public VoivodeshipDto updateVoivodeshipData(UpdateVoivodeshipDto voivodeshio) {
         log.info("Zaktualizowałem dane dla id {}", voivodeshio.id());
         Voivodeship updatedVoivodeship = voivodeshipRepository.findOneById(voivodeshio.id())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(voivodeshio.id()));
@@ -75,6 +75,7 @@ public class VoivodeshipsService {
         updatedVoivodeship.setTerytId(voivodeshio.terytId().trim().replaceAll("( )+", " "));
         updatedVoivodeship.setDate_modify(LocalDateTime.now());
         voivodeshipRepository.save(updatedVoivodeship);
+        return voivodeshipMapper.mapEntityToVoivodeshipDto(updatedVoivodeship);
     }
 
     public void archiveVoivodeshipData(Integer id) {

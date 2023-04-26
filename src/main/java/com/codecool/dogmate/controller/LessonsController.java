@@ -37,8 +37,8 @@ public class LessonsController {
         return lessonsService.createLesson(lesson);
     }
     @PutMapping(params={"update"})
-    public void updateLesson(@RequestBody @Valid UpdateLessonDto lesson) {
-        lessonsService.updateLesson(lesson);
+    public LessonDto updateLesson(@RequestBody @Valid UpdateLessonDto lesson) {
+        return lessonsService.updateLesson(lesson);
     }
     @PutMapping(value="/{id}", params={"archive"})
     public void archiveLesson(@PathVariable Integer id) {

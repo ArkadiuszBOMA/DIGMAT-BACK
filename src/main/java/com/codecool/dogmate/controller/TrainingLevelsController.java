@@ -44,8 +44,8 @@ public class TrainingLevelsController {
         return trainingLevelsService.createTrainingLevel(traininglevel);
     }
     @PutMapping(params={"update"})
-    public void updateTrainingLevel(@RequestBody @Valid UpdateTrainingLevelDto trainingLevel) {
-        trainingLevelsService.updateTrainingLevel(trainingLevel);
+    public TrainingLevelDto updateTrainingLevel(@RequestBody @Valid UpdateTrainingLevelDto trainingLevel) {
+        return trainingLevelsService.updateTrainingLevel(trainingLevel);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

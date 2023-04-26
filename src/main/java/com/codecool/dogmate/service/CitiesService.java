@@ -78,7 +78,7 @@ public class CitiesService {
         return cityMapper.mapEntityToCityDto(savedEntity);
     }
 
-    public void updateCity(UpdateCityDto city) {
+    public CityDto updateCity(UpdateCityDto city) {
         log.info("Zaktualizowałem dane dla id {}", city.id());
         City updateCity = cityRepository.findOneById(city.id())
                 .orElseThrow(() -> new CityNotFoundException(city.id()));
@@ -88,6 +88,7 @@ public class CitiesService {
         updateCity.setProvince(province);
         updateCity.setDate_modify(LocalDateTime.now());
         cityRepository.save(updateCity);
+        return cityMapper.mapEntityToCityDto(updateCity);
     }
 
     public void archiveCity(Integer id) {

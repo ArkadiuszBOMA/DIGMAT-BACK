@@ -72,7 +72,7 @@ public class LessonsService {
         return lessonMapper.mapEntityToLessonDto(savedEntity);
     }
 
-    public void updateLesson(UpdateLessonDto lesson) {
+    public LessonDto updateLesson(UpdateLessonDto lesson) {
         log.info("Zaktualizowałem dane dla id {}", lesson.id());
         Lesson updateLesson = lessonRepository.findOneById(lesson.id())
                 .orElseThrow(() -> new LessonNotFoundException(lesson.id()));
@@ -84,6 +84,7 @@ public class LessonsService {
         updateLesson.setImageLocation(lesson.imageLocation());
         updateLesson.setDate_modify(LocalDateTime.now());
         lessonRepository.save(updateLesson);
+        return lessonMapper.mapEntityToLessonDto(updateLesson);
     }
 
     public void archiveLesson(Integer id) {

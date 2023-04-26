@@ -41,14 +41,13 @@ public class ProvincesController {
         return provincesService.getCitiesForThisProvinceById(id);
     }
 
-
     @PostMapping()
     public ProvinceDto newProvince(@RequestBody @Valid NewProvinceDto province) {
         return provincesService.createProvince(province);
     }
     @PutMapping(params={"update"})
-    public void updateProvince(@RequestBody @Valid UpdateProvinceDto province) {
-        provincesService.updateProvince(province);
+    public ProvinceDto updateProvince(@RequestBody @Valid UpdateProvinceDto province) {
+        return provincesService.updateProvince(province);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

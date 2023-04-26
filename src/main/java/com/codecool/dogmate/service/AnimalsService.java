@@ -90,7 +90,7 @@ public class AnimalsService {
         return animalMapper.mapEntityToAnimalDto(savedEntity);
     }
 
-    public void updateAnimal(UpdateAnimalDto animal) {
+    public AnimalDto updateAnimal(UpdateAnimalDto animal) {
         AnimalType animalType = animalTypeRepository.findOneById(animal.animalTypesId())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(animal.animalTypesId()));
         Breed breed = breedRepository.findOneById(animal.breedId())
@@ -111,6 +111,7 @@ public class AnimalsService {
         updatedAnimal.setGender(animal.gender());
         updatedAnimal.setDate_modify(LocalDateTime.now());
         animalRepository.save(updatedAnimal);
+        return animalMapper.mapEntityToAnimalDto(updatedAnimal);
     }
 
     public void archiveAnimal(Integer id) {

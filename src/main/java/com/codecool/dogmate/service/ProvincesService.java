@@ -80,7 +80,7 @@ public class ProvincesService {
         return provinceMapper.mapEntityToProvinceDto(savedEntity);
     }
 
-    public void updateProvince(UpdateProvinceDto province) {
+    public ProvinceDto updateProvince(UpdateProvinceDto province) {
         log.info("Zaktualizowałem dane dla id {}", province.id());
         Province updateProvince = provinceRepository.findOneById(province.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(province.id()));
@@ -91,6 +91,7 @@ public class ProvincesService {
         updateProvince.setVoivodeship(voivodeship);
         updateProvince.setDate_modify(LocalDateTime.now());
         provinceRepository.save(updateProvince);
+        return provinceMapper.mapEntityToProvinceDto(updateProvince);
     }
 
     public void archiveProvince(Integer id) {

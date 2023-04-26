@@ -40,8 +40,8 @@ public class UserRoleController {
         return userRolesService.createUserRole(userRoleDto);
     }
     @PutMapping(params={"update"})
-    public void updateUserRole(@RequestBody @Valid UpdateUserRoleDto userRole) {
-        userRolesService.updateUserRole(userRole);
+    public UserRoleDto updateUserRole(@RequestBody @Valid UpdateUserRoleDto userRole) {
+        return userRolesService.updateUserRole(userRole);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

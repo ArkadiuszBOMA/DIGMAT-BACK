@@ -60,13 +60,14 @@ public class TimeUnitService {
         return timeUnitMapper.mapEntityToTimeUnitDto(savedEntity);
     }
 
-    public void updateTimeUnit(UpdateTimeUnitDto timeUnit) {
+    public TimeUnitDto updateTimeUnit(UpdateTimeUnitDto timeUnit) {
         log.info("Zaktualizowałem dane dla id {}", timeUnit.id());
         TimeUnit updateTimeUnit = timeUnitRepository.findOneById(timeUnit.id())
                 .orElseThrow(() -> new TimeUnitNotFoundException(timeUnit.id()));
         updateTimeUnit.setName(timeUnit.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateTimeUnit.setDate_modify(LocalDateTime.now());
         timeUnitRepository.save(updateTimeUnit);
+        return timeUnitMapper.mapEntityToTimeUnitDto(updateTimeUnit);
     }
 
     public void archiveTimeUnit(Integer id) {

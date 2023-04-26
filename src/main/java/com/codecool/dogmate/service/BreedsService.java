@@ -69,7 +69,7 @@ public class BreedsService {
         return breedMapper.mapEntityToBreedDto(savedEntity);
     }
 
-    public void updateBreed(UpdateBreedDto breed) {
+    public BreedDto updateBreed(UpdateBreedDto breed) {
         log.info("Zaktualizowałem dane dla id {}", breed.id());
         AnimalType animaltype = animalTypeRepository.findOneById(breed.animalType())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(breed.animalType()));
@@ -79,6 +79,7 @@ public class BreedsService {
         updatedBread.setAnimalTypes(animaltype);
         updatedBread.setDate_modify(LocalDateTime.now());
         breedRepository.save(updatedBread);
+        return breedMapper.mapEntityToBreedDto(updatedBread);
     }
 
     public void archiveBreed(Integer id) {

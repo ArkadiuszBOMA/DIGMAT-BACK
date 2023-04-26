@@ -67,7 +67,7 @@ public class LessonStepsService {
         return lessonStepMapper.mapEntityToLessonStepDto(savedEntity);
     }
 
-    public void updateLessonStep(UpdateLessonStepDto step) {
+    public LessonStepDto updateLessonStep(UpdateLessonStepDto step) {
         log.info("Zaktualizowałem dane dla id {}", step.id());
         LessonStep updateStep = lessonStepRepository.findOneById(step.id())
                 .orElseThrow(() -> new LessonStepNotFoundException(step.id()));
@@ -79,6 +79,7 @@ public class LessonStepsService {
         updateStep.setDate_modify(LocalDateTime.now());
         updateStep.setLesson(lesson);
         lessonStepRepository.save(updateStep);
+        return lessonStepMapper.mapEntityToLessonStepDto(updateStep);
     }
 
     public void archiveLessonStep(Integer id) {

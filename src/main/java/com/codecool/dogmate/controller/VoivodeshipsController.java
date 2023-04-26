@@ -48,8 +48,8 @@ public class VoivodeshipsController {
     }
 
     @PutMapping(params={"update"})
-    public void updateVoivodeship(@RequestBody @Valid UpdateVoivodeshipDto voivodeship) {
-        voivodeshipsService.updateVoivodeshipData(voivodeship);
+    public VoivodeshipDto updateVoivodeship(@RequestBody @Valid UpdateVoivodeshipDto voivodeship) {
+        return voivodeshipsService.updateVoivodeshipData(voivodeship);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

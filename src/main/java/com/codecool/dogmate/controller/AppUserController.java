@@ -62,8 +62,8 @@ public class AppUserController {
     }
 
     @PutMapping(params = {"update"})
-    public void updateAppUser(@RequestBody @Valid UpdateAppUserDto appUserDto) {
-        appUserService.updateAppUser(appUserDto);
+    public AppUserDto updateAppUser(@RequestBody @Valid UpdateAppUserDto appUserDto) {
+        return appUserService.updateAppUser(appUserDto);
     }
 
     @PutMapping(value = "/{id}", params = {"archive"})

@@ -59,13 +59,14 @@ public class UserPrivilegesService {
         return userPrivilegeMapper.mapEntityToUserRoleDto(savedEntity);
     }
 
-    public void updateUserPrivileg(UpdateUserPrivilegeDto userPrivilege) {
+    public UserPrivilegeDto updateUserPrivileg(UpdateUserPrivilegeDto userPrivilege) {
         log.info("Zaktualizowałem dane dla id {}", userPrivilege.id());
         UserPrivilege updateUserPrivilege = userPrivilegeRepository.findOneById(userPrivilege.id())
                 .orElseThrow(() -> new UserPrivilegesNotFoundException(userPrivilege.id()));
         updateUserPrivilege.setName(userPrivilege.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateUserPrivilege.setDate_modify(LocalDateTime.now());
         userPrivilegeRepository.save(updateUserPrivilege);
+        return userPrivilegeMapper.mapEntityToUserRoleDto(updateUserPrivilege);
     }
 
     public void archiveUserPrivilege(Integer id) {

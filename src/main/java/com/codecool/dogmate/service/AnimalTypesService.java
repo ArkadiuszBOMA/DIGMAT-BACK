@@ -68,7 +68,7 @@ public class AnimalTypesService {
         return animalTypeMapper.mapEntityToAnimalTypeDto(savedEntity);
     }
 
-    public void updateAnimalType(UpdateAnimalTypeDto animalType) {
+    public AnimalTypeDto updateAnimalType(UpdateAnimalTypeDto animalType) {
         log.info("Zaktualizowałem dane dla id {}", animalType.id());
         AnimalType updatedAnimalType = animalTypeRepository.findOneById(animalType.id())
                 .orElseThrow(() -> new AnimalTypeNotFoundException(animalType.id()));
@@ -76,6 +76,7 @@ public class AnimalTypesService {
         updatedAnimalType.setDescription(animalType.description().trim().replaceAll("( )+", " "));
         updatedAnimalType.setDate_modify(LocalDateTime.now());
         animalTypeRepository.save(updatedAnimalType);
+        return animalTypeMapper.mapEntityToAnimalTypeDto(updatedAnimalType);
     }
 
     public void archiveAnimalType(Integer id) {

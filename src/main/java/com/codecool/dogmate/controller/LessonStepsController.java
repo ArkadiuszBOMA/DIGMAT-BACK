@@ -32,8 +32,8 @@ public class LessonStepsController {
         return lessonStepService.createLessonStep(lessonStep);
     }
     @PutMapping(params={"update"})
-    public void updateLessonStep(@RequestBody @Valid UpdateLessonStepDto lessonStep) {
-        lessonStepService.updateLessonStep(lessonStep);
+    public LessonStepDto updateLessonStep(@RequestBody @Valid UpdateLessonStepDto lessonStep) {
+        return lessonStepService.updateLessonStep(lessonStep);
     }
 
     @PutMapping(value="/{id}", params={"archive"})

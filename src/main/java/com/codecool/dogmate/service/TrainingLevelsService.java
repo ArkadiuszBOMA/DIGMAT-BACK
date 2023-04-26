@@ -68,13 +68,14 @@ public class TrainingLevelsService {
         return trainingLevelMapper.mapEntityToTrainingLevelDto(savedEntity);
     }
 
-    public void updateTrainingLevel(UpdateTrainingLevelDto trainingLevel) {
+    public TrainingLevelDto updateTrainingLevel(UpdateTrainingLevelDto trainingLevel) {
         log.info("Zaktualizowałem dane dla id {}", trainingLevel.id());
         TrainingLevel updateTrainingLeve = trainingLevelRepository.findOneById(trainingLevel.id())
                 .orElseThrow(() -> new TrainingLevelNotFoundException(trainingLevel.id()));
         updateTrainingLeve.setName(trainingLevel.name().trim().toUpperCase().replaceAll("( )+", " "));
         updateTrainingLeve.setDate_modify(LocalDateTime.now());
         trainingLevelRepository.save(updateTrainingLeve);
+        return trainingLevelMapper.mapEntityToTrainingLevelDto(updateTrainingLeve);
     }
 
     public void archiveTrainingLevel(Integer id) {
