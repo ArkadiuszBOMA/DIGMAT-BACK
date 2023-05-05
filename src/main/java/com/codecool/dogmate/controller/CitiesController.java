@@ -4,7 +4,6 @@ import com.codecool.dogmate.dto.appuser.AppUserDto;
 import com.codecool.dogmate.dto.city.CityDto;
 import com.codecool.dogmate.dto.city.NewCityDto;
 import com.codecool.dogmate.dto.city.UpdateCityDto;
-import com.codecool.dogmate.mapper.ProvinceMapper;
 import com.codecool.dogmate.service.CitiesService;
 import com.codecool.dogmate.service.ProvincesService;
 import org.springframework.data.domain.Pageable;
@@ -17,10 +16,8 @@ import java.util.List;
 @RequestMapping("/api/v1/cities")
 public class CitiesController {
     private final CitiesService citiesService;
-    private final ProvincesService provincesService;
-    public CitiesController(CitiesService citiesService, ProvincesService provincesService, ProvinceMapper provinceMapper) {
+    public CitiesController(CitiesService citiesService, ProvincesService provincesService) {
         this.citiesService = citiesService;
-        this.provincesService = provincesService;
     }
     @GetMapping()
     public List<CityDto> getAllCities() {return citiesService.getCities();}

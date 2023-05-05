@@ -67,12 +67,12 @@ public class VoivodeshipsService {
         Voivodeship savedEntity = voivodeshipRepository.save(entity);
         return voivodeshipMapper.mapEntityToVoivodeshipDto(savedEntity);
     }
-    public VoivodeshipDto updateVoivodeshipData(UpdateVoivodeshipDto voivodeshio) {
-        log.info("Zaktualizowałem dane dla id {}", voivodeshio.id());
-        Voivodeship updatedVoivodeship = voivodeshipRepository.findOneById(voivodeshio.id())
-                .orElseThrow(() -> new VoivodeshipNotFoundException(voivodeshio.id()));
-        updatedVoivodeship.setName(voivodeshio.name().trim().toUpperCase().replaceAll("( )+", " "));
-        updatedVoivodeship.setTerytId(voivodeshio.terytId().trim().replaceAll("( )+", " "));
+    public VoivodeshipDto updateVoivodeshipData(UpdateVoivodeshipDto voivodeship) {
+        log.info("Zaktualizowałem dane dla id {}", voivodeship.id());
+        Voivodeship updatedVoivodeship = voivodeshipRepository.findOneById(voivodeship.id())
+                .orElseThrow(() -> new VoivodeshipNotFoundException(voivodeship.id()));
+        updatedVoivodeship.setName(voivodeship.name().trim().toUpperCase().replaceAll("( )+", " "));
+        updatedVoivodeship.setTerytId(voivodeship.terytId().trim().replaceAll("( )+", " "));
         updatedVoivodeship.setDate_modify(LocalDateTime.now());
         voivodeshipRepository.save(updatedVoivodeship);
         return voivodeshipMapper.mapEntityToVoivodeshipDto(updatedVoivodeship);

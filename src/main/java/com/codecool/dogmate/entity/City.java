@@ -1,7 +1,9 @@
 package com.codecool.dogmate.entity;
 
-import ch.qos.logback.classic.Logger;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -48,7 +50,7 @@ public class City {
     private LocalDateTime date_archive ;
 
     @OneToMany(mappedBy = "city", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    private Set<AppUser> appUsers = new HashSet<>();;
+    private Set<AppUser> appUsers = new HashSet<>();
 
     public City(String name) {
         this.name = name;

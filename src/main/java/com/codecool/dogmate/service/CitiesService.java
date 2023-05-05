@@ -11,10 +11,10 @@ import com.codecool.dogmate.entity.City;
 import com.codecool.dogmate.entity.Province;
 import com.codecool.dogmate.mapper.AppUserMapper;
 import com.codecool.dogmate.mapper.CityMapper;
-import com.codecool.dogmate.mapper.ProvinceMapper;
 import com.codecool.dogmate.repository.AppUserRepository;
 import com.codecool.dogmate.repository.CityRepository;
 import com.codecool.dogmate.repository.ProvinceRepository;
+import com.codecool.dogmate.repository.VoivodeshipRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,16 +30,18 @@ public class CitiesService {
     private final AppUserRepository appUserRepository;
     private final CityRepository cityRepository;
     private final ProvinceRepository provinceRepository;
+    private final VoivodeshipRepository voivodeshipRepository;
     private final AppUserMapper appUserMapper;
     private final CityMapper cityMapper;
 
 
 
-    public CitiesService(CityRepository cityRepository, ProvinceRepository provinceRepository, CityMapper cityMapper, ProvinceMapper provinceMapper, AppUserRepository appUserRepository, AppUserMapper appUserMapper) {
+    public CitiesService(CityRepository cityRepository, ProvinceRepository provinceRepository, CityMapper cityMapper, AppUserRepository appUserRepository, VoivodeshipRepository voivodeshipRepository, AppUserMapper appUserMapper) {
         this.cityRepository = cityRepository;
         this.provinceRepository = provinceRepository;
         this.cityMapper = cityMapper;
         this.appUserRepository = appUserRepository;
+        this.voivodeshipRepository = voivodeshipRepository;
         this.appUserMapper = appUserMapper;
     }
 
@@ -47,24 +49,40 @@ public class CitiesService {
         return cityRepository.findAllBy().stream()
                 .sorted(Comparator.comparing(City::getName))
                 .map(cityMapper::mapEntityToCityDto)
+                .map(cityDto -> {
+                        cityDto.setVoivodeship("arek");
+                        return cityDto;
+                })
                 .toList();
     }
     public List<CityDto> getCities(Pageable pageable) {
         return cityRepository.findAllBy(pageable).stream()
                 .sorted(Comparator.comparing(City::getName))
                 .map(cityMapper::mapEntityToCityDto)
+                .map(cityDto -> {
+                    cityDto.setVoivodeship("arek");
+                    return cityDto;
+                })
                 .toList();
     }
 
     public CityDto getCityById(Integer id) {
         return cityRepository.findOneById(id)
                 .map(cityMapper::mapEntityToCityDto)
+                .map(cityDto -> {
+                    cityDto.setVoivodeship("arek");
+                    return cityDto;
+                })
                 .orElseThrow(() -> new CityNotFoundException(id));
     }
 
     public CityDto getCityByName(String name) {
         return cityRepository.findOneByName(name)
                 .map(cityMapper::mapEntityToCityDto)
+                .map(cityDto -> {
+                    cityDto.setVoivodeship("arek");
+                    return cityDto;
+                })
                 .orElseThrow(() -> new CityNotFoundException(name));
     }
 

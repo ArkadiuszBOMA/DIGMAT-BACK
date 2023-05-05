@@ -47,8 +47,8 @@ public class AppUserController {
     }
 
     @GetMapping(params = {"name"})
-    public List<AppUserDto> getAppUserByName(@RequestParam String name) {
-        return appUserService.getAppUserByName(name);
+    public List<AppUserDto> findOneByEmail(@RequestParam String email) {
+        return appUserService.getAppUserByEmail(email);
     }
 
     @PostMapping("/login")

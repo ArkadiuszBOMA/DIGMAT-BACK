@@ -72,7 +72,7 @@ public class AppUserService {
                 .orElseThrow(() -> new AppUserNotFoundException(id));
     }
 
-    public List<AppUserDto> getAppUserByName(String name) {
+    public List<AppUserDto> getAppUserByEmail(String name) {
         return appUserRepository.findAllByName(name).stream()
             .map(appUserMapper::mapEntityToAppUserDto)
             .toList();

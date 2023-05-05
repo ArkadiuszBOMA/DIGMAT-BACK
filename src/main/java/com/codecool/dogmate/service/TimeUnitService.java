@@ -56,6 +56,7 @@ public class TimeUnitService {
 
     public TimeUnitDto createTimeUnit(NewTimeUnitDto timeunit) {
         TimeUnit entity = timeUnitMapper.mapTimeUnitDtoToEntity(timeunit);
+        entity.setName(timeunit.name().trim().toUpperCase().replaceAll("( )+", " "));
         TimeUnit savedEntity = timeUnitRepository.save(entity);
         return timeUnitMapper.mapEntityToTimeUnitDto(savedEntity);
     }
@@ -85,7 +86,7 @@ public class TimeUnitService {
     public void deleteTimeUnitData(Integer id) {
         timeUnitRepository.findOneById(id)
                 .orElseThrow(() -> new TimeUnitNotFoundException(id));
-        log.info("Usunąłeś powiat o id {}", id);
+        log.info("Usunąłeś jednostkę miary o id {}", id);
         timeUnitRepository.deleteById(id);
     }
 }

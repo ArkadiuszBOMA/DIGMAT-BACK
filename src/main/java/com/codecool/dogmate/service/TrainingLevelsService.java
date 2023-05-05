@@ -64,6 +64,7 @@ public class TrainingLevelsService {
 
     public TrainingLevelDto createTrainingLevel(NewTrainingLevelDto traininglevel) {
         TrainingLevel entity = trainingLevelMapper.mapTrainingLevelDtoToEntity(traininglevel);
+        entity.setName(traininglevel.name().trim().toUpperCase().replaceAll("( )+", " "));
         TrainingLevel savedEntity = trainingLevelRepository.save(entity);
         return trainingLevelMapper.mapEntityToTrainingLevelDto(savedEntity);
     }
