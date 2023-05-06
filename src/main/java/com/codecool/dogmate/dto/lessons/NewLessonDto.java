@@ -9,6 +9,6 @@ public record NewLessonDto(
         @NotNull
         Integer trainingLevel,
         String description,
-        String imageLocation
+        byte [] imageLocation
 ){
 }

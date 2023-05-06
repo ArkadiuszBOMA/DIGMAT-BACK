@@ -39,7 +39,7 @@ public class Lesson {
     private String description;
 
     @Column(name = "image_location")
-    private String imageLocation;
+    private byte [] imageLocation;
 
     @Column(name = "archive")
     private Boolean archive = false;
@@ -62,7 +62,7 @@ public class Lesson {
     @OneToMany(mappedBy = "lesson")
     private Set<LessonsAnimal> lessonsAnimals = new LinkedHashSet<>();
 
-    public Lesson(String name, TrainingLevel trainingLevel, String description, String imageLocation) {
+    public Lesson(String name, TrainingLevel trainingLevel, String description, byte [] imageLocation) {
         this.name = name;
         this.trainingLevel = trainingLevel;
         this.description = description;

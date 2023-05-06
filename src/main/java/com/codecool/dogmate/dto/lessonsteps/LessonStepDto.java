@@ -6,7 +6,7 @@ public record LessonStepDto(
 
     Integer id,
     String name,
-    Integer lessonStep,
+    String lessonStep,
     String description,
     Integer stepNumber,
     LocalDateTime date_create,

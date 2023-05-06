@@ -8,7 +8,7 @@ public record LessonDto(
     String name,
     String trainingLevel,
     String description,
-    String imageLocation,
+    byte [] imageLocation,
     LocalDateTime date_create,
     LocalDateTime date_modify,
     LocalDateTime date_archive,

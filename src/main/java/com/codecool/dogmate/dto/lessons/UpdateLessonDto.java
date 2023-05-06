@@ -11,6 +11,6 @@ public record UpdateLessonDto(
         @NotNull
         Integer trainingLevel,
         String description,
-        String imageLocation
+        byte [] imageLocation
 ){
 }

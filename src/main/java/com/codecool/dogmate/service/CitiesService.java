@@ -49,40 +49,24 @@ public class CitiesService {
         return cityRepository.findAllBy().stream()
                 .sorted(Comparator.comparing(City::getName))
                 .map(cityMapper::mapEntityToCityDto)
-                .map(cityDto -> {
-                        cityDto.setVoivodeship("arek");
-                        return cityDto;
-                })
                 .toList();
     }
     public List<CityDto> getCities(Pageable pageable) {
         return cityRepository.findAllBy(pageable).stream()
                 .sorted(Comparator.comparing(City::getName))
                 .map(cityMapper::mapEntityToCityDto)
-                .map(cityDto -> {
-                    cityDto.setVoivodeship("arek");
-                    return cityDto;
-                })
                 .toList();
     }
 
     public CityDto getCityById(Integer id) {
         return cityRepository.findOneById(id)
                 .map(cityMapper::mapEntityToCityDto)
-                .map(cityDto -> {
-                    cityDto.setVoivodeship("arek");
-                    return cityDto;
-                })
                 .orElseThrow(() -> new CityNotFoundException(id));
     }
 
     public CityDto getCityByName(String name) {
         return cityRepository.findOneByName(name)
                 .map(cityMapper::mapEntityToCityDto)
-                .map(cityDto -> {
-                    cityDto.setVoivodeship("arek");
-                    return cityDto;
-                })
                 .orElseThrow(() -> new CityNotFoundException(name));
     }
 

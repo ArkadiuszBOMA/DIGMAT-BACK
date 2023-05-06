@@ -16,7 +16,7 @@ public class CityDto {
     private Integer provinceId;
     private String voivodeship;
 
-    public CityDto(Integer id, String name, LocalDateTime date_create, LocalDateTime date_modify, LocalDateTime date_archive, Boolean archive, String province, Integer provinceId) {
+    public CityDto(Integer id, String name, LocalDateTime date_create, LocalDateTime date_modify, LocalDateTime date_archive, Boolean archive, String province, Integer provinceId, String voivodeship) {
         this.id = id;
         this.name = name;
         this.date_create = date_create;
@@ -25,5 +25,6 @@ public class CityDto {
         this.archive = archive;
         this.province = province;
         this.provinceId = provinceId;
+        this.voivodeship = voivodeship;
     }
 }

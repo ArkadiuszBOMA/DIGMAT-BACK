@@ -29,7 +29,8 @@ class CityMapperTest {
                 city.getDate_archive(),
                 city.getArchive(),
                 city.getProvince().getName(),
-                city.getProvince().getId()
+                city.getProvince().getId(),
+                city.getProvince().getVoivodeship().getName()
         );
         assertThat(actual).isEqualTo(expected);
     }

@@ -2,7 +2,6 @@ package com.codecool.dogmate.mapper;
 
 import com.codecool.dogmate.dto.lessonsteps.LessonStepDto;
 import com.codecool.dogmate.dto.lessonsteps.NewLessonStepDto;
-import com.codecool.dogmate.entity.Lesson;
 import com.codecool.dogmate.entity.LessonStep;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,7 @@ public class LessonStepMapper {
         return new LessonStepDto(
                 entity.getId(),
                 entity.getName(),
-                entity.getLesson().getId(),
+                entity.getLesson().getName(),
                 entity.getDescription(),
                 entity.getStepNumber(),
                 entity.getDate_create(),
