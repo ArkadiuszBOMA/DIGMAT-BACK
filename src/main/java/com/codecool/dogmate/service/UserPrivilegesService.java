@@ -55,6 +55,7 @@ public class UserPrivilegesService {
     public UserPrivilegeDto createUserPrivilege(NewUserPrivilegeDto userPrivileg) {
         log.info("Rejestracja {}", userPrivileg);
         UserPrivilege entity = userPrivilegeMapper.mapNewUserRoleDtoToEntity(userPrivileg);
+        entity.setName(userPrivileg.name().trim().toUpperCase().replaceAll("( )+", " "));
         UserPrivilege savedEntity = userPrivilegeRepository.save(entity);
         return userPrivilegeMapper.mapEntityToUserRoleDto(savedEntity);
     }

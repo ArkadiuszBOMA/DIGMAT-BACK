@@ -54,6 +54,7 @@ public class UserRolesService {
     public UserRoleDto createUserRole(NewUserRoleDto userrole) {
         log.info("Rejestracja {}", userrole);
         UserRole entity = userRoleMapper.mapNewUserTypeDtoToEntity(userrole);
+        entity.setName(userrole.name().trim().toUpperCase().replaceAll("( )+", " "));
         UserRole savedEntity = userRoleRepository.save(entity);
         return userRoleMapper.mapEntityToUserTypeDto(savedEntity);
     }

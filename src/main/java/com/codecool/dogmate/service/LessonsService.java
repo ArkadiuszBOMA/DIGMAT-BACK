@@ -68,6 +68,7 @@ public class LessonsService {
         TrainingLevel trainingLevel = trainingLevelRepository.findOneById(lesson.trainingLevel())
                 .orElseThrow(() -> new TrainingLevelNotFoundException(lesson.trainingLevel()));
         Lesson entity = lessonMapper.mapLessonDtoToEntity(lesson, trainingLevel);
+        entity.setName(lesson.name().trim().toUpperCase().replaceAll("( )+", " "));
         Lesson savedEntity = lessonRepository.save(entity);
         return lessonMapper.mapEntityToLessonDto(savedEntity);
     }

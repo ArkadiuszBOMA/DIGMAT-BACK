@@ -75,6 +75,7 @@ public class ProvincesService {
         Voivodeship voivodeship = voivodeshipRepository.findOneById(province.voivodeship())
                 .orElseThrow(() -> new VoivodeshipNotFoundException(province.voivodeship()));
         entity.setVoivodeship(voivodeship);
+        entity.setName(province.name().trim().toUpperCase().replaceAll("( )+", " "));
         voivodeship.getProvinces().add(entity);
         Province savedEntity = provinceRepository.save(entity);
         return provinceMapper.mapEntityToProvinceDto(savedEntity);
