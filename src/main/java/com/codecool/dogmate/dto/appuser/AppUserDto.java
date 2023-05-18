@@ -1,6 +1,7 @@
 package com.codecool.dogmate.dto.appuser;
 
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 public record AppUserDto(
@@ -16,6 +17,10 @@ public record AppUserDto(
         Boolean isLocked,
         Boolean isBanned,
         OffsetDateTime banExpiration,
-        Boolean isActive
+        Boolean isActive,
+        LocalDateTime date_create,
+        LocalDateTime date_modify,
+        LocalDateTime date_archive,
+        Boolean archive
 ){
 }

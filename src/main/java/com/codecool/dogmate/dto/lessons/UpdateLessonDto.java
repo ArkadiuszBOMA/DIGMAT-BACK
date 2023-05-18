@@ -12,5 +12,6 @@ public record UpdateLessonDto(
         Integer trainingLevel,
         String description,
         byte [] imageLocation
+
 ){
 }

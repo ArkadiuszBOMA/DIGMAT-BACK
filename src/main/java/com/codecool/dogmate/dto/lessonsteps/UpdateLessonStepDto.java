@@ -9,7 +9,7 @@ public record UpdateLessonStepDto(
         @Size(min = 5, max = 50, message = "Nazwa kroku lekcja musi mieć długość minimalną 5 i maksymalną 50 znaków")
         String name,
         @NotNull
-        Integer lesson,
+        Integer lessonNumber,
         String description,
         Integer stepNumber
 ){

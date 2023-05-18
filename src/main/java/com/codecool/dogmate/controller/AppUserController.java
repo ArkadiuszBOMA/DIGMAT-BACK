@@ -71,6 +71,7 @@ public class AppUserController {
         appUserService.archiveAppUser(id);
     }
 
+
     @DeleteMapping("/{id}")
     public void deleteAnimal(@PathVariable Integer id) {
         appUserService.deleteAppUserData(id);

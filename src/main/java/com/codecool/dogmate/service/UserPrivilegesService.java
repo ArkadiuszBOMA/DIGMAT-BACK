@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 @Slf4j
@@ -29,12 +30,14 @@ public class UserPrivilegesService {
 
     public List<UserPrivilegeDto> getUserPrivilege() {
         return userPrivilegeRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(UserPrivilege::getName))
                 .map(userPrivilegeMapper::mapEntityToUserRoleDto)
                 .toList();
     }
 
     public List<UserPrivilegeDto> getUserPrivilege(Pageable pageable) {
         return userPrivilegeRepository.findAllBy().stream()
+                .sorted(Comparator.comparing(UserPrivilege::getName))
                 .map(userPrivilegeMapper::mapEntityToUserRoleDto)
                 .toList();
     }
@@ -52,15 +55,15 @@ public class UserPrivilegesService {
                 .orElseThrow(() -> new UserRoleNotFoundException(name));
     }
 
-    public UserPrivilegeDto createUserPrivilege(NewUserPrivilegeDto userPrivileg) {
-        log.info("Rejestracja {}", userPrivileg);
-        UserPrivilege entity = userPrivilegeMapper.mapNewUserRoleDtoToEntity(userPrivileg);
-        entity.setName(userPrivileg.name().trim().toUpperCase().replaceAll("( )+", " "));
+    public UserPrivilegeDto createUserPrivilege(NewUserPrivilegeDto userPrivilege) {
+        log.info("Rejestracja {}", userPrivilege);
+        UserPrivilege entity = userPrivilegeMapper.mapNewUserRoleDtoToEntity(userPrivilege);
+        entity.setName(userPrivilege.name().trim().toUpperCase().replaceAll("( )+", " "));
         UserPrivilege savedEntity = userPrivilegeRepository.save(entity);
         return userPrivilegeMapper.mapEntityToUserRoleDto(savedEntity);
     }
 
-    public UserPrivilegeDto updateUserPrivileg(UpdateUserPrivilegeDto userPrivilege) {
+    public UserPrivilegeDto updateUserPrivilege(UpdateUserPrivilegeDto userPrivilege) {
         log.info("Zaktualizowałem dane dla id {}", userPrivilege.id());
         UserPrivilege updateUserPrivilege = userPrivilegeRepository.findOneById(userPrivilege.id())
                 .orElseThrow(() -> new UserPrivilegesNotFoundException(userPrivilege.id()));

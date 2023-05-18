@@ -36,7 +36,11 @@ public class AppUserMapper {
                 entity.getIsLocked(),
                 entity.getIsBanned(),
                 entity.getBanExpiration(),
-                entity.getIsActive()
+                entity.getIsActive(),
+                entity.getDate_create(),
+                entity.getDate_modify(),
+                entity.getDate_archive(),
+                entity.getArchive()
 
         );
     }

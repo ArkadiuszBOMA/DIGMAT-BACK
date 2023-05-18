@@ -118,7 +118,6 @@ public class AppUserService {
     public void archiveAppUser(Integer id) {
         AppUser archivedAppUser = appUserRepository.findOneById(id)
                 .orElseThrow(() -> new AppUserNotFoundException(id));
-
         if(!archivedAppUser.getArchive()) {
             archivedAppUser.setDate_archive(LocalDateTime.now());
             archivedAppUser.setArchive(true);
